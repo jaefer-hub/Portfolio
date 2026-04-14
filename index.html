@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaefer Ibrahim | Freelance Linguist Portfolio</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #163042;
+      --muted: #5f7280;
+      --line: #dbe7ec;
+      --blue: #1f6feb;
+      --green: #1fa971;
+      --blue-soft: #eef5ff;
+      --green-soft: #eefaf5;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(19, 52, 77, 0.08);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .pill-blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .pill-green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1558ba;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Header / Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(219, 231, 236, 0.9);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 70px;
+      background:
+        linear-gradient(180deg, rgba(31, 111, 235, 0.04), rgba(31, 169, 113, 0.02)),
+        #ffffff;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      margin: 18px 0 18px;
+      letter-spacing: -1.2px;
+    }
+
+    .hero-title {
+      color: var(--muted);
+      font-size: 1.06rem;
+      font-weight: 700;
+      max-width: 760px;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 14px;
+      font-size: 1.04rem;
+    }
+
+    .hero-availability {
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 28px;
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .highlight {
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(31,169,113,0.15), transparent 68%);
+      pointer-events: none;
+    }
+
+    .profile-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+
+    .info-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-list li {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-weight: 700;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .info-value a:hover {
+      color: var(--blue);
+    }
+
+    /* About Section */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .about-box,
+    .about-side {
+      padding: 30px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .about-points {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .about-points li {
+      padding-left: 18px;
+      position: relative;
+      color: var(--text);
+    }
+
+    .about-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .mini-stats {
+      display: grid;
+      gap: 18px;
+    }
+
+    .mini-stat {
+      padding: 22px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #ffffff, #f9fcfd);
+      border: 1px solid var(--line);
+    }
+
+    .mini-stat h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .mini-stat p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Services Section */
+    .service-card {
+      padding: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(31, 111, 235, 0.35);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Experience Section */
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      padding: 28px;
+      border-left: 5px solid var(--blue);
+    }
+
+    .timeline-item:nth-child(even) {
+      border-left-color: var(--green);
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .timeline-item ul {
+      margin-top: 12px;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .timeline-item li + li {
+      margin-top: 8px;
+    }
+
+    /* Languages Section */
+    .language-card {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .language-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .language-card p {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    /* Industries and Tools */
+    .split-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .split-card {
+      padding: 28px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .tag:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* Portfolio Section */
+    .portfolio-card {
+      padding: 28px;
+      height: 100%;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(31, 169, 113, 0.35);
+    }
+
+    .portfolio-card .sample-type {
+      margin-bottom: 14px;
+    }
+
+    .portfolio-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .portfolio-list {
+      padding-left: 18px;
+      color: var(--text);
+    }
+
+    .portfolio-list li + li {
+      margin-top: 8px;
+    }
+
+    /* Contact Section */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-card,
+    .contact-note {
+      padding: 30px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .contact-list li {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .contact-list span,
+    .contact-list a {
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .contact-list a:hover {
+      color: var(--blue);
+    }
+
+    .contact-note h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .contact-note p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .text-link {
+      font-weight: 700;
+      color: var(--blue);
+      transition: 0.2s ease;
+    }
+
+    .text-link:hover {
+      color: var(--green);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      background: #fbfdff;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-wrap p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .about-wrap,
+      .split-wrap,
+      .contact-wrap,
+      .grid-4,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero {
+        padding: 72px 0 54px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .about-box,
+      .about-side,
+      .hero-card,
+      .service-card,
+      .timeline-item,
+      .split-card,
+      .portfolio-card,
+      .contact-card,
+      .contact-note {
+        padding: 22px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">Jaefer <span>Ibrahim</span></a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#languages">Languages</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-wrap">
+      <div class="hero-content">
+        <span class="pill pill-blue">Freelance Linguist</span>
+        <h1>Arabic Translator, Localization Specialist, and AI Language Expert</h1>
+        <p class="hero-title">Arabic Translator | Localization Specialist | AI Language Expert</p>
+        <p class="hero-text">
+          I am a freelance linguist with 6+ years of experience in translation, localization, transcription, MTPE,
+          linguistic QA, and AI language tasks. I work with Arabic, Tigrinya, and English, and I focus on accurate,
+          natural, and culturally appropriate language for international projects.
+        </p>
+        <p class="hero-availability">Available for freelance and long-term collaboration</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
+          <a href="#portfolio" class="btn btn-secondary">View Portfolio Samples</a>
+          <a href="cv.pdf" class="btn btn-secondary" target="_blank" rel="noopener">Download CV</a>
+        </div>
+        <div class="hero-highlights">
+          <div class="highlight">
+            <strong>6+ Years</strong>
+            <span>Translation, localization, QA, and AI language experience</span>
+          </div>
+          <div class="highlight">
+            <strong>Multilingual Support</strong>
+            <span>Arabic, Tigrinya, and English for multilingual work</span>
+          </div>
+          <div class="highlight">
+            <strong>Remote Ready</strong>
+            <span>Flexible schedule for global clients and distributed teams</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card card">
+        <div class="profile-badge">Available for Remote Projects</div>
+        <ul class="info-list">
+          <li>
+            <span class="info-label">Name</span>
+            <span class="info-value">Jaefer Ibrahim</span>
+          </li>
+          <li>
+            <span class="info-label">Location</span>
+            <span class="info-value">Egypt</span>
+          </li>
+          <li>
+            <span class="info-label">Availability</span>
+            <span class="info-value">Remote | Flexible Schedule</span>
+          </li>
+          <li>
+            <span class="info-label">Email</span>
+            <span class="info-value"><a href="mailto:jaeferibrahim42@gmail.com">jaeferibrahim42@gmail.com</a></span>
+          </li>
+          <li>
+            <span class="info-label">Phone / WhatsApp</span>
+            <span class="info-value"><a href="https://wa.me/201103912522" target="_blank" rel="noopener">+20 110 391 2522</a></span>
+          </li>
+          <li>
+            <span class="info-label">LinkedIn</span>
+            <span class="info-value"><a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener">linkedin.com/in/jaefer-ibrahim-b1977b378</a></span>
+          </li>
+          <li>
+            <span class="info-label">ProZ</span>
+            <span class="info-value"><a href="https://www.proz.com/translator/4396433" target="_blank" rel="noopener">proz.com/translator/4396433</a></span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <p class="section-subtitle">
+        A language professional focused on quality, clarity, and natural communication for translation, localization,
+        and AI-driven language work.
+      </p>
+
+      <div class="about-wrap">
+        <div class="about-box card">
+          <p>
+            I help clients adapt content for real users, not just translate words. My work combines language accuracy,
+            cultural awareness, and attention to detail across translation, localization, MTPE, transcription, and quality review.
+          </p>
+          <p>
+            I have experience working with structured guidelines, large content volumes, and detail-focused review tasks.
+            This helps me support projects that need consistency, natural wording, and reliable linguistic judgment.
+          </p>
+          <p>
+            My background includes digital content, technical material, app and website localization, gaming content,
+            and AI language evaluation. I aim to deliver text that feels clear, usable, and appropriate for the target audience.
+          </p>
+
+          <ul class="about-points">
+            <li>Strong focus on natural Arabic and culturally suitable wording</li>
+            <li>Comfortable with multilingual workflows and terminology consistency</li>
+            <li>Reliable support for both human translation and AI language quality tasks</li>
+          </ul>
+        </div>
+
+        <div class="about-side card">
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <span class="pill pill-green">Work Style</span>
+              <h3>Detail-Oriented and Client-Focused</h3>
+              <p>I work carefully, follow project instructions closely, and keep language clear, natural, and consistent.</p>
+            </div>
+
+            <div class="mini-stat">
+              <span class="pill pill-blue">Core Strength</span>
+              <h3>Human Quality in Language Work</h3>
+              <p>I improve translated or generated text so it reads naturally and works well for real users and real contexts.</p>
+            </div>
+
+            <div class="mini-stat">
+              <span class="pill pill-green">Project Fit</span>
+              <h3>Flexible for Ongoing and One-Time Tasks</h3>
+              <p>Available for freelance assignments, long-term support, remote collaboration, and multilingual review work.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
+        Professional language services for businesses, platforms, content teams, and AI-related projects.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="service-card card">
+          <h3>English to Arabic Translation</h3>
+          <p>Clear and accurate translation with attention to meaning, tone, and natural Arabic phrasing.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>Editing and Proofreading</h3>
+          <p>Careful review for grammar, spelling, clarity, consistency, and better readability.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>App and Website Localization</h3>
+          <p>Localized digital content adapted for Arabic-speaking users and product environments.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>Game Localization</h3>
+          <p>Translation and adaptation of game UI, missions, and player-facing content with natural style.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>MTPE</h3>
+          <p>Machine Translation Post-Editing to improve raw machine output into fluent, human-quality text.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>Linguistic QA</h3>
+          <p>Review of content for terminology, consistency, formatting, language quality, and usability.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>AI Data Annotation</h3>
+          <p>Language-focused annotation support for datasets, labeling tasks, and structured review work.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>AI Evaluation</h3>
+          <p>Evaluation of AI-generated text for accuracy, quality, naturalness, and instruction alignment.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>Audio and Video Transcription</h3>
+          <p>Clean transcription with attention to speech clarity, formatting, and readable final output.</p>
+        </div>
+
+        <div class="service-card card">
+          <h3>Subtitle Review and Correction</h3>
+          <p>Subtitle checking for timing-related text quality, wording, punctuation, and consistency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-subtitle">
+        Hands-on experience across translation, localization, transcription, QA, and AI language workflows.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item card">
+          <h3>1. AI Translation Evaluation</h3>
+          <p>
+            Experience reviewing AI-generated language output with focus on quality, meaning, and consistency.
+          </p>
+          <ul>
+            <li>Reviewed AI-generated text for quality, accuracy, and consistency</li>
+            <li>Worked with guidelines and large content volumes</li>
+            <li>Improved output quality through detailed feedback</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item card">
+          <h3>2. Localization and MTPE</h3>
+          <p>
+            Supported digital content adaptation and machine translation improvement for Arabic-speaking audiences.
+          </p>
+          <ul>
+            <li>Localized digital content for Arabic-speaking users</li>
+            <li>Improved machine-translated text to natural human quality</li>
+            <li>Maintained terminology consistency and style</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item card">
+          <h3>3. Technical and General Translation</h3>
+          <p>
+            Delivered translation work for practical, instructional, and general-purpose content.
+          </p>
+          <ul>
+            <li>Translated manuals, instructions, and general content</li>
+            <li>Focused on clarity, accuracy, and usability</li>
+            <li>Adapted wording to match target readers and content purpose</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item card">
+          <h3>4. Transcription and QA</h3>
+          <p>
+            Worked on transcription and review tasks that required accuracy, structure, and language polishing.
+          </p>
+          <ul>
+            <li>Worked on audio and video transcription tasks</li>
+            <li>Reviewed text for format, grammar, and natural expression</li>
+            <li>Supported clean and consistent final delivery standards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages Section -->
+  <section class="section" id="languages">
+    <div class="container">
+      <h2 class="section-title">Languages</h2>
+      <p class="section-subtitle">
+        Multilingual capability for translation, review, and language-focused project support.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="language-card card">
+          <h3>Arabic</h3>
+          <p>Native</p>
+        </div>
+        <div class="language-card card">
+          <h3>Tigrinya</h3>
+          <p>Native</p>
+        </div>
+        <div class="language-card card">
+          <h3>English</h3>
+          <p>Fluent</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries and Tools Section -->
+  <section class="section" id="industries-tools">
+    <div class="container">
+      <h2 class="section-title">Industries and Tools</h2>
+      <p class="section-subtitle">
+        Industry familiarity and practical tool knowledge for modern localization and language workflows.
+      </p>
+
+      <div class="split-wrap">
+        <div class="split-card card">
+          <span class="pill pill-blue">Industries</span>
+          <div class="tag-list">
+            <span class="tag">Technology</span>
+            <span class="tag">E-commerce</span>
+            <span class="tag">AI and Data</span>
+            <span class="tag">Gaming</span>
+            <span class="tag">General Content</span>
+          </div>
+        </div>
+
+        <div class="split-card card">
+          <span class="pill pill-green">Tools</span>
+          <div class="tag-list">
+            <span class="tag">SDL Trados</span>
+            <span class="tag">memoQ</span>
+            <span class="tag">Smartcat</span>
+            <span class="tag">Wordfast</span>
+            <span class="tag">Microsoft Office</span>
+            <span class="tag">Google Workspace</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <h2 class="section-title">Portfolio Samples</h2>
+      <p class="section-subtitle">
+        Sample areas that reflect the type of work I can support for localization, translation, and AI language projects.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="portfolio-card card">
+          <span class="pill pill-blue sample-type">Localization Sample</span>
+          <h3>Game Localization Sample</h3>
+          <p>
+            UI text, missions, and player-facing content adapted for clarity, tone, and better user experience in Arabic.
+          </p>
+          <ul class="portfolio-list">
+            <li>Short interface strings and menu content</li>
+            <li>Mission text and gameplay instructions</li>
+            <li>Player-facing tone with natural target-language flow</li>
+          </ul>
+        </div>
+
+        <div class="portfolio-card card">
+          <span class="pill pill-green sample-type">Translation Sample</span>
+          <h3>Technical Translation Sample</h3>
+          <p>
+            Device instructions and safety content translated with strong attention to accuracy, readability, and usability.
+          </p>
+          <ul class="portfolio-list">
+            <li>Instructional and functional content</li>
+            <li>Safety wording and practical clarity</li>
+            <li>Terminology consistency across sections</li>
+          </ul>
+        </div>
+
+        <div class="portfolio-card card">
+          <span class="pill pill-blue sample-type">AI Language Sample</span>
+          <h3>AI Evaluation Sample</h3>
+          <p>
+            Quality review of generated text with structured linguistic feedback on errors, style, and consistency.
+          </p>
+          <ul class="portfolio-list">
+            <li>Accuracy and naturalness review</li>
+            <li>Consistency checks across outputs</li>
+            <li>Detailed feedback for quality improvement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Open to freelance, contract, and remote language projects with clients, agencies, and global teams.
+      </p>
+
+      <div class="contact-wrap">
+        <div class="contact-card card">
+          <ul class="contact-list">
+            <li>
+              <strong>Email</strong>
+              <a href="mailto:jaeferibrahim42@gmail.com">jaeferibrahim42@gmail.com</a>
+            </li>
+            <li>
+              <strong>Phone / WhatsApp</strong>
+              <a href="https://wa.me/201103912522" target="_blank" rel="noopener">+201103912522</a>
+            </li>
+            <li>
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener">
+                linkedin.com/in/jaefer-ibrahim-b1977b378
+              </a>
+            </li>
+            <li>
+              <strong>ProZ</strong>
+              <a href="https://www.proz.com/translator/4396433" target="_blank" rel="noopener">
+                proz.com/translator/4396433
+              </a>
+            </li>
+            <li>
+              <strong>Work Samples</strong>
+              <a href="#portfolio">View Portfolio Samples</a>
+            </li>
+            <li>
+              <strong>Location</strong>
+              <span>Egypt</span>
+            </li>
+            <li>
+              <strong>Availability</strong>
+              <span>Remote | Flexible Schedule</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-note card">
+          <h3>Let’s work on language that feels right</h3>
+          <p>
+            I support projects that need accurate translation, natural localization, reliable review, and strong language quality.
+          </p>
+          <p>
+            Whether you need Arabic translation, localization support, transcription, MTPE, or AI language evaluation,
+            I am available for remote collaboration and flexible project-based work.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:jaeferibrahim42@gmail.com" class="btn btn-primary">Send an Email</a>
+            <a href="#portfolio" class="text-link">Work Samples</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrap">
+      <p>&copy; 2026 Jaefer Ibrahim. Freelance Linguist Portfolio.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+            </html>
