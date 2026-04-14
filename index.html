@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaefer Ibrahim | Professional Linguist & Localization Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #2563eb;
+            --accent-green: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+        }
+
+        /* --- REUSABLE COMPONENTS --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 10px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content .job-title {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about .about-box {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-blue);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .exp-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .exp-item:last-child { border-bottom: none; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-header h3 { color: var(--text-dark); }
+
+        .exp-item ul {
+            margin-left: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* --- TAGS (Industries & Tools) --- */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .contact-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            opacity: 1;
+            color: var(--primary-blue);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 30px;
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Simplified for single-file demo */
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="logo">JAEFER IBRAHIM</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="job-title">Linguist | Translator | AI Data Specialist</span>
+                <h1>Jaefer Ibrahim</h1>
+                <p>Delivering accurate, natural, and high-quality multilingual content across multiple domains for global industries.</p>
+                <a href="#contact" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Professional Profile</h2>
+            <div class="about-box">
+                <p>Experienced freelance linguist with over <strong>6 years</strong> of experience in translation, transcription, localization, and AI-related language tasks. Skilled in delivering clear, natural, and culturally accurate content across different industries, including technology, e-commerce, and general content.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">Specialized Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Translation & Language</h3>
+                    <ul>
+                        <li>• English to Arabic Translation</li>
+                        <li>• Arabic to English Support</li>
+                        <li>• Editing & Proofreading</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Localization</h3>
+                    <ul>
+                        <li>• App & Website Localization</li>
+                        <li>• Game Localization</li>
+                        <li>• Cultural Adaptation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>AI & Data Services</h3>
+                    <ul>
+                        <li>• AI Data Annotation</li>
+                        <li>• AI Evaluation (LLM / NLP)</li>
+                        <li>• MTPE (Post-Editing)</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Transcription</h3>
+                    <ul>
+                        <li>• Audio & Video Transcription</li>
+                        <li>• Subtitle Review</li>
+                        <li>• Time-coding & Correction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3>AI Language Evaluation Projects</h3>
+                </div>
+                <ul>
+                    <li>Focus on accuracy and nuance in Large Language Model feedback.</li>
+                    <li>Handling large volumes of linguistic data with strict deadlines.</li>
+                    <li>Working with complex guidelines and high-quality standards.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3>Localization & MTPE Projects</h3>
+                </div>
+                <ul>
+                    <li>Ensuring cultural relevance for software and web applications.</li>
+                    <li>Refining machine-translated content to reach human-level fluency.</li>
+                    <li>Maintaining terminology consistency across large-scale files.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <h3>Technical & E-commerce Translation</h3>
+                </div>
+                <ul>
+                    <li>Translating user manuals, device instructions, and product listings.</li>
+                    <li>Adapting marketing copy to resonate with target Arabic-speaking audiences.</li>
+                    <li>Meeting 99%+ accuracy ratings for technical terminology.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="section-title">Industries & Specialized Tools</h2>
+            
+            <h3 style="text-align:center; margin-bottom:1.5rem; font-size: 1rem; color: var(--text-light);">INDUSTRIES</h3>
+            <div class="tag-container" style="margin-bottom: 4rem;">
+                <span class="tag">Technology</span>
+                <span class="tag">E-commerce</span>
+                <span class="tag">AI & Data</span>
+                <span class="tag">General Content</span>
+                <span class="tag">Gaming</span>
+            </div>
+
+            <h3 style="text-align:center; margin-bottom:1.5rem; font-size: 1rem; color: var(--text-light);">CAT TOOLS & SOFTWARE</h3>
+            <div class="tag-container">
+                <span class="tag">SDL Trados</span>
+                <span class="tag">memoQ</span>
+                <span class="tag">Smartcat</span>
+                <span class="tag">Wordfast</span>
+                <span class="tag">Microsoft Office</span>
+                <span class="tag">Google Workspace</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-info">
+                        <h4>Game Localization Sample</h4>
+                        <p>Full localization of UI elements, character missions, and in-game lore for a mobile title.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-info">
+                        <h4>Technical Translation</h4>
+                        <p>Translation of complex device instructions and safety manuals for consumer electronics.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-info">
+                        <h4>AI Evaluation Task</h4>
+                        <p>Comprehensive quality review and feedback for Large Language Model response optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p style="margin-top: 10px; opacity: 0.8;">Available for freelance opportunities and long-term collaborations.</p>
+            
+            <div class="contact-links">
+                <a href="mailto:jaeferibrahim42@gmail.com">Email: jaeferibrahim42@gmail.com</a>
+                <a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank">LinkedIn Profile</a>
+                <a href="https://jaefer-jemai-portfolio--jaefer01.replit.app" target="_blank">Live Portfolio</a>
+            </div>
+
+            <a href="mailto:jaeferibrahim42@gmail.com" class="btn" style="background: var(--accent-green);">Send a Message</a>
+
+            <p class="copyright">&copy; 2024 Jaefer Ibrahim. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
