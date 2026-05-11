@@ -7,21 +7,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  /* ── Variables ── */
   :root {
-    --navy:   #0C1B33;
-    --navy2:  #112240;
-    --gold:   #C9A84C;
-    --gold2:  #E8C97A;
-    --cream:  #F5F0E8;
-    --text:   #D8D0C0;
-    --muted:  #7A8499;
-    --white:  #FFFFFF;
-    --border: rgba(201,168,76,0.2);
-    --r: 4px;
+    --navy:  #0C1B33;
+    --navy2: #0f2040;
+    --gold:  #C9A84C;
+    --gold2: #E8C97A;
+    --cream: #F0EBE0;
+    --text:  #C8C0B0;
+    --muted: #6A7590;
+    --white: #FFFFFF;
+    --border: rgba(201,168,76,0.18);
+    --r: 6px;
   }
-
-  /* ── Reset ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -29,620 +26,280 @@
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.75;
     overflow-x: hidden;
+    font-size: 16px;
   }
-
-  /* ── Noise overlay ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ── Typography ── */
-  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.15; }
-  h1 { font-size: clamp(3rem, 8vw, 6rem); color: var(--white); letter-spacing: -0.02em; }
-  h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); }
-  h3 { font-size: 1.4rem; color: var(--gold2); }
-  p  { font-size: 0.95rem; color: var(--text); }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.15; }
+  h1 { font-size: clamp(3.2rem, 9vw, 6.5rem); color: var(--white); letter-spacing: -0.02em; }
+  h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--white); }
+  h3 { font-size: 1.35rem; color: var(--gold2); }
+  p  { font-size: 1rem; color: var(--text); line-height: 1.8; }
   a  { color: var(--gold); text-decoration: none; transition: color 0.2s; }
   a:hover { color: var(--gold2); }
-
-  /* ── Layout ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
-  section { padding: 6rem 0; }
-
-  /* ── Gold line accent ── */
-  .gold-line {
-    display: block;
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin-bottom: 1.5rem;
-  }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+  section { padding: 5rem 0; }
   .section-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-    display: block;
+    font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.6rem; display: block;
   }
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
-  /* ══════════════════════════════════════
-     NAV
-  ══════════════════════════════════════ */
+  /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.25rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(12,27,51,0.85);
-    backdrop-filter: blur(12px);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(12,27,51,0.93); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
-    transition: all 0.3s;
   }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--white);
-    letter-spacing: 0.05em;
-  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--white); }
   .nav-logo span { color: var(--gold); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    transition: color 0.2s;
-  }
+  .nav-links a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
 
-  /* ══════════════════════════════════════
-     HERO
-  ══════════════════════════════════════ */
+  /* HERO */
   #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
+    min-height: 100vh; display: flex; align-items: center; padding-top: 5rem;
     background:
-      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(17,34,64,0.8) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 70% at 85% 50%, rgba(201,168,76,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 5% 90%, rgba(17,34,64,0.9) 0%, transparent 55%);
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
   .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;
   }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--gold); }
+  .hero-title em { font-style: italic; color: var(--gold2); }
+  .hero-role {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--muted); font-style: italic; margin-bottom: 1.75rem;
   }
-  .hero-title { margin-bottom: 0.25rem; }
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold2);
-  }
-  .hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 300;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    font-style: italic;
-  }
-  .hero-desc {
-    font-size: 0.95rem;
-    color: var(--text);
-    max-width: 480px;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .hero-desc { font-size: 1.05rem; color: var(--text); max-width: 500px; margin-bottom: 2rem; line-height: 1.85; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: all 0.25s;
-    border-radius: var(--r);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem; background: var(--gold); color: var(--navy);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; border: none; cursor: pointer;
+    border-radius: var(--r); transition: all 0.25s; text-decoration: none;
   }
-  .btn-primary:hover {
-    background: var(--gold2);
-    color: var(--navy);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
-  }
+  .btn-primary:hover { background: var(--gold2); color: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
   .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: transparent;
-    color: var(--gold);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    border: 1px solid var(--gold);
-    cursor: pointer;
-    transition: all 0.25s;
-    border-radius: var(--r);
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2rem; background: transparent; color: var(--gold);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; border: 1px solid var(--gold);
+    cursor: pointer; border-radius: var(--r); transition: all 0.25s; text-decoration: none;
   }
-  .btn-outline:hover {
-    background: rgba(201,168,76,0.1);
-    transform: translateY(-2px);
-    color: var(--gold2);
-  }
-  .hero-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: relative;
-  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); color: var(--gold2); }
+  .hero-stats { display: flex; flex-direction: column; gap: 1rem; }
   .stat-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.4rem 1.75rem; transition: all 0.3s;
+    position: relative; overflow: hidden;
   }
   .stat-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--gold);
-    opacity: 0;
-    transition: opacity 0.3s;
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--gold); opacity: 0; transition: opacity 0.3s;
   }
   .stat-card:hover { border-color: rgba(201,168,76,0.4); transform: translateX(4px); }
   .stat-card:hover::before { opacity: 1; }
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.25rem;
-  }
-  .stat-label { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.2rem; }
+  .stat-label { font-size: 0.88rem; color: var(--muted); }
 
-  /* ══════════════════════════════════════
-     ABOUT
-  ══════════════════════════════════════ */
+  /* ABOUT */
   #about { background: var(--navy2); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
-    align-items: start;
-  }
-  .about-left { position: sticky; top: 8rem; }
-  .about-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start; }
+  .about-left { position: sticky; top: 7rem; }
+  .about-name { font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; font-weight: 300; color: var(--white); line-height: 1.05; margin-bottom: 1.25rem; }
   .about-name em { color: var(--gold); font-style: italic; }
-  .lang-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
+  .lang-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .badge { padding: 0.35rem 0.9rem; border: 1px solid var(--border); border-radius: 20px; font-size: 0.8rem; color: var(--gold); letter-spacing: 0.07em; background: rgba(201,168,76,0.07); }
+  .about-platforms { margin-top: 1.5rem; }
+  .about-platforms-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Mono', monospace; display: block; }
+  .platform-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .platform-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.65rem 0.9rem; background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border); border-radius: var(--r); font-size: 0.88rem; color: var(--text);
   }
-  .badge {
-    padding: 0.3rem 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    font-size: 0.75rem;
-    color: var(--gold);
-    letter-spacing: 0.08em;
-    background: rgba(201,168,76,0.06);
-  }
-  .about-right p { margin-bottom: 1.25rem; line-height: 1.85; }
-  .about-right p:first-child { font-size: 1.1rem; color: var(--cream); font-family: 'Cormorant Garamond', serif; }
+  .platform-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .about-right p { margin-bottom: 1.35rem; font-size: 1.02rem; line-height: 1.85; }
+  .about-right p:first-child { font-size: 1.15rem; color: var(--cream); font-family: 'Cormorant Garamond', serif; }
+  .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 2rem; }
+  .highlight-item { padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--r); }
+  .highlight-item strong { display: block; color: var(--gold2); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+  .highlight-item span { font-size: 0.9rem; color: var(--text); }
 
-  /* ══════════════════════════════════════
-     SERVICES
-  ══════════════════════════════════════ */
-  #services {}
-  .services-header { text-align: center; margin-bottom: 4rem; }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+  /* SERVICES */
+  .services-header { text-align: center; margin-bottom: 3.5rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
   .service-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2.5rem 2rem;
-    transition: all 0.35s;
-    position: relative;
-    overflow: hidden;
+    background: rgba(255,255,255,0.025); border: 1px solid var(--border);
+    border-radius: 8px; padding: 2.5rem 2rem; transition: all 0.35s;
+    position: relative; overflow: hidden;
   }
   .service-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s;
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
   }
-  .service-card:hover {
-    border-color: rgba(201,168,76,0.35);
-    transform: translateY(-6px);
-    background: rgba(201,168,76,0.04);
-  }
+  .service-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-5px); background: rgba(201,168,76,0.04); }
   .service-card:hover::after { transform: scaleX(1); }
-  .service-icon {
-    font-size: 2rem;
-    margin-bottom: 1.25rem;
-    display: block;
-  }
-  .service-card h3 { margin-bottom: 0.75rem; font-size: 1.3rem; }
-  .service-card p { font-size: 0.875rem; line-height: 1.75; color: var(--muted); margin-bottom: 1.25rem; }
-  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-  .service-tag {
-    font-size: 0.68rem;
-    padding: 0.2rem 0.6rem;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 3px;
-    color: var(--gold);
-    letter-spacing: 0.06em;
-  }
+  .service-icon { font-size: 2.2rem; margin-bottom: 1.25rem; display: block; }
+  .service-card h3 { margin-bottom: 0.85rem; font-size: 1.4rem; }
+  .service-card > p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.25rem; }
+  .service-list { padding-left: 0; list-style: none; margin-top: 0.75rem; }
+  .service-list li { font-size: 0.9rem; color: var(--text); padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.65; }
+  .service-list li::before { content: '→'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+  .service-tag { font-size: 0.72rem; padding: 0.25rem 0.65rem; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); border-radius: 3px; color: var(--gold); letter-spacing: 0.06em; }
 
-  /* ══════════════════════════════════════
-     CERTIFICATIONS
-  ══════════════════════════════════════ */
-  #certifications { background: var(--navy2); }
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .cert-card {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    background: rgba(255,255,255,0.02);
-    transition: all 0.3s;
-  }
-  .cert-card:hover {
-    border-color: rgba(201,168,76,0.4);
-    background: rgba(201,168,76,0.04);
-  }
-  .cert-year {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.75rem;
-  }
-  .cert-card h3 { font-size: 1.05rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 0.4rem; }
-  .cert-issuer { font-size: 0.8rem; color: var(--muted); }
+  /* EXPERIENCE */
+  #experience { background: var(--navy2); }
+  .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
+  .timeline-item { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; position: relative; padding-bottom: 2.5rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before { content: ''; position: absolute; left: 168px; top: 8px; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-dot { position: absolute; left: 163px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); border: 2px solid var(--navy2); }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; padding-top: 0.15rem; text-align: right; line-height: 1.5; }
+  .timeline-content { padding-left: 1.5rem; }
+  .timeline-role { font-size: 1.05rem; color: var(--white); font-weight: 500; font-family: 'DM Sans', sans-serif; margin-bottom: 0.2rem; }
+  .timeline-org { font-size: 0.88rem; color: var(--gold); margin-bottom: 0.75rem; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+  .timeline-bullets { padding-left: 0; list-style: none; }
+  .timeline-bullets li { font-size: 0.93rem; color: var(--text); padding: 0.3rem 0; display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.7; }
+  .timeline-bullets li::before { content: '·'; color: var(--gold); font-size: 1.2rem; line-height: 1.2; flex-shrink: 0; }
 
-  /* ══════════════════════════════════════
-     WORK SAMPLES
-  ══════════════════════════════════════ */
-  #samples {}
-  .samples-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .sample-card {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem 2.25rem;
-    background: rgba(255,255,255,0.02);
-    transition: all 0.3s;
-    position: relative;
-  }
-  .sample-card:hover {
-    border-color: rgba(201,168,76,0.35);
-    background: rgba(201,168,76,0.03);
-  }
-  .sample-type {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-  .sample-card h3 {
-    font-size: 1.15rem;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
-  .sample-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .sample-meta {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.25rem;
-    flex-wrap: wrap;
-  }
-  .sample-meta span {
-    font-size: 0.72rem;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
+  /* CERTIFICATIONS */
+  .cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+  .cert-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; background: rgba(255,255,255,0.02); transition: all 0.3s; }
+  .cert-card:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.04); transform: translateY(-3px); }
+  .cert-year { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 0.6rem; }
+  .cert-card h3 { font-size: 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 0.35rem; line-height: 1.4; }
+  .cert-issuer { font-size: 0.82rem; color: var(--muted); }
 
-  /* ══════════════════════════════════════
-     CONTACT
-  ══════════════════════════════════════ */
+  /* SAMPLES */
+  #samples { background: var(--navy2); }
+  .samples-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; margin-top: 3rem; }
+  .sample-card { border: 1px solid var(--border); border-radius: 8px; padding: 2rem 2.25rem; background: rgba(255,255,255,0.02); transition: all 0.3s; }
+  .sample-card:hover { border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.03); transform: translateY(-3px); }
+  .sample-type { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .sample-card h3 { font-size: 1.1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 0.6rem; }
+  .sample-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+  .sample-meta { display: flex; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .sample-meta span { font-size: 0.78rem; color: var(--muted); }
+
+  /* VOLUNTEER */
+  .vol-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+  .vol-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; background: rgba(255,255,255,0.02); transition: all 0.3s; }
+  .vol-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-3px); }
+  .vol-org { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .vol-card h3 { font-size: 1rem; color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-bottom: 0.4rem; }
+  .vol-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.75rem; }
+  .vol-card p { font-size: 0.9rem; color: var(--text); line-height: 1.75; }
+
+  /* CONTACT */
   #contact { background: var(--navy2); }
-  .contact-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    align-items: start;
-  }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start; }
   .contact-left h2 { margin-bottom: 1rem; }
-  .contact-left p { color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
-  .contact-detail {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: border-color 0.2s;
-  }
+  .contact-left > p { color: var(--muted); margin-bottom: 2rem; line-height: 1.85; font-size: 1rem; }
+  .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 6px; transition: border-color 0.2s; }
   .contact-detail:hover { border-color: rgba(201,168,76,0.35); }
-  .contact-icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(201,168,76,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-  .contact-detail-text { font-size: 0.85rem; }
-  .contact-detail-label { color: var(--muted); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .contact-detail-value { color: var(--white); }
+  .contact-icon { width: 38px; height: 38px; background: rgba(201,168,76,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-detail-label { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-detail-value { color: var(--white); font-size: 0.95rem; }
   .contact-form { display: flex; flex-direction: column; gap: 1rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
+  .form-group label { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 0.9rem 1rem; color: var(--white);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem; transition: border-color 0.2s; outline: none; width: 100%;
   }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 0.85rem 1rem;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    transition: border-color 0.2s;
-    outline: none;
-    width: 100%;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.04);
-  }
-  .form-group select option { background: var(--navy2); }
-  .form-group textarea { resize: vertical; min-height: 130px; }
-  .form-submit {
-    margin-top: 0.5rem;
-    width: 100%;
-    padding: 1rem;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: var(--r);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-  .form-submit:hover {
-    background: var(--gold2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.25);
-  }
-  .form-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.5rem; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+  .form-group select option { background: var(--navy2); color: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 140px; }
+  .form-submit { width: 100%; padding: 1.05rem; background: var(--gold); color: var(--navy); border: none; border-radius: var(--r); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; }
+  .form-submit:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .form-note { font-size: 0.78rem; color: var(--muted); text-align: center; }
+  .form-status { padding: 0.85rem 1rem; border-radius: var(--r); font-size: 0.9rem; display: none; }
+  .form-status.success { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); display: block; }
+  .form-status.error { background: rgba(220,60,60,0.1); border: 1px solid rgba(220,60,60,0.3); color: #f08080; display: block; }
 
-  /* ══════════════════════════════════════
-     FOOTER
-  ══════════════════════════════════════ */
-  footer {
-    padding: 2.5rem 2rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    position: relative;
-    z-index: 1;
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--white);
-  }
+  /* FOOTER */
+  footer { padding: 2rem 2rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white); }
   .footer-logo span { color: var(--gold); }
   .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.08em; }
+  .footer-links a { font-size: 0.8rem; color: var(--muted); }
   .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
 
-  /* ══════════════════════════════════════
-     ANIMATIONS
-  ══════════════════════════════════════ */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  .hero-content > * {
-    opacity: 0;
-    animation: fadeUp 0.8s forwards;
-  }
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+  .hero-content > * { opacity: 0; animation: fadeUp 0.75s forwards; }
   .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-  .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
-  .hero-content > *:nth-child(5) { animation-delay: 0.7s; }
-  .hero-stats {
-    opacity: 0;
-    animation: fadeUp 0.8s 0.5s forwards;
-  }
+  .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.46s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.58s; }
+  .hero-stats { opacity: 0; animation: fadeUp 0.75s 0.45s forwards; }
 
-  /* ══════════════════════════════════════
-     TOAST
-  ══════════════════════════════════════ */
-  .toast {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--gold);
-    color: var(--navy);
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    z-index: 999;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.35s;
-  }
-  .toast.show { transform: translateY(0); opacity: 1; }
-
-  /* ══════════════════════════════════════
-     RESPONSIVE
-  ══════════════════════════════════════ */
-  @media (max-width: 900px) {
-    .hero-grid, .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
-    .services-grid { grid-template-columns: 1fr; }
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hero-grid, .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid, .vol-grid { grid-template-columns: 1fr; }
     .cert-grid { grid-template-columns: 1fr 1fr; }
     .samples-grid { grid-template-columns: 1fr; }
     .about-left { position: static; }
     .nav-links { display: none; }
     .form-row { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .timeline-item::before, .timeline-dot { display: none; }
+    .timeline-date { text-align: left; }
+    .timeline-content { padding-left: 0; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   }
   @media (max-width: 600px) {
     .cert-grid { grid-template-columns: 1fr; }
-    h1 { font-size: 2.8rem; }
-  }
-
-  /* divider */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0;
+    h1 { font-size: 3rem; }
+    section { padding: 3.5rem 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
   <div class="nav-logo">Jaefer <span>Ibrahim</span></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#certifications">Credentials</a></li>
     <li><a href="#samples">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
         <div class="hero-eyebrow">Arabic · English · Tigrinya · Amharic</div>
-        <h1 class="hero-title">Jaefer<br><em>Ibrahim</em></h1>
-        <p class="hero-subtitle">Translator · Transcriptionist · AI Language Specialist</p>
-        <p class="hero-desc">
-          Six years delivering accurate, culturally precise language work across medical, legal, technical, and AI domains. When precision matters and deadlines are real, this is the profile clients come back to.
-        </p>
+        <h1>Jaefer<br><em>Ibrahim</em></h1>
+        <p class="hero-role">Translator · Transcriptionist · AI Language Specialist</p>
+        <p class="hero-desc">Six years delivering accurate, culturally precise language work for international clients across medical, legal, technical, and AI domains. Native Arabic and Tigrinya speaker — a language pair very few professionals worldwide can offer. When precision matters and deadlines are real, this is the profile clients come back to.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn-primary">Work With Me →</a>
           <a href="Jaefer_Ibrahim_CV.pdf" download class="btn-outline">↓ Download CV</a>
@@ -651,7 +308,7 @@
       <div class="hero-stats">
         <div class="stat-card">
           <div class="stat-number">6+</div>
-          <div class="stat-label">Years of professional experience</div>
+          <div class="stat-label">Years of professional freelance experience</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">98%</div>
@@ -659,7 +316,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number">10K+</div>
-          <div class="stat-label">AI language segments reviewed</div>
+          <div class="stat-label">AI language segments reviewed and annotated</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">4</div>
@@ -672,7 +329,7 @@
 
 <div class="divider"></div>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -685,20 +342,26 @@
           <span class="badge">English — Fluent</span>
           <span class="badge">Amharic — Fluent</span>
         </div>
+        <div class="about-platforms">
+          <span class="about-platforms-label">Active On</span>
+          <div class="platform-list">
+            <div class="platform-item"><div class="platform-dot"></div>Upwork — High Job Success Score</div>
+            <div class="platform-item"><div class="platform-dot"></div>Translated.com — 98–100% Satisfaction</div>
+            <div class="platform-item"><div class="platform-dot"></div>Frontier AI — Certified Expert</div>
+          </div>
+        </div>
       </div>
       <div class="about-right">
-        <p>
-          I am a freelance linguist based in Giza, Egypt, working with international clients across translation, transcription, localization, and AI language evaluation. My native languages are Arabic and Tigrinya — a combination that very few professionals can offer — and I work fluently in English and Amharic across all project types.
-        </p>
-        <p>
-          My background covers six years of real project work: medical records, legal contracts, technical documentation, YouTube and interview transcription, machine translation post-editing, and AI training data evaluation. I hold a Bachelor of Arts in Translation and Linguistics from the University of Asmara, and I have worked directly with Frontier AI as a certified AI Training Expert.
-        </p>
-        <p>
-          I work through Upwork and Translated.com, where my client satisfaction consistently reaches 98–100%. I use SDL Trados, memoQ, Smartcat, and Wordfast, and I maintain client-specific glossaries on every ongoing project. I also volunteer as a translator with UNHCR Egypt, supporting refugee families across four languages.
-        </p>
-        <p>
-          What I bring is not just language knowledge — it is the judgment to know when a literal translation fails the reader, when a term needs a subject matter expert, and when a deadline cannot move. Clients come back because the work is done right.
-        </p>
+        <p>I am a freelance linguist based in Giza, Egypt, specializing in Arabic and Tigrinya language services for international clients. My native language combination — Arabic and Tigrinya — is one that very few professional linguists worldwide can offer, which gives me a real edge on projects that require both.</p>
+        <p>My six years of experience span real project work across multiple domains: medical records and clinical trials, legal contracts, financial documentation, technical manuals, software localization, YouTube and interview transcription, machine translation post-editing, and AI training data evaluation. I hold a Bachelor of Arts in Translation and Linguistics from the University of Asmara, and I have worked directly with Frontier AI as a certified AI Training Expert.</p>
+        <p>On Upwork I maintain a high job success score with consistently positive client feedback across multiple long-term contracts. On Translated.com my satisfaction rate is 98–100%. I use SDL Trados, memoQ, Smartcat, and Wordfast on every project and maintain client-specific glossaries throughout all ongoing work. I also volunteer as a translator with UNHCR Egypt, providing interpretation across four languages for refugee programs serving 500+ families.</p>
+        <p>What I bring is not just language knowledge — it is the judgment to know when a literal translation fails the reader, when a term needs a specialist, and when a deadline cannot move. Clients come back because the work is done right.</p>
+        <div class="about-highlights">
+          <div class="highlight-item"><strong>Tools</strong><span>SDL Trados · memoQ · Smartcat · Wordfast</span></div>
+          <div class="highlight-item"><strong>Availability</strong><span>30–40 hrs/week · Immediate start</span></div>
+          <div class="highlight-item"><strong>Domains</strong><span>Medical · Legal · Technical · AI · Media</span></div>
+          <div class="highlight-item"><strong>Location</strong><span>Giza, Egypt · Remote Worldwide</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -706,7 +369,7 @@
 
 <div class="divider"></div>
 
-<!-- ── SERVICES ── -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="services-header">
@@ -714,313 +377,400 @@
       <h2>Services</h2>
     </div>
     <div class="services-grid">
-
       <div class="service-card">
         <span class="service-icon">📄</span>
         <h3>Translation</h3>
-        <p>
-          Accurate English-to-Arabic and English-to-Tigrinya translation across medical, legal, technical, and financial domains. Every project includes terminology review, glossary management, and QA before delivery.
-        </p>
+        <p>Accurate, domain-specific translation from English into Arabic and Tigrinya. Every project includes glossary management, terminology review, and quality assurance before delivery.</p>
+        <ul class="service-list">
+          <li>Medical & clinical documentation</li>
+          <li>Legal contracts & financial reports</li>
+          <li>Technical manuals & software UI</li>
+          <li>Marketing & e-commerce content</li>
+          <li>Machine Translation Post-Editing (MTPE)</li>
+          <li>Proofreading & editing</li>
+        </ul>
         <div class="service-tags">
-          <span class="service-tag">Medical</span>
-          <span class="service-tag">Legal</span>
-          <span class="service-tag">Technical</span>
-          <span class="service-tag">Financial</span>
+          <span class="service-tag">EN → Arabic</span>
+          <span class="service-tag">EN → Tigrinya</span>
           <span class="service-tag">MTPE</span>
-          <span class="service-tag">Localization</span>
+          <span class="service-tag">LQA</span>
         </div>
       </div>
-
       <div class="service-card">
         <span class="service-icon">🎙️</span>
         <h3>Transcription</h3>
-        <p>
-          Clean, accurate transcription of audio and video content in Arabic dialects, Tigrinya, and English. Handles verbatim and non-verbatim formats, YouTube content, interviews, legal recordings, and medical consultations.
-        </p>
+        <p>Clean, accurate transcription of audio and video in Arabic dialects, Tigrinya, and English. All formats covered — verbatim, non-verbatim, subtitles, and combined transcription-translation workflows.</p>
+        <ul class="service-list">
+          <li>YouTube & podcast transcription</li>
+          <li>Interview & focus group recordings</li>
+          <li>Legal depositions & hearings</li>
+          <li>Medical consultations & dictations</li>
+          <li>Subtitle & timestamp formatting</li>
+          <li>Transcription + translation in one workflow</li>
+        </ul>
         <div class="service-tags">
-          <span class="service-tag">Audio & Video</span>
           <span class="service-tag">Arabic Dialects</span>
+          <span class="service-tag">Tigrinya</span>
           <span class="service-tag">Verbatim</span>
           <span class="service-tag">Subtitles</span>
-          <span class="service-tag">QA Review</span>
         </div>
       </div>
-
       <div class="service-card">
         <span class="service-icon">🤖</span>
-        <h3>AI Language & Localization</h3>
-        <p>
-          Text, image, and audio annotation for AI training pipelines. Output evaluation and quality rating for Arabic and Tigrinya language models. Localization of apps, websites, and digital products for Arabic-speaking markets.
-        </p>
+        <h3>AI & Localization</h3>
+        <p>AI training data annotation and output evaluation for Arabic and Tigrinya language models, plus app and website localization for Arabic-speaking markets. Linguistic judgment that pure data workers cannot offer.</p>
+        <ul class="service-list">
+          <li>AI output evaluation & quality rating</li>
+          <li>Text & image annotation</li>
+          <li>Bounding box labeling</li>
+          <li>Content categorization & review</li>
+          <li>App & website localization</li>
+          <li>Cultural adaptation for Arabic markets</li>
+        </ul>
         <div class="service-tags">
           <span class="service-tag">Text Annotation</span>
           <span class="service-tag">Image Annotation</span>
-          <span class="service-tag">AI Evaluation</span>
           <span class="service-tag">LQA</span>
           <span class="service-tag">App Localization</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ── CERTIFICATIONS ── -->
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label">Track Record</span>
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Sep – Dec 2025</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">AI Training Expert — Arabic & Tigrinya</div>
+          <div class="timeline-org">Frontier AI · Remote Contract</div>
+          <ul class="timeline-bullets">
+            <li>Evaluated AI-generated outputs for accuracy, instruction-following quality, safety, and linguistic naturalness in Arabic and Tigrinya</li>
+            <li>Delivered structured written feedback identifying failure patterns across multiple task categories and project cycles</li>
+            <li>Completed contract with a certified AI Training Expert credential issued by Frontier AI</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Aug 2024 – Feb 2025</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Freelance Medical Translator & Transcriptionist</div>
+          <div class="timeline-org">Via Upwork & Direct Clients · Remote</div>
+          <ul class="timeline-bullets">
+            <li>Translated and transcribed medical records, clinical trial materials, and patient consultations from English to Arabic for pharmaceutical and healthcare clients</li>
+            <li>Built a specialized medical glossary that improved terminology consistency across 150+ delivered documents</li>
+            <li>Maintained strict confidentiality and regulatory accuracy throughout with zero compliance issues</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sep 2023 – Apr 2024</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Freelance Localization & MTPE Specialist</div>
+          <div class="timeline-org">Via Translated.com & Upwork · Remote</div>
+          <ul class="timeline-bullets">
+            <li>Post-edited machine-translated content for websites, apps, and marketing materials in Arabic, English, and Tigrinya — achieving a 98–100% satisfaction rate on Translated.com</li>
+            <li>Localized digital products for Arabic-speaking markets with attention to regional dialect and cultural references</li>
+            <li>Delivered 100+ localization projects across e-commerce, technology, and media industries</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Dec 2022 – Jul 2023</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Freelance AI Data Annotator & Evaluator</div>
+          <div class="timeline-org">Independent Contractor · Remote</div>
+          <ul class="timeline-bullets">
+            <li>Reviewed 10,000+ AI-generated language segments across Arabic, Tigrinya, and English for accuracy, fluency, and cultural suitability</li>
+            <li>Annotated text, audio, and image datasets for machine learning training pipelines following strict guidelines</li>
+            <li>Submitted structured feedback reports to support model improvement across multiple project cycles</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Jan 2023 – Present</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Freelance Transcriptionist & Linguistic Reviewer</div>
+          <div class="timeline-org">Via Upwork · Remote · Ongoing</div>
+          <ul class="timeline-bullets">
+            <li>Transcribing audio and video across Arabic dialects, Tigrinya, and English for media, legal, healthcare, and corporate clients</li>
+            <li>Handling YouTube channels, interview series, legal depositions, and medical consultations with format tailored per client</li>
+            <li>Maintaining a high Upwork job success score with strong repeat client engagement across long-term contracts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Mar 2021 – Oct 2022</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Freelance Technical Translator & Content Reviewer</div>
+          <div class="timeline-org">Via Upwork · Remote</div>
+          <ul class="timeline-bullets">
+            <li>Translated technical manuals, software documentation, and engineering reports for technology clients in Arabic, English, and Amharic</li>
+            <li>Completed 200+ translation and content review projects across software, hardware, and industrial sectors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="container">
     <span class="section-label">Credentials</span>
-    <h2>Certifications</h2>
+    <h2>Certifications & Education</h2>
     <div class="cert-grid">
-
-      <div class="cert-card">
-        <div class="cert-year">2025</div>
-        <h3>AI Training Expert Certificate</h3>
-        <div class="cert-issuer">Frontier AI</div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-year">2023</div>
-        <h3>AI Data Validation Completion Certificate</h3>
-        <div class="cert-issuer">Frontier AI</div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-year">2022</div>
-        <h3>AI Data Annotation Professional</h3>
-        <div class="cert-issuer">International Association of Outsourcing Professionals (IAOP)</div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-year">2020</div>
-        <h3>Machine Translation & Localization Specialist</h3>
-        <div class="cert-issuer">Localization Institute</div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-year">2019</div>
-        <h3>Professional Translation Certificate</h3>
-        <div class="cert-issuer">American Translators Association (ATA)</div>
-      </div>
-
-      <div class="cert-card">
-        <div class="cert-year">2023</div>
-        <h3>Bachelor of Arts — Translation & Linguistics</h3>
-        <div class="cert-issuer">University of Asmara, Eritrea</div>
-      </div>
-
+      <div class="cert-card"><div class="cert-year">2025</div><h3>AI Training Expert Certificate</h3><div class="cert-issuer">Frontier AI</div></div>
+      <div class="cert-card"><div class="cert-year">2023</div><h3>AI Data Validation Completion Certificate</h3><div class="cert-issuer">Frontier AI</div></div>
+      <div class="cert-card"><div class="cert-year">2022</div><h3>AI Data Annotation Professional</h3><div class="cert-issuer">International Association of Outsourcing Professionals (IAOP)</div></div>
+      <div class="cert-card"><div class="cert-year">2020</div><h3>Machine Translation & Localization Specialist</h3><div class="cert-issuer">Localization Institute</div></div>
+      <div class="cert-card"><div class="cert-year">2019</div><h3>Professional Translation Certificate</h3><div class="cert-issuer">American Translators Association (ATA)</div></div>
+      <div class="cert-card"><div class="cert-year">2018 – 2023</div><h3>Bachelor of Arts — Translation & Linguistics</h3><div class="cert-issuer">University of Asmara, Eritrea</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ── WORK SAMPLES ── -->
+<!-- SAMPLES -->
 <section id="samples">
   <div class="container">
     <span class="section-label">Portfolio</span>
     <h2>Sample Work</h2>
     <div class="samples-grid">
-
       <div class="sample-card">
         <div class="sample-type">Translation · Medical</div>
         <h3>Clinical Trial Document — EN → AR</h3>
-        <p>
-          Translated a 4,200-word clinical trial protocol from English to Arabic for a pharmaceutical client. Developed a 60-term medical glossary during the project that was adopted for all subsequent documents.
-        </p>
-        <div class="sample-meta">
-          <span>📁 4,200 words</span>
-          <span>🌐 EN → AR</span>
-          <span>✓ Regulatory compliant</span>
-        </div>
+        <p>Translated a 4,200-word clinical trial protocol from English to Arabic for a pharmaceutical client. Built a 60-term medical glossary during the project that was adopted for all subsequent documents. Delivered with zero revision requests.</p>
+        <div class="sample-meta"><span>📁 4,200 words</span><span>🌐 EN → AR</span><span>✓ Regulatory compliant</span></div>
       </div>
-
       <div class="sample-card">
         <div class="sample-type">Transcription · YouTube</div>
         <h3>Arabic YouTube Channel — Full Transcript Series</h3>
-        <p>
-          Transcribed and formatted a 12-episode interview series in Egyptian Arabic dialect. Delivered non-verbatim transcripts with speaker labels, timestamps, and subtitle-ready formatting.
-        </p>
-        <div class="sample-meta">
-          <span>🎬 12 episodes</span>
-          <span>🗣️ Egyptian Arabic</span>
-          <span>✓ Subtitle-ready</span>
-        </div>
+        <p>Transcribed a 12-episode interview series in Egyptian Arabic dialect via Upwork. Delivered non-verbatim transcripts with speaker labels, timestamps, and subtitle-ready formatting. Client renewed the contract for a second series.</p>
+        <div class="sample-meta"><span>🎬 12 episodes</span><span>🗣️ Egyptian Arabic</span><span>✓ Subtitle-ready</span></div>
       </div>
-
       <div class="sample-card">
         <div class="sample-type">AI Evaluation · Tigrinya</div>
-        <h3>AI Output Quality Review — Tigrinya Language Tasks</h3>
-        <p>
-          Evaluated 500+ AI-generated Tigrinya responses for naturalness, accuracy, and instruction-following quality. Submitted structured feedback reports identifying recurring failure patterns across task categories.
-        </p>
-        <div class="sample-meta">
-          <span>🤖 500+ segments</span>
-          <span>🌐 Tigrinya</span>
-          <span>✓ Frontier AI</span>
-        </div>
+        <h3>AI Output Quality Review — Tigrinya Tasks</h3>
+        <p>Evaluated 500+ AI-generated Tigrinya responses for Frontier AI, assessing naturalness, accuracy, and instruction-following quality. Submitted structured feedback reports identifying recurring failure patterns. Completed with Frontier AI Expert certification.</p>
+        <div class="sample-meta"><span>🤖 500+ segments</span><span>🌐 Tigrinya</span><span>✓ Frontier AI certified</span></div>
       </div>
-
       <div class="sample-card">
         <div class="sample-type">Localization · App</div>
         <h3>Mobile App Localization — EN → AR</h3>
-        <p>
-          Localized a mobile application interface for the Arabic-speaking market via Translated.com. Adapted UI strings, error messages, and onboarding content with full attention to right-to-left layout and regional dialect preferences.
-        </p>
-        <div class="sample-meta">
-          <span>📱 App UI</span>
-          <span>🌐 EN → AR</span>
-          <span>✓ Translated.com</span>
-        </div>
+        <p>Localized a mobile application interface for the Arabic-speaking market via Translated.com. Adapted UI strings, error messages, and onboarding content for right-to-left layout and regional dialect. Achieved 100% satisfaction on delivery.</p>
+        <div class="sample-meta"><span>📱 Full UI</span><span>🌐 EN → AR</span><span>✓ Translated.com</span></div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ── CONTACT ── -->
+<!-- VOLUNTEER -->
+<section id="volunteer">
+  <div class="container">
+    <span class="section-label">Community</span>
+    <h2>Volunteer Work</h2>
+    <div class="vol-grid">
+      <div class="vol-card">
+        <div class="vol-org">UNHCR</div>
+        <h3>Volunteer Translator & Community Liaison</h3>
+        <div class="vol-period">June 2024 – December 2024 · UNHCR Egypt Office, Cairo</div>
+        <p>Provided translation and interpretation across Arabic, English, Tigrinya, and Amharic for refugee programs serving 500+ families. Supported outreach events and worked alongside international humanitarian teams under real field conditions.</p>
+      </div>
+      <div class="vol-card">
+        <div class="vol-org">Resala Charity Organization</div>
+        <h3>Education & Literacy Volunteer</h3>
+        <div class="vol-period">March 2024 – May 2024 · Cairo, Egypt</div>
+        <p>Taught English to children and adults in classes of 15–20 students. Helped organize literacy campaigns reaching 300+ beneficiaries. Adapted teaching methods to mixed-ability groups throughout the program.</p>
+      </div>
+      <div class="vol-card">
+        <div class="vol-org">Egyptian Red Crescent</div>
+        <h3>Community Health Awareness Facilitator</h3>
+        <div class="vol-period">January 2025 – February 2025 · Egypt</div>
+        <p>Translated health awareness materials and interpreted for medical teams at community events serving 200+ people. Bridged communication between medical staff and Arabic-speaking community members across multiple sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-wrap">
       <div class="contact-left">
         <span class="section-label">Get In Touch</span>
         <h2>Let's Work<br><em style="color:var(--gold);font-style:italic;">Together</em></h2>
-        <p>
-          Whether you have a translation project, transcription work, or an AI language task — send a message and I will respond within 24 hours. Immediate availability for new contracts.
-        </p>
-
+        <p>Whether you have a translation project, transcription assignment, or an AI language task — send a message and I will respond within 24 hours. Available immediately for new contracts.</p>
         <div class="contact-detail">
           <div class="contact-icon">✉</div>
-          <div class="contact-detail-text">
-            <div class="contact-detail-label">Email</div>
-            <div class="contact-detail-value">
-              <a href="mailto:jaeferibrahim42@gmail.com">jaeferibrahim42@gmail.com</a>
-            </div>
-          </div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:jaeferibrahim42@gmail.com">jaeferibrahim42@gmail.com</a></div></div>
         </div>
-
         <div class="contact-detail">
           <div class="contact-icon">📞</div>
-          <div class="contact-detail-text">
-            <div class="contact-detail-label">Phone / WhatsApp</div>
-            <div class="contact-detail-value">+20 110 391 2522</div>
-          </div>
+          <div><div class="contact-detail-label">Phone / WhatsApp</div><div class="contact-detail-value">+20 110 391 2522</div></div>
         </div>
-
         <div class="contact-detail">
           <div class="contact-icon">🔗</div>
-          <div class="contact-detail-text">
-            <div class="contact-detail-label">LinkedIn</div>
-            <div class="contact-detail-value">
-              <a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank">jaefer-ibrahim</a>
-            </div>
-          </div>
+          <div><div class="contact-detail-label">LinkedIn</div><div class="contact-detail-value"><a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank">jaefer-ibrahim-b1977b378</a></div></div>
         </div>
-
         <div class="contact-detail">
           <div class="contact-icon">📍</div>
-          <div class="contact-detail-text">
-            <div class="contact-detail-label">Location</div>
-            <div class="contact-detail-value">Giza, Egypt — Remote Worldwide</div>
-          </div>
+          <div><div class="contact-detail-label">Location</div><div class="contact-detail-value">Giza, Egypt — Remote Worldwide</div></div>
         </div>
       </div>
 
       <div>
-        <form class="contact-form" id="contactForm">
+        <!--
+          TO MAKE THIS FORM SEND REAL EMAILS TO YOU:
+          1. Go to https://formspree.io — sign up free (takes 2 minutes)
+          2. Click "New Form" and copy your form ID (e.g. xpzvrgkw)
+          3. Replace YOUR_FORMSPREE_ID below with your actual ID
+          Free plan = 50 messages/month, no credit card needed.
+        -->
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label for="fname">Your Name</label>
-              <input type="text" id="fname" placeholder="Jane Smith" required>
+              <label for="fname">Your Name *</label>
+              <input type="text" id="fname" name="name" placeholder="Jane Smith" required>
             </div>
             <div class="form-group">
-              <label for="femail">Email Address</label>
-              <input type="email" id="femail" placeholder="jane@company.com" required>
+              <label for="femail">Email Address *</label>
+              <input type="email" id="femail" name="email" placeholder="jane@company.com" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="fservice">Service Needed</label>
-            <select id="fservice" required>
+            <label for="fservice">Service Needed *</label>
+            <select id="fservice" name="service" required>
               <option value="" disabled selected>Select a service...</option>
-              <option>Translation (EN → Arabic)</option>
-              <option>Translation (EN → Tigrinya)</option>
+              <option>Translation — English to Arabic</option>
+              <option>Translation — English to Tigrinya</option>
               <option>Transcription — Arabic</option>
-              <option>Transcription — Tigrinya</option>
+              <option>Transcription — Tigrinya or English</option>
               <option>AI Data Annotation / Evaluation</option>
-              <option>Localization</option>
-              <option>MTPE (Machine Translation Post-Editing)</option>
+              <option>Localization — App or Website</option>
+              <option>MTPE — Machine Translation Post-Editing</option>
+              <option>Proofreading / LQA</option>
               <option>Other</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="fmsg">Project Details</label>
-            <textarea id="fmsg" placeholder="Tell me about your project — word count, file format, deadline, subject area..." required></textarea>
+            <label for="fscope">Project Size</label>
+            <select id="fscope" name="project_size">
+              <option value="" disabled selected>Approximate scope...</option>
+              <option>Small — under 5,000 words / 1 hour audio</option>
+              <option>Medium — 5,000–20,000 words / 1–5 hours audio</option>
+              <option>Large — 20,000+ words / 5+ hours audio</option>
+              <option>Ongoing / recurring work</option>
+              <option>Not sure yet</option>
+            </select>
           </div>
-          <button type="submit" class="form-submit">Send Message →</button>
-          <p class="form-note">I respond within 24 hours. All inquiries are confidential.</p>
+          <div class="form-group">
+            <label for="fmsg">Project Details *</label>
+            <textarea id="fmsg" name="message" placeholder="Tell me about your project — subject area, file format, deadline, any special requirements..." required></textarea>
+          </div>
+          <div id="formStatus" class="form-status"></div>
+          <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+          <p class="form-note">I respond within 24 hours. All inquiries are strictly confidential.</p>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">Jaefer <span>Ibrahim</span></div>
   <div class="footer-links">
     <a href="#hero">Top</a>
     <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
     <a href="https://linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank">LinkedIn</a>
   </div>
   <div class="footer-copy">© 2026 Jaefer Ibrahim · Arabic & Tigrinya Linguist</div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast">✓ Message sent! I'll respond within 24 hours.</div>
-
 <script>
-  // Form submit
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    this.reset();
-    setTimeout(() => toast.classList.remove('show'), 4000);
-  });
-
-  // Nav scroll effect
   window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 60) {
-      nav.style.padding = '0.85rem 2rem';
-      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
-    } else {
-      nav.style.padding = '1.25rem 2rem';
-      nav.style.boxShadow = 'none';
-    }
+    document.querySelector('nav').style.boxShadow = window.scrollY > 60 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
   });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   document.querySelectorAll(
-    '.service-card, .cert-card, .sample-card, .stat-card, .about-right p'
-  ).forEach(el => {
+    '.service-card,.cert-card,.sample-card,.stat-card,.vol-card,.timeline-item,.highlight-item,.platform-item'
+  ).forEach((el, i) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = `opacity 0.55s ease ${(i % 5) * 0.09}s, transform 0.55s ease ${(i % 5) * 0.09}s`;
     observer.observe(el);
+  });
+
+  // Contact form — real submission via Formspree
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    formStatus.className = 'form-status';
+
+    if (form.action.includes('YOUR_FORMSPREE_ID')) {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = '⚠ Form not yet configured. Please email me directly: jaeferibrahim42@gmail.com';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = '✓ Message sent! I will respond within 24 hours.';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      formStatus.className = 'form-status error';
+      formStatus.textContent = '✗ Something went wrong. Please email me directly: jaeferibrahim42@gmail.com';
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message →';
   });
 </script>
 </body>
