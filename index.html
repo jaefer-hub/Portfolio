@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jaefer Ibrahim | Multilingual AI & Language Services Specialist</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,20 +19,27 @@
                     },
                     colors: {
                         premium: {
-                            navy: '#0A192F',
-                            blue: '#1E40AF',
+                            navy: '#0F172A',
+                            blue: '#2563EB',
                             lightBlue: '#3B82F6',
                             slate: '#64748B',
-                            bgLight: '#FAFAFA',
+                            bgLight: '#F8FAFC',
                             cardBg: '#FFFFFF',
                             border: '#E2E8F0'
+                        },
+                        brand: {
+                            linkedin: '#0A66C2',
+                            whatsapp: '#25D366',
+                            gmail: '#EA4335'
                         }
                     }
                 }
             }
         }
     </script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- EmailJS CDN -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -43,7 +52,7 @@
         /* Framer-motion like entrance animations */
         .reveal {
             opacity: 0;
-            transform: translateY(24px);
+            transform: translateY(20px);
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
@@ -54,45 +63,37 @@
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
 
         /* Vercel-like subtle grid pattern background */
         .grid-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
             background-size: 24px 24px;
         }
         
         /* Blur glassmorphism utility */
         .glass-nav {
-            background-color: rgba(255, 255, 255, 0.75);
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* Continuous subtle float animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-            animation: float 6x ease-in-out infinite;
         }
     </style>
 </head>
 <body class="bg-premium-bgLight font-sans text-slate-900 selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
 
+    <!-- NAVIGATION BAR -->
     <header class="fixed top-0 w-full z-50 glass-nav border-b border-premium-border transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-premium-navy to-premium-blue flex items-center justify-center shadow-sm">
-                    <span class="text-white font-bold text-sm">JI</span>
+                <div class="w-9 h-9 rounded-xl bg-premium-navy flex items-center justify-center shadow-sm">
+                    <span class="text-white font-bold text-sm tracking-tight">JI</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm font-semibold tracking-tight text-premium-navy">Jaefer Ibrahim</span>
-                    <span class="text-[10px] text-premium-slate uppercase tracking-wider font-medium">AI & Language Specialist</span>
+                    <span class="text-[10px] text-premium-slate uppercase tracking-wider font-semibold">AI Data & Language Specialist</span>
                 </div>
             </div>
 
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
                 <a href="#about" class="hover:text-premium-blue transition-colors">About</a>
                 <a href="#services" class="hover:text-premium-blue transition-colors">Services</a>
@@ -102,22 +103,26 @@
                 <a href="#contact" class="hover:text-premium-blue transition-colors">Contact</a>
             </nav>
 
+            <!-- Language Pills & Desktop CTA -->
             <div class="hidden md:flex items-center space-x-4">
-                <div class="flex bg-slate-100 p-0.5 rounded-full border border-slate-200 text-xs font-medium text-slate-600">
+                <div class="flex bg-slate-100 p-0.5 rounded-full border border-slate-200 text-[11px] font-semibold text-slate-500">
                     <span class="px-2.5 py-1 rounded-full bg-white text-premium-navy shadow-sm">AR</span>
                     <span class="px-2.5 py-1 rounded-full">EN</span>
                     <span class="px-2.5 py-1 rounded-full">TI</span>
+                    <span class="px-2.5 py-1 rounded-full">AM</span>
                 </div>
                 <a href="#contact" class="bg-premium-navy text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-all shadow-sm">
-                    Hire Specialist
+                    Consultation
                 </a>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-premium-navy p-2 focus:outline-none">
                 <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
             </button>
         </div>
 
+        <!-- Mobile Dynamic Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-premium-border bg-white/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3 shadow-xl">
             <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50">About</a>
             <a href="#services" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50">Services</a>
@@ -126,12 +131,13 @@
             <a href="#tools" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50">Toolkit</a>
             <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50">Contact</a>
             <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div class="flex bg-slate-100 p-0.5 rounded-full border border-slate-200 text-xs font-medium text-slate-600">
-                    <span class="px-2.5 py-0.5 rounded-full bg-white text-premium-navy shadow-sm">AR</span>
-                    <span class="px-2.5 py-0.5 rounded-full">EN</span>
-                    <span class="px-2.5 py-0.5 rounded-full">TI</span>
+                <div class="flex bg-slate-100 p-0.5 rounded-full border border-slate-200 text-[10px] font-semibold text-slate-500">
+                    <span class="px-2 py-0.5 rounded-full bg-white text-premium-navy shadow-sm">AR</span>
+                    <span class="px-2 py-0.5 rounded-full">EN</span>
+                    <span class="px-2 py-0.5 rounded-full">TI</span>
+                    <span class="px-2 py-0.5 rounded-full">AM</span>
                 </div>
-                <a href="https://wa.me/201103912522" target="_blank" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium flex items-center space-x-1">
+                <a href="https://wa.me/201103912522" target="_blank" class="bg-[#25D366] text-white text-xs px-3.5 py-2 rounded-lg font-medium flex items-center space-x-1.5 shadow-sm">
                     <i data-lucide="phone" class="w-3.5 h-3.5"></i>
                     <span>WhatsApp</span>
                 </a>
@@ -139,89 +145,100 @@
         </div>
     </header>
 
-    <section class="relative pt-32 pb-24 md:pt-40 md:pb-36 overflow-hidden grid-bg flex items-center">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 right-10 w-[300px] h-[300px] bg-slate-100/60 rounded-full blur-2xl pointer-events-none"></div>
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden grid-bg flex items-center">
+        <!-- Minimalist Ambient Glow Gradients -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-slate-100 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-10 w-[300px] h-[300px] bg-blue-50/50 rounded-full blur-2xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="inline-flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-slate-200/80 shadow-sm mb-6 reveal">
+            <!-- Micro badge -->
+            <div class="inline-flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-sm mb-6 reveal">
                 <span class="flex h-2 w-2 relative">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span class="text-xs font-semibold tracking-wide text-slate-700 uppercase">Available for Global Workflows & Projects</span>
+                <span class="text-xs font-semibold tracking-wide text-slate-600 uppercase">Available for Language Operations & Evaluation Contracts</span>
             </div>
 
+            <!-- Main Heading -->
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-premium-navy max-w-4xl mx-auto leading-[1.1] reveal delay-100">
-                Human Quality for <span class="bg-gradient-to-r from-blue-600 to-indigo-900 bg-clip-text text-transparent">AI-Generated</span> Language
+                Human Quality for <span class="bg-gradient-to-r from-blue-600 to-slate-900 bg-clip-text text-transparent">AI-Generated</span> Language
             </h1>
 
+            <!-- Subheadline -->
             <p class="mt-6 text-base sm:text-lg md:text-xl text-premium-slate max-w-3xl mx-auto font-normal leading-relaxed reveal delay-200">
                 Helping AI companies, localization teams, and global businesses improve multilingual content through AI evaluation, localization QA, transcription, and language refinement workflows.
             </p>
 
-            <div class="mt-10 flex flex-wrap justify-center gap-4 max-w-2xl mx-auto reveal delay-300">
-                <a href="#services" class="w-full sm:w-auto px-6 py-3.5 bg-premium-navy text-white text-sm font-semibold rounded-xl shadow-md hover:bg-slate-800 transform hover:-translate-y-0.5 transition-all flex items-center justify-center space-x-2">
+            <!-- Action Buttons Grid -->
+            <div class="mt-10 flex flex-wrap justify-center gap-4 max-w-3xl mx-auto reveal delay-300">
+                <a href="#services" class="w-full sm:w-auto px-6 py-3.5 bg-premium-navy text-white text-sm font-semibold rounded-xl shadow-sm hover:bg-slate-800 transition-all flex items-center justify-center space-x-2">
                     <span>View Services</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
-                <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 bg-white text-slate-800 text-sm font-semibold rounded-xl border border-slate-200 shadow-sm hover:bg-slate-50 transform hover:-translate-y-0.5 transition-all flex items-center justify-center">
+                <a href="#contact" class="w-full sm:w-auto px-6 py-3.5 bg-white text-slate-800 text-sm font-semibold rounded-xl border border-slate-200 shadow-sm hover:bg-slate-50 transition-all flex items-center justify-center">
                     Contact Me
                 </a>
-                <a href="#" class="w-full sm:w-auto px-6 py-3.5 bg-white text-slate-800 text-sm font-semibold rounded-xl border border-slate-200 shadow-sm hover:bg-slate-50 transform hover:-translate-y-0.5 transition-all flex items-center justify-center space-x-2">
+                <a href="#" class="w-full sm:w-auto px-6 py-3.5 bg-white text-slate-800 text-sm font-semibold rounded-xl border border-slate-200 shadow-sm hover:bg-slate-50 transition-all flex items-center justify-center space-x-2">
                     <i data-lucide="download" class="w-4 h-4 text-slate-500"></i>
                     <span>Download CV</span>
                 </a>
-                <a href="https://wa.me/201103912522" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-emerald-50 text-emerald-700 text-sm font-semibold rounded-xl border border-emerald-200/60 shadow-sm hover:bg-emerald-100/50 transform hover:-translate-y-0.5 transition-all flex items-center justify-center space-x-2">
-                    <i data-lucide="message-square" class="w-4 h-4 text-emerald-600"></i>
+                <a href="https://wa.me/201103912522" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-[#25D366] text-white text-sm font-semibold rounded-xl shadow-sm hover:bg-[#20ba5a] transition-all flex items-center justify-center space-x-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
                     <span>WhatsApp Consultation</span>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- 2. ABOUT SECTION -->
     <section id="about" class="py-20 bg-white border-y border-premium-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
+                <!-- Sticky Headline Segment -->
                 <div class="lg:col-span-5 lg:sticky lg:top-24">
                     <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-3">Professional Background</span>
                     <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">
                         Bridging the Gap Between AI Capabilities and Native Human Precision
                     </h2>
-                    <p class="mt-4 text-slate-600 leading-relaxed">
-                        With over six years of professional experience across translation, localization, data annotation, and advanced linguistic evaluation workflows, I provide specialized alignment layers for state-of-the-art language processing engines.
+                    <p class="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base">
+                        As an experienced professional freelance linguist and transcription specialist, I hold a Bachelor of Arts degree and bring over six years of domain expertise to enterprise-level localization architectures.
                     </p>
                     <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Native Arabic</span>
-                        <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Professional English</span>
-                        <span class="px-3 py-1 bg-slate-100 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Fluent Tigrinya</span>
+                        <span class="px-3 py-1 bg-slate-50 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Native Arabic</span>
+                        <span class="px-3 py-1 bg-slate-50 rounded-full text-xs font-medium text-slate-700 border border-slate-200">English (C1 Level Core)</span>
+                        <span class="px-3 py-1 bg-slate-50 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Tigrinya Proficiency</span>
+                        <span class="px-3 py-1 bg-slate-50 rounded-full text-xs font-medium text-slate-700 border border-slate-200">Amharic Translation</span>
                     </div>
                 </div>
 
+                <!-- Detailed Narrative & Quick Specs -->
                 <div class="lg:col-span-7 space-y-8">
                     <div class="bg-premium-bgLight p-6 sm:p-8 rounded-2xl border border-premium-border shadow-sm reveal">
-                        <h3 class="text-lg font-semibold text-premium-navy flex items-center space-x-2">
-                            <i data-lucide="check-circle" class="text-blue-600 w-5 h-5"></i>
-                            <span>The Mission Architecture</span>
+                        <h3 class="text-base font-semibold text-premium-navy flex items-center space-x-2">
+                            <i data-lucide="shield-check" class="text-blue-600 w-5 h-5"></i>
+                            <span>Enterprise Localization Alignment</span>
                         </h3>
-                        <p class="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
-                            Modern large language models require rigorous human reinforcement loops to properly decode complex cultural cues, contextual variance, and native idioms. Operating from Egypt within the Cairo timezone (UTC+2), I function as an expert evaluator and quality analyst to guarantee output accuracy, security, and market-ready linguistic precision.
+                        <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                            Operating out of Giza, Egypt (UTC +02:00, Cairo Timezone), I provide human reinforcement loops and structured analytics for high-stakes localization projects. My workflows ensure that automated outputs comply with precise grammatical constraints, target cultural parameters, and specialized functional rubrics without model hallucinations.
                         </p>
                     </div>
 
+                    <!-- Statistics Grid -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm text-center reveal">
                             <div class="text-3xl font-bold text-premium-navy">6+</div>
-                            <div class="text-xs text-premium-slate mt-1 font-medium uppercase tracking-wider">Years Experience</div>
+                            <div class="text-xs text-premium-slate mt-1 font-semibold uppercase tracking-wider">Years Experience</div>
                         </div>
                         <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm text-center reveal delay-100">
-                            <div class="text-3xl font-bold text-premium-navy">3</div>
-                            <div class="text-xs text-premium-slate mt-1 font-medium uppercase tracking-wider">Expert Languages</div>
+                            <div class="text-3xl font-bold text-premium-navy">4</div>
+                            <div class="text-xs text-premium-slate mt-1 font-semibold uppercase tracking-wider">Expert Languages</div>
                         </div>
                         <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-sm text-center col-span-2 sm:col-span-1 reveal delay-200">
                             <div class="text-3xl font-bold text-premium-navy">100%</div>
-                            <div class="text-xs text-premium-slate mt-1 font-medium uppercase tracking-wider">SLA Met</div>
+                            <div class="text-xs text-premium-slate mt-1 font-semibold uppercase tracking-wider">SLA Adherence</div>
                         </div>
                     </div>
                 </div>
@@ -230,73 +247,80 @@
         </div>
     </section>
 
+    <!-- 3. SERVICES SECTION -->
     <section id="services" class="py-20 bg-premium-bgLight">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Core Solutions</span>
-                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Specialized Enterprise Language Capabilities</h2>
-                <p class="mt-4 text-slate-600">Tailored data and linguistic engineering workflows optimized for accuracy, model refinement, and cross-border alignment.</p>
+                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Specialized Language Capabilities</h2>
+                <p class="mt-4 text-slate-600">High-fidelity data annotation, linguistic evaluation, and post-editing setups optimized for accuracy and system alignment.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
+                <!-- Service 1 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
                         <i data-lucide="cpu" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">AI Linguistic Evaluation</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        Evaluating LLM text, audio, and reasoning outputs via complex rubric metrics to ensure absolute context-appropriate adherence and hallucination elimination.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Evaluating LLM-generated outputs using fine-grained multi-point evaluation frameworks (such as strict 8-option baseline quality parameters) to ensure safety and accuracy.
                     </p>
                 </div>
 
+                <!-- Service 2 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal delay-100">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
                         <i data-lucide="globe" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">Localization & MTPE</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        Refining Machine Translation Post-Editing assets to infuse localized nuances, ensuring your digital interfaces feel natively written.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Refining Machine Translation Post-Editing assets to match local corporate syntax, target customer demographics, and native regional dialects.
                     </p>
                 </div>
 
+                <!-- Service 3 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal delay-200">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
                         <i data-lucide="languages" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">Translation & Proofreading</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        High-fidelity document and application translation across English, Arabic, and Tigrinya matrices with rigorous secondary validation protocols.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        High-fidelity localized translation across Arabic, English, Tigrinya, and Amharic, maintaining structural semantic integrity across complex domains.
                     </p>
                 </div>
 
+                <!-- Service 4 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
                         <i data-lucide="file-audio" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">Transcript Cleanup & QA</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        Converting multi-accented raw automated audio data into hyper-accurate verbatim transcripts, executing extensive alignment QA checks.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Converting multi-accented raw automated speech data into accurate verbatim transcripts, filtering fillers, and conducting absolute timestamp alignment.
                     </p>
                 </div>
 
+                <!-- Service 5 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal delay-100">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
-                        <i data-lucide="tags" class="w-5 h-5"></i>
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                        <i data-lucide="binary" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">NLP Data Annotation</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        Token-level classification, named entity recognition (NER), semantic labeling, and intent structuring for programmatic training dataset builds.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Entity tagging, token classification, intent labeling, and semantic mapping for parsing structures within multi-lingual machine learning text datasets.
                     </p>
                 </div>
 
+                <!-- Service 6 -->
                 <div class="bg-white p-6 rounded-2xl border border-premium-border shadow-sm hover:shadow-md transition-all group reveal delay-200">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
-                        <i data-lucide="message-square-code" class="w-5 h-5"></i>
+                    <div class="w-10 h-10 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center mb-5 group-hover:bg-premium-navy group-hover:text-white transition-all">
+                        <i data-lucide="message-square-text" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-base font-semibold text-premium-navy">Conversational AI Review</h3>
-                    <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
-                        Stress-testing chatbot and automated agent dialog configurations to secure high-trust responses across dynamic fallback paths.
+                    <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Stress-testing live automated dialog channels and fallback scripts, optimizing user conversational pipelines for clear semantic understanding.
                     </p>
                 </div>
 
@@ -304,95 +328,76 @@
         </div>
     </section>
 
+    <!-- 4. PORTFOLIO / CASE STUDIES -->
     <section id="portfolio" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Quality Comparisons</span>
-                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Before & After Project Showcases</h2>
-                <p class="mt-4 text-slate-600">Explore architectural examples demonstrating the crisp upgrade from raw automated data to high-trust enterprise results.</p>
+                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Operational Case Studies</span>
+                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Linguistic Output Optimizations</h2>
+                <p class="mt-4 text-slate-600">Realistic production examples demonstrating transitions from unrefined inputs to verified, launch-ready datasets.</p>
             </div>
 
             <div class="space-y-12">
                 
+                <!-- Project 1 -->
                 <div class="bg-premium-bgLight rounded-2xl border border-premium-border p-6 sm:p-8 reveal">
                     <div class="flex items-center space-x-2 mb-4 text-xs font-semibold text-blue-600 uppercase tracking-wider">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i>
-                        <span>AI Linguistic Evaluation Workflow</span>
+                        <i data-lucide="sliders" class="w-4 h-4"></i>
+                        <span>AI Search Evaluation & Media Workflow</span>
                     </div>
-                    <h3 class="text-xl font-bold text-premium-navy mb-6">Prompt & Response Refinement Evaluation</h3>
+                    <h3 class="text-xl font-bold text-premium-navy mb-4">Baseline Search Evaluation Platform Layout</h3>
+                    <p class="text-sm text-slate-600 mb-6 max-w-4xl">
+                        Executed high-volume assessments for music, video, podcasts, and digital applications using a targeted, strict 8-option metric rating rubric to rank user queries against multi-format engine indices.
+                    </p>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">Raw Model Variant</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Generated Output</h4>
-                            <p class="text-sm text-slate-600 italic">"سوف نقوم بعمل التحديثات للبرنامج في أقرب وقت متاح ولا تقلق من المشاكل الهندسية..."</p>
+                            <span class="absolute top-3 right-3 text-[9px] uppercase font-bold tracking-wider bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-100">Uncalibrated ASR/Query</span>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Raw Search Response Matching</h4>
+                            <p class="text-sm text-slate-600 italic">"User query looks for cross-dialect musical entities; engine indexes mismatched global pop tracks lacking regional compliance labels."</p>
                             <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-amber-700 flex items-start space-x-1.5">
-                                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Issue: Highly unnatural syntax, literal translation from English idioms, poor security posture framing.</span>
+                                <i data-lucide="alert-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
+                                <span>Risk: Erroneous fallback indexing causing user friction and algorithmic evaluation scoring degradation.</span>
                             </div>
                         </div>
                         <div class="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Evaluated & Aligned</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Human-Optimized Asset</h4>
-                            <p class="text-sm text-premium-navy font-medium">"نعمل حاليًا على ترقية النظام بجدولة منتظمة؛ نؤكد لكم اتخاذ التدابير الوقائية لضمان استقرار الخدمة."</p>
+                            <span class="absolute top-3 right-3 text-[9px] uppercase font-bold tracking-wider bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-100">Human Corrected</span>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Evaluated Alignment Vector</h4>
+                            <p class="text-sm text-premium-navy font-medium">"Calibrated across the 8-point rubric matrix to map semantic intent accurately to native sub-categories and targeted regional content tracks."</p>
                             <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-emerald-700 flex items-start space-x-1.5">
                                 <i data-lucide="check" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Fix: Refined via 8-point professional rubric criteria to balance local corporate register & alignment guardrails.</span>
+                                <span>Result: Optimized intent accuracy score, validating model baseline updates with production precision.</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Project 2 -->
                 <div class="bg-premium-bgLight rounded-2xl border border-premium-border p-6 sm:p-8 reveal">
                     <div class="flex items-center space-x-2 mb-4 text-xs font-semibold text-blue-600 uppercase tracking-wider">
-                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                        <span>Machine Translation Post-Editing (MTPE)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-premium-navy mb-6">E-Commerce Localization & Content Mapping</h3>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">Raw Machine Engine</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">English Source to Arabic</h4>
-                            <p class="text-sm text-slate-600 italic">"هذا الحزام المخصص للكلاب يمتلك قوة كسر قوية وممتازة جداً لمحبوبك الأليف."</p>
-                            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-amber-700 flex items-start space-x-1.5">
-                                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Issue: Awkward tone ("لمحبوبك الأليف"), inaccurate product specification terminology.</span>
-                            </div>
-                        </div>
-                        <div class="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Post-Edited Result</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Market-Ready Copy</h4>
-                            <p class="text-sm text-premium-navy font-medium">"سرج الكلاب عالي المتانة المصمم لمقاومة الشد والضغط العالي، لضمان سلامة حيوانك الأليف."</p>
-                            <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-emerald-700 flex items-start space-x-1.5">
-                                <i data-lucide="check" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Fix: Optimized for conversions using precise terminology suitable for target Gulf or North African pet product markets.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-premium-bgLight rounded-2xl border border-premium-border p-6 sm:p-8 reveal">
-                    <div class="flex items-center space-x-2 mb-4 text-xs font-semibold text-blue-600 uppercase tracking-wider">
-                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <i data-lucide="file-audio" class="w-4 h-4"></i>
                         <span>Transcript Cleanup & Localization QA</span>
                     </div>
-                    <h3 class="text-xl font-bold text-premium-navy mb-6">Audio Data Transcription Refinement</h3>
+                    <h3 class="text-xl font-bold text-premium-navy mb-4">Multilingual Transcription Auditing</h3>
+                    <p class="text-sm text-slate-600 mb-6 max-w-4xl">
+                        Managing complex translation, transcription, and post-editing data cleanup passes for specialized multi-accent audio files covering Arabic, Tigrinya, and Amharic linguistic regions.
+                    </p>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div class="bg-white p-5 rounded-xl border border-amber-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-200">Raw ASR Output</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Automated Speech Stream</h4>
-                            <p class="text-sm text-slate-600 italic">"اممم يعني احنا كنا عايزين نروح البنك بس البنك قفل عشان السبت سبعة..."</p>
+                            <span class="absolute top-3 right-3 text-[9px] uppercase font-bold tracking-wider bg-amber-50 text-amber-800 px-2 py-0.5 rounded border border-amber-100">Automated Stream</span>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Raw Audio Capture</h4>
+                            <p class="text-sm text-slate-600 italic">"العميل اتصل بخصوص المشكلة السبت سبعة... [filler artifacts] ... systems failed to capture correct local context labels."</p>
                             <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-amber-700 flex items-start space-x-1.5">
-                                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Issue: Filler terms included, timestamp mismatch potentials, no punctuation formatting.</span>
+                                <i data-lucide="alert-circle" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
+                                <span>Risk: Over-verbatim clutter, broken dialect syntax patterns, and severe automated timestamp offset metrics.</span>
                             </div>
                         </div>
                         <div class="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm relative">
-                            <span class="absolute top-3 right-3 text-[10px] uppercase font-bold tracking-wide bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200">Cleaned Verbatim</span>
-                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Final Corrected Record</h4>
-                            <p class="text-sm text-premium-navy font-medium">"كنا نعتزم التوجه إلى فرع المصرف؛ إلا أن ساعات العمل الرسمية انتهت بحلول الساعة السابعة."</p>
+                            <span class="absolute top-3 right-3 text-[9px] uppercase font-bold tracking-wider bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-100">Cleaned Verbatim</span>
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Production Transcript Asset</h4>
+                            <p class="text-sm text-premium-navy font-medium">"تواصل العميل لتوضيح انقطاع الخدمة الرسمي يوم السبت؛ تم تحديد وإصلاح الخلل البرمجي في تمام الساعة السابعة."</p>
                             <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-emerald-700 flex items-start space-x-1.5">
                                 <i data-lucide="check" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0"></i>
-                                <span>Fix: Cleaned filler artifacts, formalized grammatical alignment, structured structure for training validation.</span>
+                                <span>Result: Cleaned, syntactically correct text data structure optimized for indexing and safe model alignment training.</span>
                             </div>
                         </div>
                     </div>
@@ -402,43 +407,48 @@
         </div>
     </section>
 
+    <!-- 5. EXPERIENCE TIMELINE -->
     <section id="timeline" class="py-20 bg-premium-bgLight border-t border-premium-border">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Milestones</span>
-                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Professional Trajectory</h2>
-                <p class="mt-4 text-slate-600">A selective overview of operational milestones and long-standing industry appointments.</p>
+                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Proven Track Record</span>
+                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Experience Timeline</h2>
+                <p class="mt-4 text-slate-600">Over six years spent supporting global data pipelines, translation agencies, and advanced LLM vendors.</p>
             </div>
 
-            <div class="relative border-l-2 border-slate-200 ml-4 md:ml-6 space-y-12">
+            <!-- Timeline Stack -->
+            <div class="relative border-l border-slate-200 ml-4 md:ml-6 space-y-12">
                 
+                <!-- Item 1 -->
                 <div class="relative pl-8 reveal">
-                    <div class="absolute -left-[9px] top-1.5 bg-premium-navy w-4 h-4 rounded-full ring-4 ring-white"></div>
-                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">May 2026 — Present</div>
+                    <div class="absolute -left-[5px] top-1.5 bg-premium-navy w-2.5 h-2.5 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">May 2026 — PRESENT</div>
                     <h3 class="text-lg font-bold text-premium-navy mt-1">Software Quality Analyst (Mosaic Project)</h3>
                     <div class="text-xs text-premium-slate font-medium">DataForce by TransPerfect</div>
                     <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                        Evaluating programmatic baseline configurations, executing complex music, video, podcast, and app ecosystem workflow rating maps via specialized internal tools.
+                        Executing quality validation procedures for multi-format content search platforms. Utilizing complex internal scripts to evaluate podcast metadata, application marketplace indexes, music taxonomies, and multi-layered video search query alignment.
                     </p>
                 </div>
 
+                <!-- Item 2 -->
                 <div class="relative pl-8 reveal delay-100">
-                    <div class="absolute -left-[9px] top-1.5 bg-slate-400 w-4 h-4 rounded-full ring-4 ring-white"></div>
+                    <div class="absolute -left-[5px] top-1.5 bg-slate-400 w-2.5 h-2.5 rounded-full ring-4 ring-white"></div>
                     <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">March 2026</div>
-                    <h3 class="text-lg font-bold text-premium-navy mt-1">Business Analyst (Arabic Language Assessment)</h3>
+                    <h3 class="text-lg font-bold text-premium-navy mt-1">Business Analyst Assessment Track (Arabic Language)</h3>
                     <div class="text-xs text-premium-slate font-medium">Turing Deep Matching Platform</div>
                     <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                        Engaged in localized linguistic system logic mappings, analytical rubric stress testing, and structured prompt engineering assessments.
+                        Engaged in structured analytical testing, prompt validation scenarios, and platform quality evaluation criteria mapped out for high-scale enterprise linguistic systems.
                     </p>
                 </div>
 
+                <!-- Item 3 -->
                 <div class="relative pl-8 reveal delay-200">
-                    <div class="absolute -left-[9px] top-1.5 bg-slate-400 w-4 h-4 rounded-full ring-4 ring-white"></div>
-                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">Early 2020 — Late 2025</div>
-                    <h3 class="text-lg font-bold text-premium-navy mt-1">Independent Multilingual Contractor & Strategist</h3>
-                    <div class="text-xs text-premium-slate font-medium">Global Freelance / E-Commerce Consulting</div>
+                    <div class="absolute -left-[5px] top-1.5 bg-slate-400 w-2.5 h-2.5 rounded-full ring-4 ring-white"></div>
+                    <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider">2020 — 2025</div>
+                    <h3 class="text-lg font-bold text-premium-navy mt-1">Professional Independent Linguist & Localization Consultant</h3>
+                    <div class="text-xs text-premium-slate font-medium">Global AI Platforms & E-Commerce Networks</div>
                     <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                        Developed end-to-end localization setups for cross-border SaaS/SaaS web parameters. Executed PayPal verified workflows with crowd platforms including CrowdGen/Appen. Managed international copywriting tasks targeting specialized user metrics.
+                        Executed translation, verification, and PayPal verified financial deposit loops with crowd evaluation data networks including CrowdGen. Managed localized search logic testing, custom web SEO optimizations, and localized product descriptions targeted toward international audiences.
                     </p>
                 </div>
 
@@ -446,6 +456,7 @@
         </div>
     </section>
 
+    <!-- 6. CERTIFICATIONS -->
     <section class="py-20 bg-white border-y border-premium-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-14">
@@ -455,33 +466,36 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
+                <!-- Cert 1 -->
                 <div class="bg-premium-bgLight p-6 rounded-xl border border-premium-border flex items-start space-x-4 reveal">
+                    <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-blue-600 flex-shrink-0">
+                        <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-premium-navy">Bachelor of Arts (BA)</h4>
+                        <p class="text-xs text-premium-slate mt-1">Core focus on structural language properties, text processing methodologies, and multi-lingual translation paradigms.</p>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="bg-premium-bgLight p-6 rounded-xl border border-premium-border flex items-start space-x-4 reveal delay-100">
                     <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-blue-600 flex-shrink-0">
                         <i data-lucide="award" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h4 class="text-sm font-semibold text-premium-navy">Bachelor of Arts (BA Degree)</h4>
-                        <p class="text-xs text-premium-slate mt-1">Academic Core Focus on Linguistic Methodologies & Structural Intercultural Communication Layouts.</p>
+                        <h4 class="text-sm font-semibold text-premium-navy">Media Workflow Certification</h4>
+                        <p class="text-xs text-premium-slate mt-1">Certified for operational search engine validation metrics, user-intent indexing, and multi-platform media asset evaluations.</p>
                     </div>
                 </div>
 
-                <div class="bg-premium-bgLight p-6 rounded-xl border border-premium-border flex items-start space-x-4 reveal delay-100">
-                    <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-blue-600 flex-shrink-0">
-                        <i data-lucide="certificate" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-semibold text-premium-navy">Search Quality & Workflow Certification</h4>
-                        <p class="text-xs text-premium-slate mt-1">Validated mastery across multi-format media algorithms, podcasts, app stores, and complex rating logic maps.</p>
-                    </div>
-                </div>
-
+                <!-- Cert 3 -->
                 <div class="bg-premium-bgLight p-6 rounded-xl border border-premium-border flex items-start space-x-4 reveal delay-200">
                     <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-blue-600 flex-shrink-0">
-                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        <i data-lucide="check-square" class="w-5 h-5"></i>
                     </div>
                     <div>
-                        <h4 class="text-sm font-semibold text-premium-navy">CrowdGen Verification Protocol</h4>
-                        <p class="text-xs text-premium-slate mt-1">Verified financial clearance and technical identity verification for secure, enterprise-level digital data delivery loops.</p>
+                        <h4 class="text-sm font-semibold text-premium-navy">CrowdGen Platform Clearance</h4>
+                        <p class="text-xs text-premium-slate mt-1">Fully identity-verified contractor cleared for secure enterprise localization pipelines and asynchronous data tasks.</p>
                     </div>
                 </div>
 
@@ -489,52 +503,52 @@
         </div>
     </section>
 
+    <!-- 7. TOOLS & PLATFORMS -->
     <section id="tools" class="py-20 bg-premium-bgLight">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-14">
                 <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Technical Environment</span>
-                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Linguistic Toolkit & Ecosystem Support</h2>
-                <p class="mt-4 text-slate-600">Full operational proficiency in industry-standard software suites and data processing platforms.</p>
+                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Professional Production Toolkit</h2>
+                <p class="mt-4 text-slate-600">Full operational capacity in enterprise Computer-Assisted Translation (CAT) systems and evaluation interfaces.</p>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
+            <!-- Grid Layout of Logo Cards -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-400 transition-colors">
                     <span class="text-xs font-bold text-premium-navy tracking-tight">SDL Trados Studio</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">Advanced CAT</span>
+                    <span class="text-[9px] text-blue-600 font-semibold uppercase mt-1">CAT Environment</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-400 transition-colors">
                     <span class="text-xs font-bold text-premium-navy tracking-tight">memoQ</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">Translation Environment</span>
+                    <span class="text-[9px] text-blue-600 font-semibold uppercase mt-1">Localization Core</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-400 transition-colors">
                     <span class="text-xs font-bold text-premium-navy tracking-tight">Smartcat</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">Cloud Localization</span>
+                    <span class="text-[9px] text-blue-600 font-semibold uppercase mt-1">Cloud Translation</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-400 transition-colors">
                     <span class="text-xs font-bold text-premium-navy tracking-tight">Wordfast</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">Linguistic Tool</span>
+                    <span class="text-[9px] text-blue-600 font-semibold uppercase mt-1">Translation Memory</span>
                 </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
-                    <span class="text-xs font-bold text-premium-navy tracking-tight">Baseline Platform</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">Linguistic Quality Evaluation</span>
-                </div>
-                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-300 transition-colors">
-                    <span class="text-xs font-bold text-premium-navy tracking-tight">Shopify / WP</span>
-                    <span class="text-[9px] text-blue-600 font-medium uppercase tracking-wider mt-1">E-Commerce Content</span>
+                <div class="bg-white p-4 rounded-xl border border-slate-200 text-center flex flex-col items-center justify-center shadow-sm hover:border-blue-400 transition-colors">
+                    <span class="text-xs font-bold text-premium-navy tracking-tight">Baseline Platforms</span>
+                    <span class="text-[9px] text-blue-600 font-semibold uppercase mt-1">Linguistic Evaluation</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 8. TESTIMONIALS -->
     <section class="py-20 bg-white border-y border-premium-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Affiliations</span>
-                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Trusted Ecosystem Reviews</h2>
+                <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Vendor Feedback</span>
+                <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Client & Platform Experiences</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
+                <!-- Quote 1 -->
                 <div class="bg-premium-bgLight p-6 sm:p-8 rounded-2xl border border-premium-border shadow-sm flex flex-col justify-between reveal">
                     <div>
                         <div class="flex space-x-1 text-amber-400 mb-4">
@@ -544,19 +558,20 @@
                             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         </div>
-                        <p class="text-sm sm:text-base text-slate-700 leading-relaxed italic">
-                            "Jaefer's deep domain knowledge regarding Arabic contextual sub-dialects proved instrumental during our foundational LLM validation testing phase. His strictly structured annotation layouts greatly reduced post-evaluation loop latency."
+                        <p class="text-sm text-slate-700 leading-relaxed italic">
+                            "Jaefer's work on our multi-lingual speech annotation pass was immaculate. He effectively cleaned up complex regional dialogue files and correctly flagged nuanced sub-dialects that automated parsers entirely missed."
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                         <div>
-                            <div class="text-sm font-bold text-premium-navy">Linguistic Operations Lead</div>
-                            <div class="text-xs text-premium-slate">Data Engineering Vendor Segment</div>
+                            <div class="text-xs font-bold text-premium-navy">Linguistic Operations Specialist</div>
+                            <div class="text-[10px] text-premium-slate uppercase font-semibold">Data Sourcing Group</div>
                         </div>
-                        <i data-lucide="quote" class="w-8 h-8 text-slate-200 flex-shrink-0"></i>
+                        <i data-lucide="quote" class="w-6 h-6 text-slate-200 flex-shrink-0"></i>
                     </div>
                 </div>
 
+                <!-- Quote 2 -->
                 <div class="bg-premium-bgLight p-6 sm:p-8 rounded-2xl border border-premium-border shadow-sm flex flex-col justify-between reveal delay-100">
                     <div>
                         <div class="flex space-x-1 text-amber-400 mb-4">
@@ -566,16 +581,16 @@
                             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
                         </div>
-                        <p class="text-sm sm:text-base text-slate-700 leading-relaxed italic">
-                            "His transcription cleanups match strict verbatim criteria with flawless execution. We regularly leverage his capacities for high-priority Middle Eastern project streams because of his consistent turnaround reliability."
+                        <p class="text-sm text-slate-700 leading-relaxed italic">
+                            "Excellent attention to technical parameters. His strict adherence to our 8-point search quality matrix helped optimize evaluation cycles for our media indexing models."
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between">
                         <div>
-                            <div class="text-sm font-bold text-premium-navy">Senior Project PM</div>
-                            <div class="text-xs text-premium-slate">Global Localization Platform Partner</div>
+                            <div class="text-xs font-bold text-premium-navy">Project Quality Lead</div>
+                            <div class="text-[10px] text-premium-slate uppercase font-semibold">Global Localization Vendor</div>
                         </div>
-                        <i data-lucide="quote" class="w-8 h-8 text-slate-200 flex-shrink-0"></i>
+                        <i data-lucide="quote" class="w-6 h-6 text-slate-200 flex-shrink-0"></i>
                     </div>
                 </div>
 
@@ -583,97 +598,104 @@
         </div>
     </section>
 
+    <!-- 9. DOWNLOADABLE RESOURCES -->
     <section class="py-16 bg-premium-bgLight">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-xl font-bold text-premium-navy mb-2">Need Offline Documentation?</h3>
-            <p class="text-sm text-slate-600 mb-6">Download a structured professional layout matching my technical matrix for internal hiring loops or procurement panels.</p>
+            <h3 class="text-lg font-bold text-premium-navy mb-2">Need Offline Documentation?</h3>
+            <p class="text-xs text-slate-600 mb-6">Download professional matrices highlighting my complete service capacities and language matrices for procurement reviews.</p>
             
             <div class="inline-flex flex-wrap justify-center gap-4">
                 <a href="#" class="bg-white border border-slate-200 px-5 py-2.5 rounded-xl shadow-sm text-xs font-semibold text-slate-700 flex items-center space-x-2 hover:bg-slate-50 transition-colors">
-                    <i data-lucide="file-down" class="w-4 h-4 text-blue-600"></i>
-                    <span>Download Comprehensive CV (PDF)</span>
+                    <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i>
+                    <span>Download Professional CV (PDF)</span>
                 </a>
                 <a href="#" class="bg-white border border-slate-200 px-5 py-2.5 rounded-xl shadow-sm text-xs font-semibold text-slate-700 flex items-center space-x-2 hover:bg-slate-50 transition-colors">
-                    <i data-lucide="box" class="w-4 h-4 text-blue-600"></i>
+                    <i data-lucide="file-check-2" class="w-4 h-4 text-blue-600"></i>
                     <span>Download Capabilities Statement</span>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- 10. CONTACT SECTION & FORM -->
     <section id="contact" class="py-20 bg-white border-t border-premium-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 
+                <!-- Info Column -->
                 <div class="lg:col-span-5 space-y-6">
                     <div>
-                        <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Direct Channel</span>
+                        <span class="text-xs font-bold tracking-widest text-blue-600 uppercase block mb-2">Direct Communication</span>
                         <h2 class="text-3xl font-bold tracking-tight text-premium-navy sm:text-4xl">Initiate a Secure Project Consultation</h2>
-                        <p class="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-                            Have an immediate localization requirement, prompt-engineering validation sprint, or audio transcription QA project? Submit your workflow requirements to receive an SLA timeline proposal within one business day.
+                        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                            Have an immediate localization requirement, prompt evaluation task, or transcription quality auditing run? Submit your scope parameters below to establish a direct pipeline.
                         </p>
                     </div>
 
-                    <div class="space-y-4 pt-4">
+                    <div class="space-y-4 pt-2">
                         <div class="flex items-center space-x-3 text-sm text-slate-600">
-                            <i data-lucide="mail" class="w-4 h-4 text-blue-600"></i>
-                            <a href="mailto:contact.jaefer@gmail.com" class="hover:underline">contact.jaefer@gmail.com</a>
+                            <div class="w-8 h-8 rounded-lg bg-[#EA4335]/10 text-[#EA4335] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                            </div>
+                            <a href="mailto:contact.jaefer@gmail.com" class="hover:underline font-medium text-slate-700">contact.jaefer@gmail.com</a>
                         </div>
                         <div class="flex items-center space-x-3 text-sm text-slate-600">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i>
-                            <span>Giza, Egypt (UTC +02:00 Cairo Timezone)</span>
+                            <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <span class="font-medium text-slate-700">Giza, Egypt (UTC +02:00 Timezone)</span>
                         </div>
                     </div>
 
+                    <!-- Refined Official Brand Design Icons Only -->
                     <div class="pt-6">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Enterprise Profiles</h4>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Official Communication Channels</h4>
                         <div class="flex space-x-3">
-                            <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" class="w-9 h-9 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-400 transition-colors shadow-sm" title="LinkedIn">
-                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" class="w-12 h-12 border border-slate-200 rounded-xl flex items-center justify-center text-slate-500 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all shadow-sm" title="LinkedIn Professional Profile">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
                             </a>
-                            <a href="https://wa.me/201103912522" target="_blank" class="w-9 h-9 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-emerald-600 hover:border-emerald-400 transition-colors shadow-sm" title="WhatsApp">
-                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            <a href="https://wa.me/201103912522" target="_blank" class="w-12 h-12 border border-slate-200 rounded-xl flex items-center justify-center text-slate-500 hover:text-white hover:bg-[#25D366] hover:border-[#25D366] transition-all shadow-sm" title="Direct WhatsApp Channel">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
                             </a>
-                            <a href="mailto:contact.jaefer@gmail.com" class="w-9 h-9 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-blue-500 hover:border-blue-400 transition-colors shadow-sm" title="Email">
-                                <i data-lucide="mail" class="w-4 h-4"></i>
-                            </a>
-                            <a href="https://github.com" target="_blank" class="w-9 h-9 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center text-slate-600 hover:text-black hover:border-slate-400 transition-colors shadow-sm" title="GitHub">
-                                <i data-lucide="github" class="w-4 h-4"></i>
+                            <a href="mailto:contact.jaefer@gmail.com" class="w-12 h-12 border border-slate-200 rounded-xl flex items-center justify-center text-slate-500 hover:text-white hover:bg-[#EA4335] hover:border-[#EA4335] transition-all shadow-sm" title="Official Email Inquiries">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Form Column -->
                 <div class="lg:col-span-7">
                     <form id="contact-form" class="bg-premium-bgLight border border-premium-border p-6 sm:p-8 rounded-2xl shadow-sm space-y-5 relative">
                         
+                        <!-- Success Overlay state hidden initially -->
                         <div id="form-success-state" class="hidden absolute inset-0 bg-white/95 rounded-2xl flex flex-col items-center justify-center p-6 text-center z-20">
                             <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 shadow-sm">
-                                <i data-lucide="badge-check" class="w-6 h-6"></i>
+                                <i data-lucide="check-circle-2" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-premium-navy">Linguistic Brief Transmitted</h3>
-                            <p class="text-xs text-slate-500 max-w-sm mt-1">Thank you. Your project metadata and service parameter requirements have reached my routing queue via EmailJS. I will follow up shortly.</p>
-                            <button type="button" onclick="resetFormState()" class="mt-4 text-xs font-semibold text-blue-600 hover:underline">Send another transmission</button>
+                            <h3 class="text-base font-bold text-premium-navy">Linguistic Brief Transmitted</h3>
+                            <p class="text-xs text-slate-500 max-w-sm mt-1">Your parameters have successfully reached my EmailJS routing queue. I will review the metrics and follow up shortly.</p>
+                            <button type="button" onclick="resetFormState()" class="mt-4 text-xs font-semibold text-blue-600 hover:underline">Transmit another brief</button>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="form_name" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Full Name</label>
-                                <input type="text" id="form_name" name="from_name" required placeholder="e.g. Sarah Vance" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
+                                <label for="form_name" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Your Name</label>
+                                <input type="text" id="form_name" name="from_name" required placeholder="e.g. Marcus Vance" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
                             </div>
                             <div>
-                                <label for="form_email" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Email Address</label>
-                                <input type="email" id="form_email" name="reply_to" required placeholder="e.g. sarah@enterprise.ai" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
+                                <label for="form_email" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Corporate Email</label>
+                                <input type="email" id="form_email" name="reply_to" required placeholder="e.g. marcus@vendor.ai" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
                             </div>
                         </div>
 
                         <div>
                             <label for="form_subject" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Project Subject</label>
-                            <input type="text" id="form_subject" name="subject" required placeholder="e.g. Arabic LLM Context Evaluation Matrix Setup" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
+                            <input type="text" id="form_subject" name="subject" required placeholder="e.g. Multi-Dialect Annotation Setup Evaluation" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all">
                         </div>
 
                         <div>
-                            <label for="form_service" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Target Service Parameter</label>
+                            <label for="form_service" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Target Work Parameter</label>
                             <select id="form_service" name="service_type" class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all text-slate-700">
                                 <option value="AI Linguistic Evaluation">AI Linguistic Evaluation</option>
                                 <option value="Localization & MTPE">Localization & MTPE</option>
@@ -685,8 +707,8 @@
                         </div>
 
                         <div>
-                            <label for="form_message" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Scope of Work & Requirements</label>
-                            <textarea id="form_message" name="message" rows="4" required placeholder="Please state details regarding datasets, file formats, expected SLA thresholds, or target volumes..." class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"></textarea>
+                            <label for="form_message" class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Scope of Work & Technical Constraints</label>
+                            <textarea id="form_message" name="message" rows="4" required placeholder="Please outline target volume estimates, language vectors, formatting constraints, or timeline structures..." class="w-full text-sm px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all"></textarea>
                         </div>
 
                         <button type="submit" id="submit-btn" class="w-full py-3 bg-premium-navy hover:bg-slate-800 text-white font-semibold text-sm rounded-xl transition-all shadow-sm flex items-center justify-center space-x-2">
@@ -700,13 +722,14 @@
         </div>
     </section>
 
+    <!-- 11. FOOTER -->
     <footer class="bg-premium-navy text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 
                 <div class="flex items-center space-x-3">
-                    <div class="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center">
-                        <span class="text-white font-bold text-xs">JI</span>
+                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                        <span class="text-white font-bold text-xs tracking-tight">JI</span>
                     </div>
                     <div class="flex flex-col">
                         <span class="text-xs font-semibold text-white tracking-tight">Jaefer Ibrahim</span>
@@ -722,13 +745,14 @@
                 </div>
 
                 <div class="text-[11px] text-slate-500">
-                    &copy; 2026 Jaefer Ibrahim. All rights reserved. Managed globally via Giza, Egypt.
+                    &copy; 2026 Jaefer Ibrahim. All rights reserved. Managed out of Giza, Egypt.
                 </div>
 
             </div>
         </div>
     </footer>
 
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -759,15 +783,14 @@
         
         const observerOptions = {
             root: null,
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.08,
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    // Once animated, unobserve to clean cycle execution loops
                     observer.unobserve(entry.target);
                 }
             });
@@ -794,13 +817,12 @@
             // EmailJS API Pipeline Routing Execution
             emailjs.sendForm('service_xdp150l', 'template_s01uaxn', this)
                 .then(() => {
-                    // Success Transition Layout
                     formSuccessState.classList.remove('hidden');
                     contactForm.reset();
                     revertBtnState();
                 }, (error) => {
-                    console.error('EmailJS routing failure encountered:', error);
-                    alert('Linguistic brief transmission fault occurred. Please check network logs or email directly.');
+                    console.error('EmailJS transmission failure:', error);
+                    alert('Linguistic brief transmission fault occurred. Please check configuration settings.');
                     revertBtnState();
                 });
         });
