@@ -3,730 +3,892 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaefer Ibrahim · Multilingual AI & Language Services</title>
-    <meta name="description" content="Human Quality for AI-Generated Language. Arabic, English, Tigrinya — AI evaluation, localization, and language refinement for enterprise teams.">
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <title>Jaefer Ibrahim — Multilingual AI & Language Services Specialist</title>
     <style>
-        :root {
-            --brand-600: #4f46e5;
-        }
         * {
-            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --navy: #1e293b;
+            --blue: #3b82f6;
+            --blue-light: #dbeafe;
+            --gray: #64748b;
+            --gray-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #334155;
+            line-height: 1.6;
+            background: var(--white);
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 16px 0;
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.15), 0 4px 16px -4px rgba(0, 0, 0, 0.06);
-        }
-        .pulse-ring {
-            animation: pulse-ring 2s infinite;
-        }
-        @keyframes pulse-ring {
-            0% {
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 18px rgba(16, 185, 129, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
-        }
-        .float-bounce {
-            animation: float-bounce 2.5s ease-in-out infinite;
-        }
-        @keyframes float-bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        .animated-bar {
-            transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .timeline-dot {
-            position: absolute;
-            left: -9px;
-            top: 4px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid #4f46e5;
-            z-index: 2;
-        }
-        .comparison-card-before {
-            border-left: 4px solid #f59e0b;
-            background: #fffbeb;
-        }
-        .comparison-card-after {
-            border-left: 4px solid #10b981;
-            background: #ecfdf5;
-        }
-        @media (max-width: 640px) {
-            .hero-headline {
-                font-size: 2.5rem;
-                line-height: 1.15;
-            }
-            .section-padding {
-                padding-top: 4rem;
-                padding-bottom: 4rem;
-            }
-        }
-        .badge-pill {
-            display: inline-flex;
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 0.375rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.8125rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 14px;
             font-weight: 500;
-            background: #f1f5f9;
-            color: #475569;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s;
-        }
-        .badge-pill:hover {
-            background: #eef2ff;
-            border-color: #c7d2fe;
-            color: #4338ca;
-        }
-        .nav-link {
-            position: relative;
             transition: color 0.2s;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #4f46e5;
-            border-radius: 1px;
-            transition: width 0.25s ease;
+
+        .nav-links a:hover {
+            color: var(--navy);
         }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+
         .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
         }
-        .mobile-menu.open {
-            max-height: 400px;
+
+        /* Hero */
+        .hero {
+            padding: 140px 24px 100px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--gray-light) 0%, var(--white) 100%);
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #334155;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30,41,59,0.15);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: var(--white);
+            color: var(--navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-light);
+            border-color: var(--navy);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .about-hook {
+            font-size: 18px;
+            color: var(--navy);
+            font-weight: 600;
+            padding-left: 20px;
+            border-left: 3px solid var(--blue);
+            margin: 24px 0;
+        }
+
+        .languages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .lang-card {
+            background: var(--gray-light);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .lang-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .lang-card p {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 16px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .service-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.08);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blue-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .service-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-top: 12px;
+        }
+
+        /* Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--gray-light);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 auto 16px;
+        }
+
+        .step h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: var(--gray-light);
+            border-radius: 24px;
+            padding: 64px 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .contact-form > p {
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-status {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            color: #059669;
+        }
+
+        .form-status.error {
+            color: #dc2626;
+        }
+
+        .contact-direct h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--blue);
+            box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--blue-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-item div strong {
+            display: block;
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        .contact-item div span {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: #94a3b8;
+            padding: 48px 24px 32px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        footer h3 {
+            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        footer > p {
+            color: #cbd5e1;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .social-icon:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #64748b;
+            padding-top: 24px;
+            border-top: 1px solid #334155;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-sub {
+                font-size: 18px;
+            }
+
+            .about-grid,
+            .services-grid,
+            .process-steps,
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                padding: 40px 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("iQ58QxcBqvIi-bTRA");
+        })();
+    </script>
 </head>
-<body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
+<body>
 
-    <!-- ==================== NAVBAR ==================== -->
-    <header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-lg">
-        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <a href="#" class="text-xl font-bold tracking-tight text-slate-900">Jaefer Ibrahim</a>
-            <nav class="hidden items-center gap-8 md:flex">
-                <a href="#about" class="nav-link text-sm font-medium text-slate-600">About</a>
-                <a href="#services" class="nav-link text-sm font-medium text-slate-600">Services</a>
-                <a href="#portfolio" class="nav-link text-sm font-medium text-slate-600">Portfolio</a>
-                <a href="#experience" class="nav-link text-sm font-medium text-slate-600">Experience</a>
-                <a href="#contact" class="nav-link text-sm font-medium text-slate-600">Contact</a>
-                <a href="#contact" class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-indigo-700 hover:shadow-md">Get in Touch</a>
-            </nav>
-            <button id="mobileMenuToggle" class="inline-flex items-center justify-center rounded-md p-2 text-slate-600 md:hidden hover:bg-slate-100" aria-label="Toggle menu">
-                <svg id="menuIcon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                <svg id="closeIcon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Jaefer Ibrahim</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
         </div>
-        <div id="mobileMenu" class="mobile-menu border-t border-slate-200 bg-white md:hidden">
-            <div class="flex flex-col space-y-3 px-4 pb-4 pt-4">
-                <a href="#about" class="text-base font-medium text-slate-700 mobile-link">About</a>
-                <a href="#services" class="text-base font-medium text-slate-700 mobile-link">Services</a>
-                <a href="#portfolio" class="text-base font-medium text-slate-700 mobile-link">Portfolio</a>
-                <a href="#experience" class="text-base font-medium text-slate-700 mobile-link">Experience</a>
-                <a href="#contact" class="text-base font-medium text-slate-700 mobile-link">Contact</a>
-                <a href="#contact" class="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm">Get in Touch</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-label">Multilingual AI & Language Services</div>
+        <h1>AI Language Operations.<br>Human Judgment at Scale.</h1>
+        <p class="hero-sub">I help AI companies and global teams improve multilingual content quality through structured linguistic evaluation, localization QA, and AI-generated content review workflows.</p>
+        <div class="hero-buttons">
+            <a href="#services" class="btn-primary">Explore Services</a>
+            <a href="#contact" class="btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Where Linguistics Meets Artificial Intelligence</h3>
+                <p>With a BA in Translation and Linguistics and native fluency in Arabic and Tigrinya, I evaluate AI-generated responses where automated metrics fall short — catching tonal drift, cultural misalignment, and safety edge cases that models miss.</p>
+                <div class="about-hook">I do not write prompts. I judge what comes out of them.</div>
+                <p>Based in the MENA region, I work remotely with AI startups, localization agencies, and enterprise teams across US, European, and Middle Eastern time zones.</p>
+            </div>
+            <div class="languages">
+                <div class="lang-card">
+                    <h4>Arabic</h4>
+                    <p>Native fluency<br>MSA & regional dialects</p>
+                </div>
+                <div class="lang-card">
+                    <h4>English</h4>
+                    <p>Professional proficiency<br>Technical & conversational</p>
+                </div>
+                <div class="lang-card">
+                    <h4>Tigrinya</h4>
+                    <p>Native fluency<br>East African context</p>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- ==================== HERO SECTION ==================== -->
-        <section class="relative overflow-hidden bg-slate-50 py-20 sm:py-28 lg:py-32">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid items-center gap-12 lg:grid-cols-2">
-                    <div class="fade-in-left">
-                        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
-                            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> Available for new projects
-                        </div>
-                        <h1 class="hero-headline text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-                            Human Quality<br>
-                            <span class="text-indigo-600">for AI-Generated Language</span>
-                        </h1>
-                        <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-                            Helping AI companies, localization teams, and global businesses improve Arabic, English, and Tigrinya content through AI evaluation, localization QA, transcription, and language refinement workflows.
-                        </p>
-                        <div class="mt-8 flex flex-wrap gap-3">
-                            <a href="#services" class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 hover:shadow-md">View Services
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></a>
-                            <a href="#contact" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow">Contact Me</a>
-                            <a href="#" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow" onclick="alert('CV download triggered')">Download CV
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></a>
-                            <a href="https://wa.me/201103912522" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-6 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 hover:shadow">WhatsApp</a>
-                        </div>
-                    </div>
-                    <div class="fade-in-right flex justify-center lg:justify-end">
-                        <div class="glass-card relative w-full max-w-sm overflow-hidden rounded-2xl p-5 shadow-lg">
-                            <div class="mb-4 flex items-center justify-between">
-                                <div class="h-3 w-20 rounded-full bg-slate-200"></div>
-                                <div class="flex space-x-1">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-indigo-400"></div>
-                                    <div class="h-2.5 w-2.5 rounded-full bg-indigo-400"></div>
-                                    <div class="h-2.5 w-2.5 rounded-full bg-indigo-400"></div>
-                                </div>
-                            </div>
-                            <div class="mb-5 flex items-end space-x-2">
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-200" style="height:0px;"></div>
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-300" style="height:0px;"></div>
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-200" style="height:0px;"></div>
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-400" style="height:0px;"></div>
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-200" style="height:0px;"></div>
-                                <div class="animated-bar w-5 rounded-t-lg bg-indigo-300" style="height:0px;"></div>
-                            </div>
-                            <div class="mb-4 flex items-center justify-around">
-                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-50 text-xs font-bold text-indigo-700">AR</span>
-                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-50 text-xs font-bold text-indigo-700">EN</span>
-                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-50 text-xs font-bold text-indigo-700">TI</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <svg viewBox="0 0 36 36" class="h-10 w-10 -rotate-90">
-                                    <circle cx="18" cy="18" r="15" fill="none" stroke="#e2e8f0" stroke-width="3"/>
-                                    <circle cx="18" cy="18" r="15" fill="none" stroke="#4f46e5" stroke-width="3" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="8" />
-                                </svg>
-                                <div>
-                                    <p class="text-sm font-semibold text-slate-700">QA Precision 92%</p>
-                                    <p class="text-xs text-slate-500">Human + AI loop</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Services -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Specializations</h2>
+            <p>Six focused service areas. Click to explore each portfolio.</p>
+        </div>
+        <div class="services-grid">
+            <a href="evaluator.html" class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>AI Linguistic Evaluator</h3>
+                <p>Structured scoring of LLM responses for accuracy, safety, and cultural fit across Arabic, English, and Tigrinya.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+            <a href="mtpe.html" class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>AI Localization & MTPE</h3>
+                <p>Machine translation post-editing and localization QA for SaaS, e-commerce, and enterprise content.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+            <a href="annotation.html" class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>NLP Data Annotation</h3>
+                <p>Intent labeling, NER, sentiment analysis, and dataset validation for ML training pipelines.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+            <a href="transcription.html" class="service-card">
+                <div class="service-icon">🎧</div>
+                <h3>Transcription QA</h3>
+                <p>AI transcript cleanup, speaker diarization QA, and timestamp alignment for media and research.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+            <a href="arabic-qa.html" class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Arabic Localization QA</h3>
+                <p>MENA-market UI review, RTL testing, and cultural adaptation for apps, websites, and e-commerce.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+            <a href="translation.html" class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>Translation & Proofreading</h3>
+                <p>Professional translation and editorial proofreading for business, academic, and publishing content.</p>
+                <span class="service-tag">View Portfolio →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+        <div class="section-header">
+            <h2>How I Work</h2>
+            <p>A consistent, documented methodology across every engagement.</p>
+        </div>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h4>Discovery</h4>
+                <p>Understand your model, market, quality thresholds, and risk boundaries before any evaluation begins.</p>
             </div>
-        </section>
-
-        <!-- ==================== TRUST BAR ==================== -->
-        <section class="border-y border-slate-200 bg-white py-8">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
-                    <div class="fade-in flex flex-col items-center text-center">
-                        <svg class="mb-2 h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-                        <span class="text-sm font-semibold text-slate-900">Arabic · English · Tigrinya</span>
-                        <span class="text-xs text-slate-500">Languages Supported</span>
-                    </div>
-                    <div class="fade-in flex flex-col items-center text-center">
-                        <svg class="mb-2 h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <span class="text-sm font-semibold text-slate-900">6+ Years</span>
-                        <span class="text-xs text-slate-500">Experience</span>
-                    </div>
-                    <div class="fade-in flex flex-col items-center text-center">
-                        <svg class="mb-2 h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span class="text-sm font-semibold text-slate-900">End-to-End</span>
-                        <span class="text-xs text-slate-500">AI Workflow Focus</span>
-                    </div>
-                    <div class="fade-in flex flex-col items-center text-center">
-                        <svg class="mb-2 h-6 w-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                        <span class="text-sm font-semibold text-slate-900">Enterprise Grade</span>
-                        <span class="text-xs text-slate-500">QA Precision</span>
-                    </div>
-                </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h4>Execution</h4>
+                <p>Structured evaluation, annotation, or QA against agreed rubrics with documented reasoning at every step.</p>
             </div>
-        </section>
-
-        <!-- ==================== ABOUT SECTION ==================== -->
-        <section id="about" class="section-padding py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in max-w-3xl">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Operational Excellence in AI Language Workflows</h2>
-                    <p class="mt-6 text-lg leading-relaxed text-slate-600">
-                        I don't just translate—I design and operate the full localization pipeline. From AI output evaluation and post-editing to transcript clean‑up and NLP annotation, every step is built for reliability. My process combines human expertise with smart tooling to deliver content that reads as if a native speaker wrote it.
-                    </p>
-                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
-                        <div class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-sm text-slate-700">Custom quality rubrics (8‑point Baseline evaluations)</span></div>
-                        <div class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-sm text-slate-700">MTPE & adaptation for Arabic, English & Tigrinya</span></div>
-                        <div class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-sm text-slate-700">AI transcript refinement with domain‑specific glossaries</span></div>
-                        <div class="flex items-start gap-3"><svg class="mt-0.5 h-5 w-5 shrink-0 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-sm text-slate-700">Continuous QA feedback loops for model improvement</span></div>
-                    </div>
-                </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h4>Reporting</h4>
+                <p>Surface patterns, not just errors. Deliver actionable findings your team can use immediately.</p>
             </div>
-        </section>
-
-        <!-- ==================== SERVICES SECTION ==================== -->
-        <section id="services" class="section-padding bg-white py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in mb-14 text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Services that Scale AI Quality</h2>
-                    <p class="mt-4 text-lg text-slate-600">End‑to‑end language services built for modern AI pipelines.</p>
-                </div>
-                <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M12 8v4l3 3"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">AI Linguistic Evaluation</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Rigorous assessment of LLM outputs using custom 8‑point scales on platforms like Baseline.</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">Localization & MTPE</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Full post‑editing of machine translation across Arabic, English, and Tigrinya.</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">Translation & Proofreading</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Human‑quality translation with focus on tone, cultural nuance, and domain terminology.</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">Transcript Cleanup & QA</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Turning messy AI‑generated audio transcripts into polished, publication‑ready text.</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">NLP Data Annotation</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Entity tagging, sentiment labeling, and intent classification for training datasets.</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow">
-                        <svg class="mb-3 h-7 w-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                        <h3 class="text-lg font-semibold text-slate-900">Conversational AI Review</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600">Evaluating chatbot responses for coherence, safety, and brand voice alignment.</p>
-                    </div>
-                </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h4>Iteration</h4>
+                <p>Refine criteria based on edge cases. Build systems that improve with every project cycle.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ==================== PORTFOLIO / CASE STUDIES ==================== -->
-        <section id="portfolio" class="section-padding py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in mb-14 text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Before & After: AI + Human Refinement</h2>
-                    <p class="mt-4 text-lg text-slate-600">See the measurable difference human expertise makes.</p>
-                </div>
-                <div class="grid gap-8 lg:grid-cols-3">
-                    <!-- Case 1 -->
-                    <div class="scale-in hover-lift overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                        <div class="p-6">
-                            <div class="mb-4 flex items-center gap-3">
-                                <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
-                                <h3 class="text-lg font-semibold text-slate-900">AI Output Evaluation</h3>
-                            </div>
-                            <div class="comparison-card-before mb-4 rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-600">Raw AI Response</p>
-                                <p class="text-sm leading-relaxed text-slate-700">The factory's production line experienced a momentary cessation due to a critical component malfunction.</p>
-                            </div>
-                            <div class="flex justify-center py-2">
-                                <svg class="h-5 w-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                            </div>
-                            <div class="comparison-card-after rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-600">Human‑Refined & Evaluated</p>
-                                <p class="text-sm leading-relaxed text-slate-900">The production line stopped briefly because a key part failed. (Clarity: 8/8, Accuracy: 7/8, Fluency: 8/8)</p>
-                            </div>
-                            <span class="mt-3 inline-block badge-pill text-xs">8‑point rating scale on Baseline</span>
-                        </div>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="contact-section">
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <p>Available for project-based and retainer engagements. I respond within 48 hours.</p>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
                     </div>
-                    <!-- Case 2 -->
-                    <div class="scale-in hover-lift overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                        <div class="p-6">
-                            <div class="mb-4 flex items-center gap-3">
-                                <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-                                <h3 class="text-lg font-semibold text-slate-900">Machine Translation Post‑Editing</h3>
-                            </div>
-                            <div class="comparison-card-before mb-4 rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-600">Raw MT Output (AR → EN)</p>
-                                <p class="text-sm leading-relaxed text-slate-700">The delegation will visit the facilities of the company tomorrow to inspect the equipment.</p>
-                            </div>
-                            <div class="flex justify-center py-2">
-                                <svg class="h-5 w-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                            </div>
-                            <div class="comparison-card-after rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-600">Post‑Edited & Localized</p>
-                                <p class="text-sm leading-relaxed text-slate-900">The delegation will tour the company's facilities tomorrow to inspect the machinery.</p>
-                            </div>
-                            <span class="mt-3 inline-block badge-pill text-xs">MTPE for enterprise client</span>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
                     </div>
-                    <!-- Case 3 -->
-                    <div class="scale-in hover-lift overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-                        <div class="p-6">
-                            <div class="mb-4 flex items-center gap-3">
-                                <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
-                                <h3 class="text-lg font-semibold text-slate-900">AI Transcript Cleanup</h3>
-                            </div>
-                            <div class="comparison-card-before mb-4 rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-600">Messy AI Transcript</p>
-                                <p class="text-sm leading-relaxed text-slate-700">so uh basically the... the main issue was that the server, you know, it went down at like 3 AM and we couldn't get it back up until the morning</p>
-                            </div>
-                            <div class="flex justify-center py-2">
-                                <svg class="h-5 w-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-                            </div>
-                            <div class="comparison-card-after rounded-lg p-4">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-600">Clean, Polished Transcript</p>
-                                <p class="text-sm leading-relaxed text-slate-900">The main issue was a server outage at 3:00 AM; restoration was not completed until the following morning.</p>
-                            </div>
-                            <span class="mt-3 inline-block badge-pill text-xs">From raw audio to publication ready</span>
-                        </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Project inquiry">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
             </div>
-        </section>
-
-        <!-- ==================== EXPERIENCE TIMELINE ==================== -->
-        <section id="experience" class="section-padding bg-white py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid gap-14 lg:grid-cols-2">
-                    <div class="fade-in-left">
-                        <h2 class="mb-10 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Experience</h2>
-                        <div class="relative border-l-2 border-slate-200 pl-8">
-                            <div class="mb-10 last:mb-0"><div class="timeline-dot"></div><span class="text-sm font-semibold text-indigo-600">2021 – Present</span><h3 class="mt-1 text-lg font-semibold text-slate-900">Senior AI Language Specialist</h3><p class="text-sm font-medium text-slate-500">DataForce by TransPerfect</p><p class="mt-2 text-sm leading-relaxed text-slate-600">Led MTPE workflows, evaluated LLM outputs, and trained QA models for Arabic and Tigrinya.</p></div>
-                            <div class="mb-10 last:mb-0"><div class="timeline-dot"></div><span class="text-sm font-semibold text-indigo-600">2020 – 2021</span><h3 class="mt-1 text-lg font-semibold text-slate-900">Language Analyst</h3><p class="text-sm font-medium text-slate-500">Turing</p><p class="mt-2 text-sm leading-relaxed text-slate-600">Annotation, linguistic QA, and conversational AI review for large‑scale NLP projects.</p></div>
-                            <div class="mb-10 last:mb-0"><div class="timeline-dot"></div><span class="text-sm font-semibold text-indigo-600">2018 – 2020</span><h3 class="mt-1 text-lg font-semibold text-slate-900">Freelance Translator & Editor</h3><p class="text-sm font-medium text-slate-500">Self‑employed</p><p class="mt-2 text-sm leading-relaxed text-slate-600">Provided translation and proofreading for tech, legal, and healthcare clients.</p></div>
-                        </div>
+            <div class="contact-direct">
+                <h3>Or Reach Me Directly</h3>
+                <a href="mailto:contact.jaefer@gmail.com" class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <strong>Email</strong>
+                        <span>contact.jaefer@gmail.com</span>
                     </div>
-                    <div class="fade-in-right">
-                        <h2 class="mb-10 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Certifications</h2>
-                        <div class="grid gap-4 sm:grid-cols-2">
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">Google Machine Learning Crash Course</p></div>
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">TAUS Post‑Editing Certification</p></div>
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">SDL Trados Studio Proficiency</p></div>
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">memoQ Certified User</p></div>
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">Wordfast Pro Certification</p></div>
-                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-5"><p class="text-sm font-medium text-slate-800">Baseline Platform Proficiency</p></div>
-                        </div>
+                </a>
+                <a href="https://wa.me/201103912522" class="contact-item" target="_blank">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <span>+201103912522</span>
                     </div>
-                </div>
+                </a>
+                <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" class="contact-item" target="_blank">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <span>linkedin.com/in/jaefer-ibrahim-b1977b378</span>
+                    </div>
+                </a>
+                <a href="https://language-hub--jaefer01.replit.app/" class="contact-item" target="_blank">
+                    <div class="contact-icon">🌐</div>
+                    <div>
+                        <strong>Portfolio</strong>
+                        <span>language-hub--jaefer01.replit.app</span>
+                    </div>
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ==================== TOOLS & PLATFORMS ==================== -->
-        <section class="section-padding py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Technical Arsenal</h2>
-                    <p class="mt-4 text-lg text-slate-600">Trusted platforms and tools that power my workflow.</p>
-                    <div class="mt-10 flex flex-wrap justify-center gap-3">
-                        <span class="badge-pill">SDL Trados</span><span class="badge-pill">memoQ</span><span class="badge-pill">Wordfast</span><span class="badge-pill">Baseline</span><span class="badge-pill">QA Distiller</span><span class="badge-pill">Xbench</span><span class="badge-pill">Google Workspace</span><span class="badge-pill">Slack</span><span class="badge-pill">Notion</span><span class="badge-pill">Crowdin</span><span class="badge-pill">Phrase</span><span class="badge-pill">Lokalise</span>
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Jaefer Ibrahim</h3>
+            <p>Multilingual AI & Language Services Specialist</p>
+            <div class="footer-links">
+                <a href="evaluator.html">AI Evaluation</a>
+                <a href="mtpe.html">MTPE</a>
+                <a href="annotation.html">NLP Annotation</a>
+                <a href="transcription.html">Transcription QA</a>
+                <a href="arabic-qa.html">Arabic QA</a>
+                <a href="translation.html">Translation</a>
             </div>
-        </section>
-
-        <!-- ==================== TESTIMONIALS ==================== -->
-        <section class="section-padding bg-white py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in mb-14 text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">What Colleagues & Clients Say</h2>
-                    <p class="mt-4 text-lg text-slate-600">Real feedback from people I've worked with on AI and localization projects.</p>
-                </div>
-                <div class="grid gap-8 md:grid-cols-3">
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                        <div class="mb-3 flex text-amber-400">★★★★★</div>
-                        <p class="text-sm leading-relaxed text-slate-600">“Jaefer’s MTPE work on our Arabic interface was incredibly accurate. He caught nuances that even our native reviewers had missed. The quality rubric he implemented on Baseline directly improved our model’s fluency scores by over 15%.”</p>
-                        <p class="mt-4 text-sm font-semibold text-slate-900">— Lina K., Localization Manager at a leading AI SaaS</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                        <div class="mb-3 flex text-amber-400">★★★★★</div>
-                        <p class="text-sm leading-relaxed text-slate-600">“We needed fast, clean transcripts for an urgent NLP dataset. Jaefer turned around 4 hours of messy ASR output in record time—every filler word, false start, and speaker label was corrected. It saved our annotation team a full week.”</p>
-                        <p class="mt-4 text-sm font-semibold text-slate-900">— David O., NLP Project Lead at Turing</p>
-                    </div>
-                    <div class="scale-in hover-lift rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                        <div class="mb-3 flex text-amber-400">★★★★★</div>
-                        <p class="text-sm leading-relaxed text-slate-600">“The conversational AI review Jaefer performed was thorough and insightful. His feedback on tone consistency and culturally sensitive responses made our chatbot feel significantly more human. Highly collaborative and always meets deadlines.”</p>
-                        <p class="mt-4 text-sm font-semibold text-slate-900">— Samantha R., AI Product Owner at a telehealth startup</p>
-                    </div>
-                </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" class="social-icon" target="_blank" title="LinkedIn">in</a>
+                <a href="https://github.com/jaefer-hub" class="social-icon" target="_blank" title="GitHub">gh</a>
+                <a href="https://language-hub--jaefer01.replit.app/" class="social-icon" target="_blank" title="Portfolio">🌐</a>
             </div>
-        </section>
-
-        <!-- ==================== DOWNLOADABLE RESOURCES ==================== -->
-        <section class="section-padding py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="fade-in text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Downloadable Resources</h2>
-                    <p class="mt-4 text-lg text-slate-600">Get my CV, service packages, and sample quality rubrics.</p>
-                    <div class="mt-8 flex flex-wrap justify-center gap-4">
-                        <a href="#" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow" onclick="alert('CV download triggered')">
-                            <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Download CV (PDF)
-                        </a>
-                        <a href="#" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow" onclick="alert('Service packages download triggered')">
-                            <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Service Packages
-                        </a>
-                        <a href="#" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow" onclick="alert('QA rubric download triggered')">
-                            <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Sample QA Rubric
-                        </a>
-                    </div>
-                </div>
+            <div class="copyright">
+                © 2026 Jaefer Ibrahim. All rights reserved.
             </div>
-        </section>
-
-        <!-- ==================== CONTACT SECTION ==================== -->
-        <section id="contact" class="section-padding bg-white py-20 sm:py-28">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="grid gap-12 lg:grid-cols-2">
-                    <div class="fade-in-left">
-                        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Let’s build reliable language pipelines together</h2>
-                        <p class="mt-4 text-lg leading-relaxed text-slate-600">Reach out to discuss how I can support your AI language projects or request a custom workflow evaluation. I usually respond within a few hours.</p>
-                        <div class="mt-6 flex items-center gap-3 text-sm text-slate-600">
-                            <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            <span>contact.jaefer@gmail.com</span>
-                        </div>
-                        <div class="mt-3 flex items-center gap-3 text-sm text-slate-600">
-                            <svg class="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <span>Typically respond within 24 hours</span>
-                        </div>
-                        <div class="mt-8 flex gap-3">
-                            <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-all hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200" aria-label="LinkedIn">
-                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                            </a>
-                            <a href="https://wa.me/201103912522" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-all hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200" aria-label="WhatsApp">
-                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            </a>
-                            <a href="mailto:contact.jaefer@gmail.com" class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-all hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200" aria-label="Email">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            </a>
-                            <a href="#" class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition-all hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300" aria-label="GitHub">
-                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <form id="contactForm" class="fade-in-right space-y-5 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                        <div>
-                            <label for="name" class="mb-2 block text-sm font-medium text-slate-700">Name *</label>
-                            <input type="text" id="name" name="user_name" placeholder="Your full name" required class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition">
-                        </div>
-                        <div>
-                            <label for="email" class="mb-2 block text-sm font-medium text-slate-700">Email *</label>
-                            <input type="email" id="email" name="user_email" placeholder="you@company.com" required class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition">
-                        </div>
-                        <div>
-                            <label for="subject" class="mb-2 block text-sm font-medium text-slate-700">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Project inquiry" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition">
-                        </div>
-                        <div>
-                            <label for="service_type" class="mb-2 block text-sm font-medium text-slate-700">Service Type</label>
-                            <select id="service_type" name="service_type" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition">
-                                <option value="">Select a service...</option>
-                                <option value="AI Linguistic Evaluation">AI Linguistic Evaluation</option>
-                                <option value="Localization & MTPE">Localization & MTPE</option>
-                                <option value="Translation & Proofreading">Translation & Proofreading</option>
-                                <option value="Transcript Cleanup & QA">Transcript Cleanup & QA</option>
-                                <option value="NLP Data Annotation">NLP Data Annotation</option>
-                                <option value="Conversational AI Review">Conversational AI Review</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="message" class="mb-2 block text-sm font-medium text-slate-700">Message *</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..." required class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 transition resize-none"></textarea>
-                        </div>
-                        <button type="submit" id="submitBtn" class="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Send Message</button>
-                        <p id="formStatus" class="text-center text-sm hidden"></p>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="border-t border-slate-200 bg-white py-8">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm text-slate-500">&copy; <span id="currentYear"></span> Jaefer Ibrahim. Human quality for AI‑generated language. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
-    <a href="https://wa.me/201103912522" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg pulse-ring transition-all hover:bg-emerald-600 hover:scale-105 float-bounce" aria-label="Chat on WhatsApp">
-        <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-    </a>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/201103912522" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
 
-    <!-- ==================== SCRIPTS ==================== -->
+    <!-- EmailJS Form Handler -->
     <script>
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Animate dashboard bars on load
-        window.addEventListener('load', () => {
-            const bars = document.querySelectorAll('.animated-bar');
-            const heights = [50, 72, 38, 64, 46, 58];
-            bars.forEach((bar, i) => {
-                setTimeout(() => {
-                    bar.style.height = heights[i] + 'px';
-                }, 200 + i * 100);
-            });
-        });
-
-        // EmailJS Contact Form using your service_xdp150l template
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formStatus = document.getElementById('formStatus');
-
-        contactForm.addEventListener('submit', async function(e) {
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            formStatus.classList.add('hidden');
-
+            
+            const statusDiv = document.getElementById('form-status');
+            statusDiv.textContent = 'Sending...';
+            statusDiv.className = 'form-status';
+            
             const templateParams = {
-                user_name: document.getElementById('name').value.trim(),
-                user_email: document.getElementById('email').value.trim(),
-                subject: document.getElementById('subject').value.trim(),
-                service_type: document.getElementById('service_type').value,
-                message: document.getElementById('message').value.trim(),
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                to_email: 'contact.jaefer@gmail.com'
             };
-
-            try {
-                const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        service_id: 'service_xdp150l',
-                        template_id: 'template_s01uaxn',
-                        user_id: 'iQ58QxcBqvIi-bTRA',
-                        template_params: templateParams,
-                    }),
+            
+            emailjs.send('service_xdp150l', 'template_s01uaxn', templateParams)
+                .then(function(response) {
+                    statusDiv.textContent = 'Message sent successfully! I will respond within 48 hours.';
+                    statusDiv.className = 'form-status success';
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    statusDiv.textContent = 'Failed to send. Please email me directly at contact.jaefer@gmail.com';
+                    statusDiv.className = 'form-status error';
+                    console.error('EmailJS error:', error);
                 });
-
-                if (response.ok) {
-                    formStatus.textContent = '✓ Message sent successfully! I’ll get back to you within 24 hours.';
-                    formStatus.className = 'text-center text-sm text-emerald-600 font-medium mt-3';
-                    formStatus.classList.remove('hidden');
-                    contactForm.reset();
-                } else {
-                    const errorText = await response.text();
-                    console.error('EmailJS error:', errorText);
-                    throw new Error('Failed to send');
-                }
-            } catch (error) {
-                console.error(error);
-                formStatus.textContent = '⚠ Something went wrong. Please email me directly at contact.jaefer@gmail.com';
-                formStatus.className = 'text-center text-sm text-amber-600 font-medium mt-3';
-                formStatus.classList.remove('hidden');
-            }
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-        });
-
-        // Smooth scroll for all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
         });
     </script>
+
 </body>
 </html>
