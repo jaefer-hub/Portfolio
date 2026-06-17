@@ -1,894 +1,923 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaefer Ibrahim — Multilingual AI & Language Services Specialist</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #1e293b;
-            --blue: #3b82f6;
-            --blue-light: #dbeafe;
-            --gray: #64748b;
-            --gray-light: #f8fafc;
-            --white: #ffffff;
-            --border: #e2e8f0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            color: #334155;
-            line-height: 1.6;
-            background: var(--white);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 16px 0;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 18px;
-            color: var(--navy);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray);
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--navy);
-        }
-
-        .mobile-menu {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero */
-        .hero {
-            padding: 140px 24px 100px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--gray-light) 0%, var(--white) 100%);
-        }
-
-        .hero-label {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 20px;
-            padding: 8px 16px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: var(--white);
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--navy);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-sub {
-            font-size: 20px;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--navy);
-            color: var(--white);
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: #334155;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30,41,59,0.15);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            background: var(--white);
-            color: var(--navy);
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--gray-light);
-            border-color: var(--navy);
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-header h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 12px;
-        }
-
-        .section-header p {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .about-text h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 16px;
-        }
-
-        .about-text p {
-            font-size: 16px;
-            color: #475569;
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .about-hook {
-            font-size: 18px;
-            color: var(--navy);
-            font-weight: 600;
-            padding-left: 20px;
-            border-left: 3px solid var(--blue);
-            margin: 24px 0;
-        }
-
-        .languages {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .lang-card {
-            background: var(--gray-light);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .lang-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 4px;
-        }
-
-        .lang-card p {
-            font-size: 13px;
-            color: var(--gray);
-        }
-
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 32px;
-            border-radius: 16px;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .service-card:hover {
-            border-color: var(--blue);
-            box-shadow: 0 8px 30px rgba(59,130,246,0.08);
-            transform: translateY(-4px);
-        }
-
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--blue-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        .service-tag {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--blue);
-            margin-top: 12px;
-        }
-
-        /* Process */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .step {
-            text-align: center;
-            padding: 32px 20px;
-            background: var(--gray-light);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--navy);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            margin: 0 auto 16px;
-        }
-
-        .step h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .step p {
-            font-size: 14px;
-            color: var(--gray);
-            line-height: 1.5;
-        }
-
-        /* Contact */
-        .contact-section {
-            background: var(--gray-light);
-            border-radius: 24px;
-            padding: 64px 48px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: start;
-        }
-
-        .contact-form h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .contact-form > p {
-            color: var(--gray);
-            margin-bottom: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--blue);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-status {
-            margin-top: 12px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .form-status.success {
-            color: #059669;
-        }
-
-        .form-status.error {
-            color: #dc2626;
-        }
-
-        .contact-direct h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            padding: 16px;
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s;
-        }
-
-        .contact-item:hover {
-            border-color: var(--blue);
-            box-shadow: 0 2px 8px rgba(59,130,246,0.08);
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--blue-light);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .contact-item div strong {
-            display: block;
-            font-size: 14px;
-            color: var(--navy);
-        }
-
-        .contact-item div span {
-            font-size: 13px;
-            color: var(--gray);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--navy);
-            color: #94a3b8;
-            padding: 48px 24px 32px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        footer h3 {
-            color: var(--white);
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        footer > p {
-            color: #cbd5e1;
-            margin-bottom: 24px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-
-        .social-icon:hover {
-            background: var(--blue);
-            transform: translateY(-2px);
-        }
-
-        .copyright {
-            font-size: 13px;
-            color: #64748b;
-            padding-top: 24px;
-            border-top: 1px solid #334155;
-        }
-
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
-            transition: all 0.3s;
-            z-index: 999;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero-sub {
-                font-size: 18px;
-            }
-
-            .about-grid,
-            .services-grid,
-            .process-steps,
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-section {
-                padding: 40px 24px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-                text-align: center;
-            }
-        }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Fade in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section {
-            animation: fadeInUp 0.6s ease-out;
-        }
-    </style>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("iQ58QxcBqvIi-bTRA");
-        })();
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaefer Jemai | Linguist & AI Specialist</title>
+  <meta name="description" content="Professional Linguist, AI Data Trainer, and E-commerce Strategist specializing in English, Arabic, and Tigrinya." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00bfff',
+            charcoal: '#0d0f14',
+            card: '#111318',
+            silver: '#dde4f0',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            arabic: ['Tajawal', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0d0f14;
+      color: #dde4f0;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+    }
+    html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0d0f14; }
+    ::-webkit-scrollbar-thumb { background: #00bfff44; border-radius: 3px; }
+
+    /* ── Selection ── */
+    ::selection { background: #00bfff33; color: #00bfff; }
+
+    /* ── Variables ── */
+    :root {
+      --neon: #00bfff;
+      --neon-dim: rgba(0,191,255,0.15);
+      --neon-glow: 0 0 20px rgba(0,191,255,0.4);
+      --neon-glow-lg: 0 0 40px rgba(0,191,255,0.6);
+      --bg: #0d0f14;
+      --card: #111318;
+      --card2: #14171f;
+      --border: rgba(255,255,255,0.07);
+      --silver: #dde4f0;
+      --muted: #8a96b0;
+    }
+
+    /* ── Utility classes ── */
+    .neon { color: var(--neon); }
+    .neon-bg { background-color: var(--neon); }
+    .neon-border { border-color: rgba(0,191,255,0.3); }
+    .glass {
+      background: rgba(17,19,24,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+    }
+    .glow-text { text-shadow: 0 0 30px rgba(0,191,255,0.5); }
+
+    /* ── Grid pattern ── */
+    .grid-pattern {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(0,191,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,191,255,0.05) 1px, transparent 1px);
+    }
+
+    /* ── Radial glow ── */
+    .radial-glow {
+      background: radial-gradient(circle at center, rgba(0,191,255,0.12) 0%, transparent 70%);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes bounce-subtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,191,255,0.3); }
+      50% { box-shadow: 0 0 25px rgba(0,191,255,0.7); }
+    }
+
+    .animate-fadeinup { animation: fadeInUp 0.7s ease forwards; }
+    .animate-fadein   { animation: fadeIn 0.7s ease forwards; }
+    .animate-slidedown { animation: slideDown 0.5s ease forwards; }
+    .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+    .animate-bounce-subtle { animation: bounce-subtle 1.5s ease-in-out infinite; }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* ── Navbar ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(13,15,20,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    /* ── Nav link hover ── */
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      padding: 4px 0;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--neon);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    .nav-link:hover { color: var(--silver); }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* ── Lang toggle ── */
+    .lang-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 9999px;
+      border: 1px solid rgba(0,191,255,0.3);
+      background: rgba(0,191,255,0.08);
+      color: var(--neon);
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lang-btn:hover { background: rgba(0,191,255,0.18); }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(13,15,20,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      z-index: 99;
+    }
+    #mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
+    .hamburger { cursor: pointer; background: none; border: none; color: var(--silver); }
+
+    /* ── Section ── */
+    section { padding: 96px 0; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .card:hover {
+      border-color: rgba(0,191,255,0.25);
+      box-shadow: 0 0 30px rgba(0,191,255,0.08);
+      transform: translateY(-4px);
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-block;
+      padding: 4px 12px; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 600;
+      background: rgba(0,191,255,0.1);
+      color: var(--neon);
+      border: 1px solid rgba(0,191,255,0.2);
+    }
+
+    /* ── CTA Button ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; border-radius: 14px;
+      background: var(--neon); color: #0d0f14;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0,191,255,0.4);
+      transition: box-shadow 0.3s, transform 0.3s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 35px rgba(0,191,255,0.7);
+      transform: translateY(-2px);
+    }
+
+    /* ── LinkedIn button ── */
+    .btn-linkedin {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 22px; border-radius: 12px;
+      background: rgba(10,102,194,0.12);
+      border: 1px solid rgba(10,102,194,0.35);
+      color: #4a9edd;
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-linkedin:hover {
+      background: #0A66C2;
+      color: #fff;
+      box-shadow: 0 0 22px rgba(10,102,194,0.55);
+      transform: scale(1.04);
+    }
+
+    /* ── Icon circle ── */
+    .icon-circle {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: rgba(0,191,255,0.08);
+      border: 1px solid rgba(0,191,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .card:hover .icon-circle {
+      background: rgba(0,191,255,0.18);
+      box-shadow: 0 0 20px rgba(0,191,255,0.3);
+      transform: scale(1.1);
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.delay-1 { transition-delay: 0.1s; }
+    .reveal.delay-2 { transition-delay: 0.2s; }
+    .reveal.delay-3 { transition-delay: 0.3s; }
+    .reveal.delay-4 { transition-delay: 0.4s; }
+
+    /* ── Form inputs ── */
+    .form-input {
+      width: 100%; padding: 13px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: var(--silver);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-input::placeholder { color: rgba(138,150,176,0.5); }
+    .form-input:focus {
+      border-color: rgba(0,191,255,0.5);
+      box-shadow: 0 0 0 3px rgba(0,191,255,0.1);
+    }
+    html[dir="rtl"] .form-input { text-align: right; }
+
+    /* ── Social icon btn ── */
+    .social-btn {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(10,102,194,0.3);
+      background: rgba(10,102,194,0.08);
+      color: #4a9edd;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .social-btn:hover {
+      background: #0A66C2; color: #fff;
+      box-shadow: 0 0 24px rgba(10,102,194,0.65);
+      transform: scale(1.1);
+    }
+
+    /* ── Download CV ── */
+    .btn-cv {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 22px; border-radius: 9999px;
+      border: 1px solid rgba(0,191,255,0.3);
+      background: rgba(0,191,255,0.08);
+      color: var(--neon);
+      font-size: 0.85rem; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-cv:hover { background: rgba(0,191,255,0.18); }
+
+    /* ── Avatar ring ── */
+    .avatar-ring {
+      background: linear-gradient(135deg, var(--neon), rgba(0,191,255,0.1));
+      border-radius: 50%; padding: 6px;
+      display: inline-block;
+    }
+    .avatar-inner {
+      border-radius: 50%; overflow: hidden;
+      background: var(--card);
+      border: 4px solid var(--bg);
+    }
+
+    /* ── Language badge ── */
+    .lang-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 9999px;
+      font-size: 0.82rem; font-weight: 600;
+    }
+
+    /* ── Alert ── */
+    .form-success {
+      display: none; text-align: center; padding: 40px 20px;
+      flex-direction: column; align-items: center; gap: 16px;
+    }
+    .form-success.show { display: flex; }
+
+    /* ── Neon divider ── */
+    .neon-divider {
+      width: 80px; height: 4px;
+      background: var(--neon);
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(0,191,255,0.5);
+      margin: 0 0 32px 0;
+    }
+    html[dir="rtl"] .neon-divider { margin: 0 0 32px auto; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .desktop-nav { display: none; }
+      .hero-h1 { font-size: 2.4rem !important; }
+      .hero-sub { font-size: 1rem !important; }
+    }
+    @media (min-width: 769px) {
+      .hamburger { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Jaefer Ibrahim</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu">☰</button>
-        </div>
-    </nav>
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav id="navbar">
+  <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-label">Multilingual AI & Language Services</div>
-        <h1>AI Language Operations.<br>Human Judgment at Scale.</h1>
-        <p class="hero-sub">I help AI companies and global teams improve multilingual content quality through structured linguistic evaluation, localization QA, and AI-generated content review workflows.</p>
-        <div class="hero-buttons">
-            <a href="#services" class="btn-primary">Explore Services</a>
-            <a href="#contact" class="btn-secondary">Get In Touch</a>
-        </div>
-    </section>
+    <!-- Logo -->
+    <a href="#home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#00bfff,#0070ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#0d0f14;font-size:0.95rem;">JJ</div>
+      <span style="font-weight:700;font-size:1.05rem;color:#dde4f0;" id="logo-text">Jaefer Jemai</span>
+    </a>
 
-    <!-- About -->
-    <section id="about">
-        <div class="about-grid">
-            <div class="about-text">
-                <h3>Where Linguistics Meets Artificial Intelligence</h3>
-                <p>With a BA in Translation and Linguistics and native fluency in Arabic and Tigrinya, I evaluate AI-generated responses where automated metrics fall short — catching tonal drift, cultural misalignment, and safety edge cases that models miss.</p>
-                <div class="about-hook">I do not write prompts. I judge what comes out of them.</div>
-                <p>Based in the MENA region, I work remotely with AI startups, localization agencies, and enterprise teams across US, European, and Middle Eastern time zones.</p>
-            </div>
-            <div class="languages">
-                <div class="lang-card">
-                    <h4>Arabic</h4>
-                    <p>Native fluency<br>MSA & regional dialects</p>
-                </div>
-                <div class="lang-card">
-                    <h4>English</h4>
-                    <p>Professional proficiency<br>Technical & conversational</p>
-                </div>
-                <div class="lang-card">
-                    <h4>Tigrinya</h4>
-                    <p>Native fluency<br>East African context</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Desktop nav -->
+    <div class="desktop-nav" style="display:flex;align-items:center;gap:36px;">
+      <a href="#home"     class="nav-link" data-en="Home"       data-ar="الرئيسية">Home</a>
+      <a href="#services" class="nav-link" data-en="Services"   data-ar="الخدمات">Services</a>
+      <a href="#projects" class="nav-link" data-en="Experience" data-ar="الخبرات">Experience</a>
+      <a href="#contact"  class="nav-link" data-en="Contact"    data-ar="تواصل معي">Contact</a>
+    </div>
 
-    <!-- Services -->
-    <section id="services">
-        <div class="section-header">
-            <h2>Specializations</h2>
-            <p>Six focused service areas. Click to explore each portfolio.</p>
-        </div>
-        <div class="services-grid">
-            <a href="evaluator.html" class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>AI Linguistic Evaluator</h3>
-                <p>Structured scoring of LLM responses for accuracy, safety, and cultural fit across Arabic, English, and Tigrinya.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-            <a href="mtpe.html" class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>AI Localization & MTPE</h3>
-                <p>Machine translation post-editing and localization QA for SaaS, e-commerce, and enterprise content.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-            <a href="annotation.html" class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>NLP Data Annotation</h3>
-                <p>Intent labeling, NER, sentiment analysis, and dataset validation for ML training pipelines.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-            <a href="transcription.html" class="service-card">
-                <div class="service-icon">🎧</div>
-                <h3>Transcription QA</h3>
-                <p>AI transcript cleanup, speaker diarization QA, and timestamp alignment for media and research.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-            <a href="arabic-qa.html" class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Arabic Localization QA</h3>
-                <p>MENA-market UI review, RTL testing, and cultural adaptation for apps, websites, and e-commerce.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-            <a href="translation.html" class="service-card">
-                <div class="service-icon">✍️</div>
-                <h3>Translation & Proofreading</h3>
-                <p>Professional translation and editorial proofreading for business, academic, and publishing content.</p>
-                <span class="service-tag">View Portfolio →</span>
-            </a>
-        </div>
-    </section>
+    <!-- Lang toggle + hamburger -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="lang-label">عربي</span>
+      </button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
 
-    <!-- Process -->
-    <section id="process">
-        <div class="section-header">
-            <h2>How I Work</h2>
-            <p>A consistent, documented methodology across every engagement.</p>
-        </div>
-        <div class="process-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h4>Discovery</h4>
-                <p>Understand your model, market, quality thresholds, and risk boundaries before any evaluation begins.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h4>Execution</h4>
-                <p>Structured evaluation, annotation, or QA against agreed rubrics with documented reasoning at every step.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h4>Reporting</h4>
-                <p>Surface patterns, not just errors. Deliver actionable findings your team can use immediately.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h4>Iteration</h4>
-                <p>Refine criteria based on edge cases. Build systems that improve with every project cycle.</p>
-            </div>
-        </div>
-    </section>
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <a href="#home"     class="nav-link" onclick="closeMenu()" data-en="Home"       data-ar="الرئيسية">Home</a>
+  <a href="#services" class="nav-link" onclick="closeMenu()" data-en="Services"   data-ar="الخدمات">Services</a>
+  <a href="#projects" class="nav-link" onclick="closeMenu()" data-en="Experience" data-ar="الخبرات">Experience</a>
+  <a href="#contact"  class="nav-link" onclick="closeMenu()" data-en="Contact"    data-ar="تواصل معي">Contact</a>
+</div>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="contact-section">
-            <div class="contact-form">
-                <h3>Send a Message</h3>
-                <p>Available for project-based and retainer engagements. I respond within 48 hours.</p>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required placeholder="Project inquiry">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                    <div id="form-status" class="form-status"></div>
-                </form>
-            </div>
-            <div class="contact-direct">
-                <h3>Or Reach Me Directly</h3>
-                <a href="mailto:contact.jaefer@gmail.com" class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div>
-                        <strong>Email</strong>
-                        <span>contact.jaefer@gmail.com</span>
-                    </div>
-                </a>
-                <a href="https://wa.me/201103912522" class="contact-item" target="_blank">
-                    <div class="contact-icon">📱</div>
-                    <div>
-                        <strong>WhatsApp</strong>
-                        <span>+201103912522</span>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" class="contact-item" target="_blank">
-                    <div class="contact-icon">💼</div>
-                    <div>
-                        <strong>LinkedIn</strong>
-                        <span>linkedin.com/in/jaefer-ibrahim-b1977b378</span>
-                    </div>
-                </a>
-                <a href="https://language-hub--jaefer01.replit.app/" class="contact-item" target="_blank">
-                    <div class="contact-icon">🌐</div>
-                    <div>
-                        <strong>Portfolio</strong>
-                        <span>language-hub--jaefer01.replit.app</span>
-                    </div>
-                </a>
-            </div>
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section id="home" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:80px;position:relative;overflow:hidden;">
+
+  <!-- Background layers -->
+  <div style="position:absolute;inset:0;" class="grid-pattern"></div>
+  <div style="position:absolute;inset:0;" class="radial-glow"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0d0f14 0%,transparent 20%,transparent 80%,#0d0f14 100%);"></div>
+
+  <div style="position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px;text-align:center;">
+
+    <!-- Badge -->
+    <div class="animate-fadein" style="margin-bottom:28px;">
+      <span style="display:inline-block;padding:8px 20px;border-radius:9999px;border:1px solid rgba(0,191,255,0.3);background:rgba(0,191,255,0.08);color:var(--neon);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;"
+            data-en="Experience / AI / Linguistics" data-ar="الخبرات / الذكاء الاصطناعي / اللغويات">
+        Experience / AI / Linguistics
+      </span>
+    </div>
+
+    <!-- Headline EN -->
+    <h1 class="hero-h1 animate-fadeinup delay-1 en-content" style="font-size:3.8rem;font-weight:800;line-height:1.15;margin-bottom:28px;opacity:0;">
+      Jaefer Jemai:<br/>
+      <span style="background:linear-gradient(90deg,#00bfff,#60e0ff,#00bfff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="glow-text">Bridging Human Language</span>
+      <span style="color:#fff;"> and<br/>Machine Intelligence.</span>
+    </h1>
+    <!-- Headline AR -->
+    <h1 class="hero-h1 animate-fadeinup delay-1 ar-content" style="font-size:3rem;font-weight:800;line-height:1.3;margin-bottom:28px;display:none;opacity:0;">
+      جعفر جمعي:<br/>
+      <span style="background:linear-gradient(90deg,#00bfff,#60e0ff,#00bfff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="glow-text">نقطة التقاء اللغة الإنسانية</span>
+      <span style="color:#fff;"> والذكاء الاصطناعي.</span>
+    </h1>
+
+    <!-- Sub EN -->
+    <p class="hero-sub animate-fadeinup delay-2 en-content" style="font-size:1.15rem;color:var(--muted);max-width:680px;margin:0 auto 48px;line-height:1.7;opacity:0;">
+      Professional Linguist, AI Data Trainer, and E-commerce Strategist specializing in English, Arabic, and Tigrinya.
+    </p>
+    <!-- Sub AR -->
+    <p class="hero-sub animate-fadeinup delay-2 ar-content" style="font-size:1.1rem;color:var(--muted);max-width:680px;margin:0 auto 48px;line-height:1.9;display:none;opacity:0;">
+      لغوي محترف، ومدرّب بيانات ذكاء اصطناعي، واستراتيجي تجارة إلكترونية متخصص في الإنجليزية والعربية والتيغرينية.
+    </p>
+
+    <!-- CTA -->
+    <div class="animate-fadeinup delay-3" style="opacity:0;">
+      <a href="#projects" class="btn-primary">
+        <span class="en-content">View My Work</span>
+        <span class="ar-content" style="display:none;">استعرض أعمالي</span>
+        <span class="animate-bounce-subtle" style="display:inline-block;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
+<section id="projects" style="background:rgba(17,19,24,0.5);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:64px;">
+      <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
+        <span class="en-content">Project Portfolio</span>
+        <span class="ar-content" style="display:none;">معرض الأعمال</span>
+      </h2>
+      <p style="color:var(--muted);font-size:1.05rem;max-width:560px;margin:0 auto;">
+        <span class="en-content">Highlighting key milestones at the intersection of linguistics, AI, and digital strategy.</span>
+        <span class="ar-content" style="display:none;">تسليط الضوء على الإنجازات الرئيسية في تقاطع اللغويات والذكاء الاصطناعي والاستراتيجية الرقمية.</span>
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
+
+      <!-- Card 1: AI Training -->
+      <div class="card reveal delay-1">
+        <div class="icon-circle" style="margin-bottom:24px;">
+          <!-- Neural network SVG -->
+          <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="#00bfff" stroke-width="1.8">
+            <circle cx="6" cy="12" r="4"/><circle cx="6" cy="24" r="4"/><circle cx="6" cy="36" r="4"/>
+            <circle cx="24" cy="8" r="4"/><circle cx="24" cy="20" r="4"/><circle cx="24" cy="32" r="4"/><circle cx="24" cy="42" r="4"/>
+            <circle cx="42" cy="16" r="4"/><circle cx="42" cy="32" r="4"/>
+            <line x1="10" y1="12" x2="20" y2="8" opacity=".7"/><line x1="10" y1="12" x2="20" y2="20" opacity=".7"/>
+            <line x1="10" y1="24" x2="20" y2="20" opacity=".7"/><line x1="10" y1="24" x2="20" y2="32" opacity=".7"/>
+            <line x1="10" y1="36" x2="20" y2="32" opacity=".7"/><line x1="10" y1="36" x2="20" y2="42" opacity=".7"/>
+            <line x1="28" y1="8"  x2="38" y2="16" opacity=".7"/><line x1="28" y1="20" x2="38" y2="16" opacity=".7"/>
+            <line x1="28" y1="32" x2="38" y2="32" opacity=".7"/><line x1="28" y1="42" x2="38" y2="32" opacity=".7"/>
+          </svg>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <h3>Jaefer Ibrahim</h3>
-            <p>Multilingual AI & Language Services Specialist</p>
-            <div class="footer-links">
-                <a href="evaluator.html">AI Evaluation</a>
-                <a href="mtpe.html">MTPE</a>
-                <a href="annotation.html">NLP Annotation</a>
-                <a href="transcription.html">Transcription QA</a>
-                <a href="arabic-qa.html">Arabic QA</a>
-                <a href="translation.html">Translation</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" class="social-icon" target="_blank" title="LinkedIn">in</a>
-                <a href="https://github.com/jaefer-hub" class="social-icon" target="_blank" title="GitHub">gh</a>
-                <a href="https://language-hub--jaefer01.replit.app/" class="social-icon" target="_blank" title="Portfolio">🌐</a>
-            </div>
-            <div class="copyright">
-                © 2026 Jaefer Ibrahim. All rights reserved.
-            </div>
+        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">AI Language Training (RLHF)</span>
+          <span class="ar-content" style="display:none;">تدريب نماذج الذكاء الاصطناعي (RLHF)</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
+          <span class="en-content">Worked with global AI leaders SME Careers and Outlier to refine LLM responses through RLHF. Specialized in Supervised Fine-Tuning (SFT) for Arabic-English bilingual models.</span>
+          <span class="ar-content" style="display:none;">عملت مع شركات رائدة مثل SME Careers وOutlier لتحسين استجابات النماذج اللغوية الكبيرة عبر التعزيز بالتغذية الراجعة البشرية، مع تخصص في الضبط الدقيق الخاضع للإشراف للنماذج العربية-الإنجليزية.</span>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge">RLHF</span><span class="badge">NLP</span><span class="badge">LLM</span>
         </div>
-    </footer>
+      </div>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/201103912522" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+      <!-- Card 2: Web Management -->
+      <div class="card reveal delay-2">
+        <div class="icon-circle" style="margin-bottom:24px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">Badamay.co Web Management</span>
+          <span class="ar-content" style="display:none;">إدارة موقع Badamay.co</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
+          <span class="en-content">Delivered full SEO optimization, WordPress configuration, and Google Search Console integration for a professional digital commerce platform.</span>
+          <span class="ar-content" style="display:none;">قدّمت تحسيناً شاملاً لمحركات البحث، وضبطاً لووردبريس، وتكاملاً مع Google Search Console لمنصة تجارة رقمية احترافية.</span>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge">SEO</span><span class="badge">WordPress</span><span class="badge">Analytics</span>
+        </div>
+      </div>
 
-    <!-- EmailJS Form Handler -->
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const statusDiv = document.getElementById('form-status');
-            statusDiv.textContent = 'Sending...';
-            statusDiv.className = 'form-status';
-            
-            const templateParams = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                to_email: 'contact.jaefer@gmail.com'
-            };
-            
-            emailjs.send('service_xdp150l', 'template_s01uaxn', templateParams)
-                .then(function(response) {
-                    statusDiv.textContent = 'Message sent successfully! I will respond within 48 hours.';
-                    statusDiv.className = 'form-status success';
-                    document.getElementById('contact-form').reset();
-                }, function(error) {
-                    statusDiv.textContent = 'Failed to send. Please email me directly at contact.jaefer@gmail.com';
-                    statusDiv.className = 'form-status error';
-                    console.error('EmailJS error:', error);
-                });
-        });
-    </script>
+      <!-- Card 3: Revision -->
+      <div class="card reveal delay-3">
+        <div class="icon-circle" style="margin-bottom:24px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><path d="M5 8l4 4-4 4"/><path d="M12 16h7"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
+        </div>
+        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">Multilingual Revision Specialist</span>
+          <span class="ar-content" style="display:none;">أخصائي مراجعة متعدد اللغات</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
+          <span class="en-content">Expert linguistic QA and revision for Software and IT documentation in Tigrinya and Arabic, ensuring accuracy and cultural appropriateness.</span>
+          <span class="ar-content" style="display:none;">مراجعة لغوية متخصصة وضمان جودة لوثائق البرمجيات وتقنية المعلومات باللغتين التيغرينية والعربية، مع ضمان الدقة والملاءمة الثقافية.</span>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge">Tigrinya</span><span class="badge">Arabic</span><span class="badge">QA</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Automation -->
+      <div class="card reveal delay-4">
+        <div class="icon-circle" style="margin-bottom:24px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">Digital Business Automation</span>
+          <span class="ar-content" style="display:none;">أتمتة الأعمال الرقمية</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
+          <span class="en-content">Developed automated Excel-based product management systems and workflows for e-commerce and dropshipping operations, optimizing efficiency.</span>
+          <span class="ar-content" style="display:none;">طوّرت أنظمة إدارة المنتجات الآلية القائمة على Excel وسير عمل محسّنة لعمليات التجارة الإلكترونية والدروبشيبينج.</span>
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="badge">Excel</span><span class="badge">Automation</span><span class="badge">E-commerce</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SERVICES ═══════════════════════════════ -->
+<section id="services">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:64px;">
+      <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
+        <span class="en-content">Services</span>
+        <span class="ar-content" style="display:none;">الخدمات</span>
+      </h2>
+      <p style="color:var(--muted);font-size:1.05rem;max-width:560px;margin:0 auto;">
+        <span class="en-content">Specialized offerings tailored for the modern digital and AI landscape.</span>
+        <span class="ar-content" style="display:none;">عروض متخصصة مصممة للمشهد الرقمي والذكاء الاصطناعي الحديث.</span>
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
+
+      <!-- Service 1 -->
+      <div class="card reveal delay-1" style="text-align:center;">
+        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">Linguistic Services</span>
+          <span class="ar-content" style="display:none;">الخدمات اللغوية</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
+          <span class="en-content">Professional translation and localization ensuring cultural nuance and accuracy across English, Arabic, and Tigrinya.</span>
+          <span class="ar-content" style="display:none;">الترجمة والتوطين المحترف مع ضمان الفروق الثقافية والدقة عبر الإنجليزية والعربية والتيغرينية.</span>
+        </p>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="card reveal delay-2" style="text-align:center;">
+        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">AI Training</span>
+          <span class="ar-content" style="display:none;">تدريب الذكاء الاصطناعي</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
+          <span class="en-content">Data annotation, prompt engineering, and linguistic RLHF to elevate and refine Large Language Models.</span>
+          <span class="ar-content" style="display:none;">التعليق على البيانات وهندسة الأوامر والتعزيز بالتغذية الراجعة البشرية (RLHF) للارتقاء بنماذج اللغة الكبيرة.</span>
+        </p>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="card reveal delay-3" style="text-align:center;">
+        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
+          <span class="en-content">Web &amp; SEO</span>
+          <span class="ar-content" style="display:none;">الويب وتحسين محركات البحث</span>
+        </h3>
+        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
+          <span class="en-content">Comprehensive website management, digital strategy, and search engine optimization for modern platforms.</span>
+          <span class="ar-content" style="display:none;">إدارة شاملة للمواقع، واستراتيجية رقمية، وتحسين محركات البحث للمنصات الحديثة.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about" style="background:rgba(17,19,24,0.5);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:rgba(0,191,255,0.07);border-radius:50%;filter:blur(100px);pointer-events:none;"></div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1;">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:60px;">
+
+      <!-- Avatar -->
+      <div class="reveal" style="flex:0 0 auto;display:flex;justify-content:center;width:100%;max-width:320px;margin:0 auto;">
+        <div style="position:relative;">
+          <div class="avatar-ring">
+            <div class="avatar-inner" style="width:240px;height:240px;">
+              <!-- Placeholder avatar — a gradient circle with initials -->
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d1f3c,#0a2040);display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:800;color:var(--neon);">JJ</div>
+            </div>
+          </div>
+          <!-- Spinning ring -->
+          <div class="animate-spin-slow" style="position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(0,191,255,0.2);pointer-events:none;"></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal delay-2" style="flex:1;min-width:280px;">
+        <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
+          <span class="en-content">About Me</span>
+          <span class="ar-content" style="display:none;">نبذة عني</span>
+        </h2>
+        <div class="neon-divider"></div>
+        <p style="color:var(--muted);font-size:1.05rem;line-height:1.8;margin-bottom:28px;">
+          <span class="en-content">I hold a Bachelor of Arts degree and am a <strong style="color:var(--silver);">native Arabic speaker</strong> with specialized professional proficiency in <strong style="color:var(--silver);">Tigrinya and English</strong>. I bring extensive experience working with major global agencies including Translated.com and VerboLabs. Based in Giza, Egypt, I specialize in remote collaboration on international projects, bridging the gap between deep human language expertise and cutting-edge AI development.</span>
+          <span class="ar-content" style="display:none;">أحمل درجة البكالوريوس في الآداب، وأنا <strong style="color:var(--silver);">ناطق أصلي باللغة العربية</strong> مع كفاءة مهنية متخصصة في <strong style="color:var(--silver);">التيغرينية والإنجليزية</strong>. لدي خبرة واسعة في العمل مع وكالات عالمية كبرى مثل Translated.com وVerboLabs. أعمل من الجيزة، مصر، متخصصاً في التعاون عن بُعد مع المشاريع الدولية.</span>
+        </p>
+
+        <!-- Language badges -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">
+          <div class="en-content" style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span class="lang-badge" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;">🌿 Arabic · Native</span>
+            <span class="lang-badge" style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:#00bfff;">⚡ Tigrinya · Professional</span>
+            <span class="lang-badge" style="background:rgba(125,211,252,0.1);border:1px solid rgba(125,211,252,0.3);color:#7dd3fc;">✦ English · Professional</span>
+          </div>
+          <div class="ar-content" style="display:none;flex-wrap:wrap;gap:10px;">
+            <span class="lang-badge" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;">🌿 العربية · لغة أم</span>
+            <span class="lang-badge" style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:#00bfff;">⚡ التيغرينية · مهني</span>
+            <span class="lang-badge" style="background:rgba(125,211,252,0.1);border:1px solid rgba(125,211,252,0.3);color:#7dd3fc;">✦ الإنجليزية · مهني</span>
+          </div>
+        </div>
+
+        <!-- LinkedIn CTA -->
+        <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span class="en-content">Connect on LinkedIn — Localization &amp; AI Opportunities</span>
+          <span class="ar-content" style="display:none;">تواصل معي على LinkedIn لمناقشة مشاريع التوطين وفرص تدريب الذكاء الاصطناعي</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px;align-items:start;">
+
+      <!-- Left info -->
+      <div class="reveal">
+        <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
+          <span class="en-content">Get In Touch</span>
+          <span class="ar-content" style="display:none;">تواصل معي</span>
+        </h2>
+        <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:40px;max-width:380px;">
+          <span class="en-content">Ready to collaborate? Send me a message and let's build something exceptional.</span>
+          <span class="ar-content" style="display:none;">هل أنت مستعد للتعاون؟ أرسل لي رسالة ولنبنِ شيئاً استثنائياً.</span>
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:36px;">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(17,19,24,1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span style="color:var(--silver);font-size:1rem;font-weight:500;">Giza, Egypt (Remote)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(17,19,24,1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <a href="mailto:jaeferibrahim42@gmail.com" style="color:var(--silver);font-size:1rem;font-weight:500;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00bfff'" onmouseout="this.style.color='var(--silver)'">jaeferibrahim42@gmail.com</a>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div class="reveal delay-2">
+        <div class="glass" style="border-radius:24px;padding:36px;">
+
+          <!-- Success state -->
+          <div class="form-success" id="form-success">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            <p style="font-size:1.2rem;font-weight:600;color:var(--silver);">
+              <span class="en-content">Message sent successfully!</span>
+              <span class="ar-content" style="display:none;">تم إرسال الرسالة بنجاح!</span>
+            </p>
+            <p style="color:var(--muted);">
+              <span class="en-content">I'll get back to you as soon as possible.</span>
+              <span class="ar-content" style="display:none;">سأتواصل معك في أقرب وقت ممكن.</span>
+            </p>
+          </div>
+
+          <!-- Form -->
+          <form id="contact-form" action="https://formspree.io/f/mdawpkvn" method="POST" onsubmit="handleSubmit(event)">
+            <div style="margin-bottom:20px;">
+              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
+                <span class="en-content">Name</span><span class="ar-content" style="display:none;">الاسم</span>
+              </label>
+              <input name="name" required minlength="2" class="form-input" placeholder="Jaefer Ibrahim" />
+            </div>
+            <div style="margin-bottom:20px;">
+              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
+                <span class="en-content">Email</span><span class="ar-content" style="display:none;">البريد الإلكتروني</span>
+              </label>
+              <input name="email" type="email" required class="form-input" placeholder="jaeferibrahim42@gmail.com" />
+            </div>
+            <div style="margin-bottom:28px;">
+              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
+                <span class="en-content">Message</span><span class="ar-content" style="display:none;">الرسالة</span>
+              </label>
+              <textarea name="message" required minlength="10" rows="5" class="form-input" placeholder="Tell me about your project..." style="resize:none;"></textarea>
+            </div>
+            <div id="form-error" style="display:none;color:#f87171;font-size:0.87rem;margin-bottom:16px;text-align:center;">
+              <span class="en-content">Failed to send. Please try again.</span>
+              <span class="ar-content" style="display:none;">فشل الإرسال. يرجى المحاولة مرة أخرى.</span>
+            </div>
+            <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;justify-content:center;">
+              <span id="btn-text-en" class="en-content">Send Message</span>
+              <span id="btn-text-ar" class="ar-content" style="display:none;">إرسال الرسالة</span>
+              <svg id="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer style="border-top:1px solid rgba(255,255,255,0.07);padding:28px 0;background:#0d0f14;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+    <p style="color:var(--muted);font-size:0.85rem;">
+      <span class="en-content">© 2025 Jaefer Jemai. All rights reserved.</span>
+      <span class="ar-content" style="display:none;">© 2025 جعفر جمعي. جميع الحقوق محفوظة.</span>
+    </p>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="social-btn" style="width:42px;height:42px;" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <!-- Replace resume.pdf with your actual file path in your GitHub repo -->
+      <a href="resume.pdf" download="Jaefer_Jemai_CV.pdf" class="btn-cv">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span class="en-content">Download CV</span>
+        <span class="ar-content" style="display:none;">تحميل السيرة الذاتية</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════ JAVASCRIPT ═══════════════════════════════ -->
+<script>
+  // ── Language state ──
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'ar' : 'en';
+    applyLang();
+  }
+
+  function applyLang() {
+    const isAr = currentLang === 'ar';
+    const html = document.documentElement;
+
+    html.lang = currentLang;
+    html.dir  = isAr ? 'rtl' : 'ltr';
+
+    document.body.style.fontFamily = isAr ? "'Tajawal', sans-serif" : "'Outfit', sans-serif";
+
+    document.getElementById('lang-label').textContent = isAr ? 'EN' : 'عربي';
+
+    document.querySelectorAll('.en-content').forEach(el => {
+      el.style.display = isAr ? 'none' : '';
+    });
+    document.querySelectorAll('.ar-content').forEach(el => {
+      el.style.display = isAr ? '' : 'none';
+    });
+
+    // Fix flex containers that use display:flex for ar badges
+    if (isAr) {
+      document.querySelectorAll('.ar-content[style*="display:flex"], .ar-content[style*="display: flex"]').forEach(el => {
+        el.style.display = 'flex';
+      });
+    }
+  }
+
+  // ── Navbar scroll ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // ── Mobile menu ──
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Hero animations on load ──
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.animate-fadeinup, .animate-fadein').forEach(el => {
+      el.style.opacity = '1';
+    });
+  });
+
+  // ── Contact form ──
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form    = document.getElementById('contact-form');
+    const btn     = document.getElementById('submit-btn');
+    const errDiv  = document.getElementById('form-error');
+    const success = document.getElementById('form-success');
+
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    document.getElementById('send-icon').innerHTML = '<circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" values="3;6;3" dur="1s" repeatCount="indefinite"/></circle>';
+
+    errDiv.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.classList.add('show');
+      } else {
+        errDiv.style.display = 'block';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        resetIcon();
+      }
+    } catch {
+      errDiv.style.display = 'block';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      resetIcon();
+    }
+  }
+
+  function resetIcon() {
+    document.getElementById('send-icon').innerHTML = '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>';
+  }
+</script>
 
 </body>
 </html>
