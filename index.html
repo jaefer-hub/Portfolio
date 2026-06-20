@@ -1,923 +1,1596 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jaefer Jemai | Linguist & AI Specialist</title>
-  <meta name="description" content="Professional Linguist, AI Data Trainer, and E-commerce Strategist specializing in English, Arabic, and Tigrinya." />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            neon: '#00bfff',
-            charcoal: '#0d0f14',
-            card: '#111318',
-            silver: '#dde4f0',
-          },
-          fontFamily: {
-            sans: ['Outfit', 'sans-serif'],
-            arabic: ['Tajawal', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    /* ── Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: #0d0f14;
-      color: #dde4f0;
-      font-family: 'Outfit', sans-serif;
-      overflow-x: hidden;
-    }
-    html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
-
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0d0f14; }
-    ::-webkit-scrollbar-thumb { background: #00bfff44; border-radius: 3px; }
-
-    /* ── Selection ── */
-    ::selection { background: #00bfff33; color: #00bfff; }
-
-    /* ── Variables ── */
-    :root {
-      --neon: #00bfff;
-      --neon-dim: rgba(0,191,255,0.15);
-      --neon-glow: 0 0 20px rgba(0,191,255,0.4);
-      --neon-glow-lg: 0 0 40px rgba(0,191,255,0.6);
-      --bg: #0d0f14;
-      --card: #111318;
-      --card2: #14171f;
-      --border: rgba(255,255,255,0.07);
-      --silver: #dde4f0;
-      --muted: #8a96b0;
-    }
-
-    /* ── Utility classes ── */
-    .neon { color: var(--neon); }
-    .neon-bg { background-color: var(--neon); }
-    .neon-border { border-color: rgba(0,191,255,0.3); }
-    .glass {
-      background: rgba(17,19,24,0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-    }
-    .glow-text { text-shadow: 0 0 30px rgba(0,191,255,0.5); }
-
-    /* ── Grid pattern ── */
-    .grid-pattern {
-      background-size: 40px 40px;
-      background-image:
-        linear-gradient(to right, rgba(0,191,255,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,191,255,0.05) 1px, transparent 1px);
-    }
-
-    /* ── Radial glow ── */
-    .radial-glow {
-      background: radial-gradient(circle at center, rgba(0,191,255,0.12) 0%, transparent 70%);
-    }
-
-    /* ── Animations ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes bounce-subtle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 10px rgba(0,191,255,0.3); }
-      50% { box-shadow: 0 0 25px rgba(0,191,255,0.7); }
-    }
-
-    .animate-fadeinup { animation: fadeInUp 0.7s ease forwards; }
-    .animate-fadein   { animation: fadeIn 0.7s ease forwards; }
-    .animate-slidedown { animation: slideDown 0.5s ease forwards; }
-    .animate-spin-slow { animation: spin-slow 10s linear infinite; }
-    .animate-bounce-subtle { animation: bounce-subtle 1.5s ease-in-out infinite; }
-
-    .delay-1 { animation-delay: 0.2s; }
-    .delay-2 { animation-delay: 0.4s; }
-    .delay-3 { animation-delay: 0.6s; }
-    .delay-4 { animation-delay: 0.8s; }
-
-    /* ── Navbar ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-    nav.scrolled {
-      background: rgba(13,15,20,0.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-    }
-
-    /* ── Nav link hover ── */
-    .nav-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.2s;
-      padding: 4px 0;
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 1px;
-      background: var(--neon);
-      transform: scaleX(0);
-      transition: transform 0.2s;
-    }
-    .nav-link:hover { color: var(--silver); }
-    .nav-link:hover::after { transform: scaleX(1); }
-
-    /* ── Lang toggle ── */
-    .lang-btn {
-      display: flex; align-items: center; gap: 6px;
-      padding: 7px 16px; border-radius: 9999px;
-      border: 1px solid rgba(0,191,255,0.3);
-      background: rgba(0,191,255,0.08);
-      color: var(--neon);
-      font-size: 0.85rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .lang-btn:hover { background: rgba(0,191,255,0.18); }
-
-    /* ── Mobile menu ── */
-    #mobile-menu {
-      display: none;
-      position: fixed; top: 64px; left: 0; right: 0;
-      background: rgba(13,15,20,0.97);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 24px;
-      z-index: 99;
-    }
-    #mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
-    .hamburger { cursor: pointer; background: none; border: none; color: var(--silver); }
-
-    /* ── Section ── */
-    section { padding: 96px 0; }
-
-    /* ── Cards ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 32px;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    }
-    .card:hover {
-      border-color: rgba(0,191,255,0.25);
-      box-shadow: 0 0 30px rgba(0,191,255,0.08);
-      transform: translateY(-4px);
-    }
-
-    /* ── Badge ── */
-    .badge {
-      display: inline-block;
-      padding: 4px 12px; border-radius: 8px;
-      font-size: 0.8rem; font-weight: 600;
-      background: rgba(0,191,255,0.1);
-      color: var(--neon);
-      border: 1px solid rgba(0,191,255,0.2);
-    }
-
-    /* ── CTA Button ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 16px 36px; border-radius: 14px;
-      background: var(--neon); color: #0d0f14;
-      font-weight: 700; font-size: 1rem;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(0,191,255,0.4);
-      transition: box-shadow 0.3s, transform 0.3s;
-      border: none; cursor: pointer;
-    }
-    .btn-primary:hover {
-      box-shadow: 0 0 35px rgba(0,191,255,0.7);
-      transform: translateY(-2px);
-    }
-
-    /* ── LinkedIn button ── */
-    .btn-linkedin {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 22px; border-radius: 12px;
-      background: rgba(10,102,194,0.12);
-      border: 1px solid rgba(10,102,194,0.35);
-      color: #4a9edd;
-      font-size: 0.9rem; font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-linkedin:hover {
-      background: #0A66C2;
-      color: #fff;
-      box-shadow: 0 0 22px rgba(10,102,194,0.55);
-      transform: scale(1.04);
-    }
-
-    /* ── Icon circle ── */
-    .icon-circle {
-      width: 64px; height: 64px;
-      border-radius: 16px;
-      background: rgba(0,191,255,0.08);
-      border: 1px solid rgba(0,191,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s;
-    }
-    .card:hover .icon-circle {
-      background: rgba(0,191,255,0.18);
-      box-shadow: 0 0 20px rgba(0,191,255,0.3);
-      transform: scale(1.1);
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
-    .reveal.delay-4 { transition-delay: 0.4s; }
-
-    /* ── Form inputs ── */
-    .form-input {
-      width: 100%; padding: 13px 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      color: var(--silver);
-      font-size: 0.95rem;
-      font-family: inherit;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-    .form-input::placeholder { color: rgba(138,150,176,0.5); }
-    .form-input:focus {
-      border-color: rgba(0,191,255,0.5);
-      box-shadow: 0 0 0 3px rgba(0,191,255,0.1);
-    }
-    html[dir="rtl"] .form-input { text-align: right; }
-
-    /* ── Social icon btn ── */
-    .social-btn {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      border: 1px solid rgba(10,102,194,0.3);
-      background: rgba(10,102,194,0.08);
-      color: #4a9edd;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .social-btn:hover {
-      background: #0A66C2; color: #fff;
-      box-shadow: 0 0 24px rgba(10,102,194,0.65);
-      transform: scale(1.1);
-    }
-
-    /* ── Download CV ── */
-    .btn-cv {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 22px; border-radius: 9999px;
-      border: 1px solid rgba(0,191,255,0.3);
-      background: rgba(0,191,255,0.08);
-      color: var(--neon);
-      font-size: 0.85rem; font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-cv:hover { background: rgba(0,191,255,0.18); }
-
-    /* ── Avatar ring ── */
-    .avatar-ring {
-      background: linear-gradient(135deg, var(--neon), rgba(0,191,255,0.1));
-      border-radius: 50%; padding: 6px;
-      display: inline-block;
-    }
-    .avatar-inner {
-      border-radius: 50%; overflow: hidden;
-      background: var(--card);
-      border: 4px solid var(--bg);
-    }
-
-    /* ── Language badge ── */
-    .lang-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px; border-radius: 9999px;
-      font-size: 0.82rem; font-weight: 600;
-    }
-
-    /* ── Alert ── */
-    .form-success {
-      display: none; text-align: center; padding: 40px 20px;
-      flex-direction: column; align-items: center; gap: 16px;
-    }
-    .form-success.show { display: flex; }
-
-    /* ── Neon divider ── */
-    .neon-divider {
-      width: 80px; height: 4px;
-      background: var(--neon);
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(0,191,255,0.5);
-      margin: 0 0 32px 0;
-    }
-    html[dir="rtl"] .neon-divider { margin: 0 0 32px auto; }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .desktop-nav { display: none; }
-      .hero-h1 { font-size: 2.4rem !important; }
-      .hero-sub { font-size: 1rem !important; }
-    }
-    @media (min-width: 769px) {
-      .hamburger { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
-<nav id="navbar">
-  <div style="max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;">
-
-    <!-- Logo -->
-    <a href="#home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#00bfff,#0070ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#0d0f14;font-size:0.95rem;">JJ</div>
-      <span style="font-weight:700;font-size:1.05rem;color:#dde4f0;" id="logo-text">Jaefer Jemai</span>
-    </a>
-
-    <!-- Desktop nav -->
-    <div class="desktop-nav" style="display:flex;align-items:center;gap:36px;">
-      <a href="#home"     class="nav-link" data-en="Home"       data-ar="الرئيسية">Home</a>
-      <a href="#services" class="nav-link" data-en="Services"   data-ar="الخدمات">Services</a>
-      <a href="#projects" class="nav-link" data-en="Experience" data-ar="الخبرات">Experience</a>
-      <a href="#contact"  class="nav-link" data-en="Contact"    data-ar="تواصل معي">Contact</a>
-    </div>
-
-    <!-- Lang toggle + hamburger -->
-    <div style="display:flex;align-items:center;gap:12px;">
-      <button class="lang-btn" id="lang-toggle" onclick="toggleLang()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span id="lang-label">عربي</span>
-      </button>
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile Menu -->
-<div id="mobile-menu">
-  <a href="#home"     class="nav-link" onclick="closeMenu()" data-en="Home"       data-ar="الرئيسية">Home</a>
-  <a href="#services" class="nav-link" onclick="closeMenu()" data-en="Services"   data-ar="الخدمات">Services</a>
-  <a href="#projects" class="nav-link" onclick="closeMenu()" data-en="Experience" data-ar="الخبرات">Experience</a>
-  <a href="#contact"  class="nav-link" onclick="closeMenu()" data-en="Contact"    data-ar="تواصل معي">Contact</a>
-</div>
-
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-<section id="home" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:80px;position:relative;overflow:hidden;">
-
-  <!-- Background layers -->
-  <div style="position:absolute;inset:0;" class="grid-pattern"></div>
-  <div style="position:absolute;inset:0;" class="radial-glow"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0d0f14 0%,transparent 20%,transparent 80%,#0d0f14 100%);"></div>
-
-  <div style="position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px;text-align:center;">
-
-    <!-- Badge -->
-    <div class="animate-fadein" style="margin-bottom:28px;">
-      <span style="display:inline-block;padding:8px 20px;border-radius:9999px;border:1px solid rgba(0,191,255,0.3);background:rgba(0,191,255,0.08);color:var(--neon);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;"
-            data-en="Experience / AI / Linguistics" data-ar="الخبرات / الذكاء الاصطناعي / اللغويات">
-        Experience / AI / Linguistics
-      </span>
-    </div>
-
-    <!-- Headline EN -->
-    <h1 class="hero-h1 animate-fadeinup delay-1 en-content" style="font-size:3.8rem;font-weight:800;line-height:1.15;margin-bottom:28px;opacity:0;">
-      Jaefer Jemai:<br/>
-      <span style="background:linear-gradient(90deg,#00bfff,#60e0ff,#00bfff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="glow-text">Bridging Human Language</span>
-      <span style="color:#fff;"> and<br/>Machine Intelligence.</span>
-    </h1>
-    <!-- Headline AR -->
-    <h1 class="hero-h1 animate-fadeinup delay-1 ar-content" style="font-size:3rem;font-weight:800;line-height:1.3;margin-bottom:28px;display:none;opacity:0;">
-      جعفر جمعي:<br/>
-      <span style="background:linear-gradient(90deg,#00bfff,#60e0ff,#00bfff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="glow-text">نقطة التقاء اللغة الإنسانية</span>
-      <span style="color:#fff;"> والذكاء الاصطناعي.</span>
-    </h1>
-
-    <!-- Sub EN -->
-    <p class="hero-sub animate-fadeinup delay-2 en-content" style="font-size:1.15rem;color:var(--muted);max-width:680px;margin:0 auto 48px;line-height:1.7;opacity:0;">
-      Professional Linguist, AI Data Trainer, and E-commerce Strategist specializing in English, Arabic, and Tigrinya.
-    </p>
-    <!-- Sub AR -->
-    <p class="hero-sub animate-fadeinup delay-2 ar-content" style="font-size:1.1rem;color:var(--muted);max-width:680px;margin:0 auto 48px;line-height:1.9;display:none;opacity:0;">
-      لغوي محترف، ومدرّب بيانات ذكاء اصطناعي، واستراتيجي تجارة إلكترونية متخصص في الإنجليزية والعربية والتيغرينية.
-    </p>
-
-    <!-- CTA -->
-    <div class="animate-fadeinup delay-3" style="opacity:0;">
-      <a href="#projects" class="btn-primary">
-        <span class="en-content">View My Work</span>
-        <span class="ar-content" style="display:none;">استعرض أعمالي</span>
-        <span class="animate-bounce-subtle" style="display:inline-block;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-        </span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ PROJECTS ═══════════════════════════════ -->
-<section id="projects" style="background:rgba(17,19,24,0.5);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:64px;">
-      <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
-        <span class="en-content">Project Portfolio</span>
-        <span class="ar-content" style="display:none;">معرض الأعمال</span>
-      </h2>
-      <p style="color:var(--muted);font-size:1.05rem;max-width:560px;margin:0 auto;">
-        <span class="en-content">Highlighting key milestones at the intersection of linguistics, AI, and digital strategy.</span>
-        <span class="ar-content" style="display:none;">تسليط الضوء على الإنجازات الرئيسية في تقاطع اللغويات والذكاء الاصطناعي والاستراتيجية الرقمية.</span>
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
-
-      <!-- Card 1: AI Training -->
-      <div class="card reveal delay-1">
-        <div class="icon-circle" style="margin-bottom:24px;">
-          <!-- Neural network SVG -->
-          <svg width="32" height="32" viewBox="0 0 48 48" fill="none" stroke="#00bfff" stroke-width="1.8">
-            <circle cx="6" cy="12" r="4"/><circle cx="6" cy="24" r="4"/><circle cx="6" cy="36" r="4"/>
-            <circle cx="24" cy="8" r="4"/><circle cx="24" cy="20" r="4"/><circle cx="24" cy="32" r="4"/><circle cx="24" cy="42" r="4"/>
-            <circle cx="42" cy="16" r="4"/><circle cx="42" cy="32" r="4"/>
-            <line x1="10" y1="12" x2="20" y2="8" opacity=".7"/><line x1="10" y1="12" x2="20" y2="20" opacity=".7"/>
-            <line x1="10" y1="24" x2="20" y2="20" opacity=".7"/><line x1="10" y1="24" x2="20" y2="32" opacity=".7"/>
-            <line x1="10" y1="36" x2="20" y2="32" opacity=".7"/><line x1="10" y1="36" x2="20" y2="42" opacity=".7"/>
-            <line x1="28" y1="8"  x2="38" y2="16" opacity=".7"/><line x1="28" y1="20" x2="38" y2="16" opacity=".7"/>
-            <line x1="28" y1="32" x2="38" y2="32" opacity=".7"/><line x1="28" y1="42" x2="38" y2="32" opacity=".7"/>
-          </svg>
-        </div>
-        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">AI Language Training (RLHF)</span>
-          <span class="ar-content" style="display:none;">تدريب نماذج الذكاء الاصطناعي (RLHF)</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
-          <span class="en-content">Worked with global AI leaders SME Careers and Outlier to refine LLM responses through RLHF. Specialized in Supervised Fine-Tuning (SFT) for Arabic-English bilingual models.</span>
-          <span class="ar-content" style="display:none;">عملت مع شركات رائدة مثل SME Careers وOutlier لتحسين استجابات النماذج اللغوية الكبيرة عبر التعزيز بالتغذية الراجعة البشرية، مع تخصص في الضبط الدقيق الخاضع للإشراف للنماذج العربية-الإنجليزية.</span>
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="badge">RLHF</span><span class="badge">NLP</span><span class="badge">LLM</span>
-        </div>
-      </div>
-
-      <!-- Card 2: Web Management -->
-      <div class="card reveal delay-2">
-        <div class="icon-circle" style="margin-bottom:24px;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">Badamay.co Web Management</span>
-          <span class="ar-content" style="display:none;">إدارة موقع Badamay.co</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
-          <span class="en-content">Delivered full SEO optimization, WordPress configuration, and Google Search Console integration for a professional digital commerce platform.</span>
-          <span class="ar-content" style="display:none;">قدّمت تحسيناً شاملاً لمحركات البحث، وضبطاً لووردبريس، وتكاملاً مع Google Search Console لمنصة تجارة رقمية احترافية.</span>
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="badge">SEO</span><span class="badge">WordPress</span><span class="badge">Analytics</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Revision -->
-      <div class="card reveal delay-3">
-        <div class="icon-circle" style="margin-bottom:24px;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><path d="M5 8l4 4-4 4"/><path d="M12 16h7"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
-        </div>
-        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">Multilingual Revision Specialist</span>
-          <span class="ar-content" style="display:none;">أخصائي مراجعة متعدد اللغات</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
-          <span class="en-content">Expert linguistic QA and revision for Software and IT documentation in Tigrinya and Arabic, ensuring accuracy and cultural appropriateness.</span>
-          <span class="ar-content" style="display:none;">مراجعة لغوية متخصصة وضمان جودة لوثائق البرمجيات وتقنية المعلومات باللغتين التيغرينية والعربية، مع ضمان الدقة والملاءمة الثقافية.</span>
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="badge">Tigrinya</span><span class="badge">Arabic</span><span class="badge">QA</span>
-        </div>
-      </div>
-
-      <!-- Card 4: Automation -->
-      <div class="card reveal delay-4">
-        <div class="icon-circle" style="margin-bottom:24px;">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">Digital Business Automation</span>
-          <span class="ar-content" style="display:none;">أتمتة الأعمال الرقمية</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;margin-bottom:24px;font-size:0.95rem;">
-          <span class="en-content">Developed automated Excel-based product management systems and workflows for e-commerce and dropshipping operations, optimizing efficiency.</span>
-          <span class="ar-content" style="display:none;">طوّرت أنظمة إدارة المنتجات الآلية القائمة على Excel وسير عمل محسّنة لعمليات التجارة الإلكترونية والدروبشيبينج.</span>
-        </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span class="badge">Excel</span><span class="badge">Automation</span><span class="badge">E-commerce</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ SERVICES ═══════════════════════════════ -->
-<section id="services">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:64px;">
-      <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
-        <span class="en-content">Services</span>
-        <span class="ar-content" style="display:none;">الخدمات</span>
-      </h2>
-      <p style="color:var(--muted);font-size:1.05rem;max-width:560px;margin:0 auto;">
-        <span class="en-content">Specialized offerings tailored for the modern digital and AI landscape.</span>
-        <span class="ar-content" style="display:none;">عروض متخصصة مصممة للمشهد الرقمي والذكاء الاصطناعي الحديث.</span>
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
-
-      <!-- Service 1 -->
-      <div class="card reveal delay-1" style="text-align:center;">
-        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">Linguistic Services</span>
-          <span class="ar-content" style="display:none;">الخدمات اللغوية</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
-          <span class="en-content">Professional translation and localization ensuring cultural nuance and accuracy across English, Arabic, and Tigrinya.</span>
-          <span class="ar-content" style="display:none;">الترجمة والتوطين المحترف مع ضمان الفروق الثقافية والدقة عبر الإنجليزية والعربية والتيغرينية.</span>
-        </p>
-      </div>
-
-      <!-- Service 2 -->
-      <div class="card reveal delay-2" style="text-align:center;">
-        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h10M7 12h6"/></svg>
-        </div>
-        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">AI Training</span>
-          <span class="ar-content" style="display:none;">تدريب الذكاء الاصطناعي</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
-          <span class="en-content">Data annotation, prompt engineering, and linguistic RLHF to elevate and refine Large Language Models.</span>
-          <span class="ar-content" style="display:none;">التعليق على البيانات وهندسة الأوامر والتعزيز بالتغذية الراجعة البشرية (RLHF) للارتقاء بنماذج اللغة الكبيرة.</span>
-        </p>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="card reveal delay-3" style="text-align:center;">
-        <div style="width:72px;height:72px;border-radius:20px;background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;transition:all 0.3s;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;">
-          <span class="en-content">Web &amp; SEO</span>
-          <span class="ar-content" style="display:none;">الويب وتحسين محركات البحث</span>
-        </h3>
-        <p style="color:var(--muted);line-height:1.7;font-size:0.93rem;">
-          <span class="en-content">Comprehensive website management, digital strategy, and search engine optimization for modern platforms.</span>
-          <span class="ar-content" style="display:none;">إدارة شاملة للمواقع، واستراتيجية رقمية، وتحسين محركات البحث للمنصات الحديثة.</span>
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
-<section id="about" style="background:rgba(17,19,24,0.5);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);position:relative;overflow:hidden;">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:rgba(0,191,255,0.07);border-radius:50%;filter:blur(100px);pointer-events:none;"></div>
-
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1;">
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:60px;">
-
-      <!-- Avatar -->
-      <div class="reveal" style="flex:0 0 auto;display:flex;justify-content:center;width:100%;max-width:320px;margin:0 auto;">
-        <div style="position:relative;">
-          <div class="avatar-ring">
-            <div class="avatar-inner" style="width:240px;height:240px;">
-              <!-- Placeholder avatar — a gradient circle with initials -->
-              <div style="width:100%;height:100%;background:linear-gradient(135deg,#0d1f3c,#0a2040);display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:800;color:var(--neon);">JJ</div>
-            </div>
-          </div>
-          <!-- Spinning ring -->
-          <div class="animate-spin-slow" style="position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(0,191,255,0.2);pointer-events:none;"></div>
-        </div>
-      </div>
-
-      <!-- Text -->
-      <div class="reveal delay-2" style="flex:1;min-width:280px;">
-        <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
-          <span class="en-content">About Me</span>
-          <span class="ar-content" style="display:none;">نبذة عني</span>
-        </h2>
-        <div class="neon-divider"></div>
-        <p style="color:var(--muted);font-size:1.05rem;line-height:1.8;margin-bottom:28px;">
-          <span class="en-content">I hold a Bachelor of Arts degree and am a <strong style="color:var(--silver);">native Arabic speaker</strong> with specialized professional proficiency in <strong style="color:var(--silver);">Tigrinya and English</strong>. I bring extensive experience working with major global agencies including Translated.com and VerboLabs. Based in Giza, Egypt, I specialize in remote collaboration on international projects, bridging the gap between deep human language expertise and cutting-edge AI development.</span>
-          <span class="ar-content" style="display:none;">أحمل درجة البكالوريوس في الآداب، وأنا <strong style="color:var(--silver);">ناطق أصلي باللغة العربية</strong> مع كفاءة مهنية متخصصة في <strong style="color:var(--silver);">التيغرينية والإنجليزية</strong>. لدي خبرة واسعة في العمل مع وكالات عالمية كبرى مثل Translated.com وVerboLabs. أعمل من الجيزة، مصر، متخصصاً في التعاون عن بُعد مع المشاريع الدولية.</span>
-        </p>
-
-        <!-- Language badges -->
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">
-          <div class="en-content" style="display:flex;flex-wrap:wrap;gap:10px;">
-            <span class="lang-badge" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;">🌿 Arabic · Native</span>
-            <span class="lang-badge" style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:#00bfff;">⚡ Tigrinya · Professional</span>
-            <span class="lang-badge" style="background:rgba(125,211,252,0.1);border:1px solid rgba(125,211,252,0.3);color:#7dd3fc;">✦ English · Professional</span>
-          </div>
-          <div class="ar-content" style="display:none;flex-wrap:wrap;gap:10px;">
-            <span class="lang-badge" style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;">🌿 العربية · لغة أم</span>
-            <span class="lang-badge" style="background:rgba(0,191,255,0.1);border:1px solid rgba(0,191,255,0.3);color:#00bfff;">⚡ التيغرينية · مهني</span>
-            <span class="lang-badge" style="background:rgba(125,211,252,0.1);border:1px solid rgba(125,211,252,0.3);color:#7dd3fc;">✦ الإنجليزية · مهني</span>
-          </div>
-        </div>
-
-        <!-- LinkedIn CTA -->
-        <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <span class="en-content">Connect on LinkedIn — Localization &amp; AI Opportunities</span>
-          <span class="ar-content" style="display:none;">تواصل معي على LinkedIn لمناقشة مشاريع التوطين وفرص تدريب الذكاء الاصطناعي</span>
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
-<section id="contact">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px;align-items:start;">
-
-      <!-- Left info -->
-      <div class="reveal">
-        <h2 style="font-size:2.8rem;font-weight:800;margin-bottom:16px;">
-          <span class="en-content">Get In Touch</span>
-          <span class="ar-content" style="display:none;">تواصل معي</span>
-        </h2>
-        <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:40px;max-width:380px;">
-          <span class="en-content">Ready to collaborate? Send me a message and let's build something exceptional.</span>
-          <span class="ar-content" style="display:none;">هل أنت مستعد للتعاون؟ أرسل لي رسالة ولنبنِ شيئاً استثنائياً.</span>
-        </p>
-
-        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:36px;">
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="width:48px;height:48px;border-radius:50%;background:rgba(17,19,24,1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <span style="color:var(--silver);font-size:1rem;font-weight:500;">Giza, Egypt (Remote)</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="width:48px;height:48px;border-radius:50%;background:rgba(17,19,24,1);border:1px solid rgba(0,191,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <a href="mailto:jaeferibrahim42@gmail.com" style="color:var(--silver);font-size:1rem;font-weight:500;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00bfff'" onmouseout="this.style.color='var(--silver)'">jaeferibrahim42@gmail.com</a>
-          </div>
-        </div>
-
-        <div style="display:flex;align-items:center;gap:12px;">
-          <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right form -->
-      <div class="reveal delay-2">
-        <div class="glass" style="border-radius:24px;padding:36px;">
-
-          <!-- Success state -->
-          <div class="form-success" id="form-success">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00bfff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-            <p style="font-size:1.2rem;font-weight:600;color:var(--silver);">
-              <span class="en-content">Message sent successfully!</span>
-              <span class="ar-content" style="display:none;">تم إرسال الرسالة بنجاح!</span>
-            </p>
-            <p style="color:var(--muted);">
-              <span class="en-content">I'll get back to you as soon as possible.</span>
-              <span class="ar-content" style="display:none;">سأتواصل معك في أقرب وقت ممكن.</span>
-            </p>
-          </div>
-
-          <!-- Form -->
-          <form id="contact-form" action="https://formspree.io/f/mdawpkvn" method="POST" onsubmit="handleSubmit(event)">
-            <div style="margin-bottom:20px;">
-              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
-                <span class="en-content">Name</span><span class="ar-content" style="display:none;">الاسم</span>
-              </label>
-              <input name="name" required minlength="2" class="form-input" placeholder="Jaefer Ibrahim" />
-            </div>
-            <div style="margin-bottom:20px;">
-              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
-                <span class="en-content">Email</span><span class="ar-content" style="display:none;">البريد الإلكتروني</span>
-              </label>
-              <input name="email" type="email" required class="form-input" placeholder="jaeferibrahim42@gmail.com" />
-            </div>
-            <div style="margin-bottom:28px;">
-              <label style="display:block;font-size:0.87rem;font-weight:500;color:var(--muted);margin-bottom:8px;">
-                <span class="en-content">Message</span><span class="ar-content" style="display:none;">الرسالة</span>
-              </label>
-              <textarea name="message" required minlength="10" rows="5" class="form-input" placeholder="Tell me about your project..." style="resize:none;"></textarea>
-            </div>
-            <div id="form-error" style="display:none;color:#f87171;font-size:0.87rem;margin-bottom:16px;text-align:center;">
-              <span class="en-content">Failed to send. Please try again.</span>
-              <span class="ar-content" style="display:none;">فشل الإرسال. يرجى المحاولة مرة أخرى.</span>
-            </div>
-            <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;justify-content:center;">
-              <span id="btn-text-en" class="en-content">Send Message</span>
-              <span id="btn-text-ar" class="ar-content" style="display:none;">إرسال الرسالة</span>
-              <svg id="send-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
-<footer style="border-top:1px solid rgba(255,255,255,0.07);padding:28px 0;background:#0d0f14;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
-    <p style="color:var(--muted);font-size:0.85rem;">
-      <span class="en-content">© 2025 Jaefer Jemai. All rights reserved.</span>
-      <span class="ar-content" style="display:none;">© 2025 جعفر جمعي. جميع الحقوق محفوظة.</span>
-    </p>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" class="social-btn" style="width:42px;height:42px;" aria-label="LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <!-- Replace resume.pdf with your actual file path in your GitHub repo -->
-      <a href="resume.pdf" download="Jaefer_Jemai_CV.pdf" class="btn-cv">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span class="en-content">Download CV</span>
-        <span class="ar-content" style="display:none;">تحميل السيرة الذاتية</span>
-      </a>
-    </div>
-  </div>
-</footer>
-
-<!-- ═══════════════════════════════ JAVASCRIPT ═══════════════════════════════ -->
-<script>
-  // ── Language state ──
-  let currentLang = 'en';
-
-  function toggleLang() {
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    applyLang();
-  }
-
-  function applyLang() {
-    const isAr = currentLang === 'ar';
-    const html = document.documentElement;
-
-    html.lang = currentLang;
-    html.dir  = isAr ? 'rtl' : 'ltr';
-
-    document.body.style.fontFamily = isAr ? "'Tajawal', sans-serif" : "'Outfit', sans-serif";
-
-    document.getElementById('lang-label').textContent = isAr ? 'EN' : 'عربي';
-
-    document.querySelectorAll('.en-content').forEach(el => {
-      el.style.display = isAr ? 'none' : '';
-    });
-    document.querySelectorAll('.ar-content').forEach(el => {
-      el.style.display = isAr ? '' : 'none';
-    });
-
-    // Fix flex containers that use display:flex for ar badges
-    if (isAr) {
-      document.querySelectorAll('.ar-content[style*="display:flex"], .ar-content[style*="display: flex"]').forEach(el => {
-        el.style.display = 'flex';
-      });
-    }
-  }
-
-  // ── Navbar scroll ──
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-  });
-
-  // ── Mobile menu ──
-  function toggleMenu() {
-    document.getElementById('mobile-menu').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('mobile-menu').classList.remove('open');
-  }
-
-  // ── Scroll reveal ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ── Hero animations on load ──
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.animate-fadeinup, .animate-fadein').forEach(el => {
-      el.style.opacity = '1';
-    });
-  });
-
-  // ── Contact form ──
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const form    = document.getElementById('contact-form');
-    const btn     = document.getElementById('submit-btn');
-    const errDiv  = document.getElementById('form-error');
-    const success = document.getElementById('form-success');
-
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-    document.getElementById('send-icon').innerHTML = '<circle cx="12" cy="12" r="3" fill="currentColor"><animate attributeName="r" values="3;6;3" dur="1s" repeatCount="indefinite"/></circle>';
-
-    errDiv.style.display = 'none';
-
-    try {
-      const data = new FormData(form);
-      const res  = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        success.classList.add('show');
-      } else {
-        errDiv.style.display = 'block';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        resetIcon();
-      }
-    } catch {
-      errDiv.style.display = 'block';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      resetIcon();
-    }
-  }
-
-  function resetIcon() {
-    document.getElementById('send-icon').innerHTML = '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>';
-  }
-</script>
-
-</body>
-</html>
+// ===== index.css =====
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+ --color-background: hsl(var(--background));
+ --color-foreground: hsl(var(--foreground));
+ --color-border: hsl(var(--border));
+ --color-input: hsl(var(--input));
+ --color-ring: hsl(var(--ring));
+ --color-card: hsl(var(--card));
+ --color-card-foreground: hsl(var(--card-foreground));
+ --color-card-border: hsl(var(--card-border));
+ --color-popover: hsl(var(--popover));
+ --color-popover-foreground: hsl(var(--popover-foreground));
+ --color-popover-border: hsl(var(--popover-border));
+ --color-primary: hsl(var(--primary));
+ --color-primary-foreground: hsl(var(--primary-foreground));
+ --color-primary-border: var(--primary-border);
+ --color-secondary: hsl(var(--secondary));
+ --color-secondary-foreground: hsl(var(--secondary-foreground));
+ --color-secondary-border: var(--secondary-border);
+ --color-muted: hsl(var(--muted));
+ --color-muted-foreground: hsl(var(--muted-foreground));
+ --color-muted-border: var(--muted-border);
+ --color-accent: hsl(var(--accent));
+ --color-accent-foreground: hsl(var(--accent-foreground));
+ --color-accent-border: var(--accent-border);
+ --color-destructive: hsl(var(--destructive));
+ --color-destructive-foreground: hsl(var(--destructive-foreground));
+ --color-destructive-border: var(--destructive-border);
+ --font-sans: var(--app-font-sans);
+ --font-serif: var(--app-font-serif);
+ --font-mono: var(--app-font-mono);
+ --radius-sm: calc(var(--radius) - 4px);
+ --radius-md: calc(var(--radius) - 2px);
+ --radius-lg: var(--radius);
+ --radius-xl: calc(var(--radius) + 4px);
+}
+:root {
+ --background: 0 0% 99%;
+ --foreground: 222 47% 11%;
+ --border: 214 32% 91%;
+
+ --card: 0 0% 100%;
+ --card-foreground: 222 47% 11%;
+ --card-border: 214 32% 91%;
+
+ --popover: 0 0% 100%;
+ --popover-foreground: 222 47% 11%;
+ --popover-border: 214 32% 91%;
+
+ --primary: 221 83% 53%;
+ --primary-foreground: 0 0% 100%;
+
+ --secondary: 210 40% 96%;
+ --secondary-foreground: 222 47% 11%;
+
+ --muted: 210 40% 96%;
+ --muted-foreground: 215 16% 47%;
+
+ --accent: 221 83% 53%;
+ --accent-foreground: 0 0% 100%;
+
+ --destructive: 0 84.2% 60.2%;
+ --destructive-foreground: 0 0% 98%;
+ --input: 214 32% 91%;
+ --ring: 221 83% 53%;
+ --app-font-sans: 'Inter', sans-serif;
+ --app-font-serif: Georgia, serif;
+ --app-font-mono: Menlo, monospace;
+ --radius: 0.5rem;
+}
+.dark {
+ --background: 222 47% 7%;
+ --foreground: 210 40% 98%;
+ --border: 217 32% 17%;
+
+ --card: 222 47% 11%;
+ --card-foreground: 210 40% 98%;
+ --card-border: 217 32% 17%;
+
+ --popover: 222 47% 11%;
+ --popover-foreground: 210 40% 98%;
+ --popover-border: 217 32% 17%;
+
+ --primary: 217 91% 60%;
+ --primary-foreground: 0 0% 100%;
+
+ --secondary: 217 32% 17%;
+ --secondary-foreground: 210 40% 98%;
+
+ --muted: 217 32% 17%;
+ --muted-foreground: 215 20.2% 65.1%;
+
+ --accent: 217 91% 60%;
+ --accent-foreground: 0 0% 100%;
+
+ --destructive: 0 62.8% 30.6%;
+ --destructive-foreground: 0 0% 98%;
+ --input: 217 32% 17%;
+ --ring: 217 91% 60%;
+}
+@layer base {
+ * {
+ @apply border-border;
+ }
+ body {
+ @apply font-sans antialiased bg-background text-foreground;
+ }
+}
+// ===== App.tsx =====
+import { Switch, Route, Router as WouterRouter } from "wouter";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import NotFound from "@/pages/not-found";
+import Home from "@/pages/Home";
+import { ThemeProvider } from "@/components/ThemeProvider";
+const queryClient = new QueryClient();
+function Router() {
+ return (
+ <Switch>
+ <Route path="/" component={Home} />
+ <Route component={NotFound} />
+ </Switch>
+ );
+}
+function App() {
+ return (
+ <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+ <QueryClientProvider client={queryClient}>
+ <TooltipProvider>
+ <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+ <Router />
+ </WouterRouter>
+ <Toaster />
+ </TooltipProvider>
+ </QueryClientProvider>
+ </ThemeProvider>
+ );
+}
+export default App;
+// ===== ThemeProvider.tsx =====
+import { createContext, useContext, useEffect, useState } from "react"
+type Theme = "dark" | "light" | "system"
+type ThemeProviderProps = {
+ children: React.ReactNode
+ defaultTheme?: Theme
+ storageKey?: string
+}
+type ThemeProviderState = {
+ theme: Theme
+ setTheme: (theme: Theme) => void
+}
+const initialState: ThemeProviderState = {
+ theme: "system",
+ setTheme: () => null,
+}
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
+export function ThemeProvider({
+ children,
+ defaultTheme = "system",
+ storageKey = "vite-ui-theme",
+ ...props
+}: ThemeProviderProps) {
+ const [theme, setTheme] = useState<Theme>(
+ () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+ )
+ useEffect(() => {
+ const root = window.document.documentElement
+ root.classList.remove("light", "dark")
+ if (theme === "system") {
+ const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+ .matches
+ ? "dark"
+ : "light"
+ root.classList.add(systemTheme)
+ return
+ }
+ root.classList.add(theme)
+ }, [theme])
+ const value = {
+ theme,
+ setTheme: (theme: Theme) => {
+ localStorage.setItem(storageKey, theme)
+ setTheme(theme)
+ },
+ }
+ return (
+ <ThemeProviderContext.Provider {...props} value={value}>
+ {children}
+ </ThemeProviderContext.Provider>
+ )
+}
+export const useTheme = () => {
+ const context = useContext(ThemeProviderContext)
+ if (context === undefined)
+ throw new Error("useTheme must be used within a ThemeProvider")
+ return context
+}
+// ===== Hero.tsx =====
+import { motion } from "framer-motion";
+import { ArrowRight, FileText, MessageCircle, Globe2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+export default function Hero() {
+ return (
+ <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" id="hero">
+ {/* Background gradients */}
+ <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+ <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[120px]" />
+ <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]" />
+ </div>
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+ {/* Left side text */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ animate={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.6, ease: "easeOut" }}
+ className="flex flex-col items-start"
+ >
+ <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-muted border border-border mb-6">
+ <Globe2 className="w-4 h-4 text-primary" />
+ <span className="text-sm font-medium text-foreground">Arabic &middot; English &middot; Tigrinya &middot; Amharic</span>
+ </div>
+
+ <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-tight leading-[1.1] mb-6">
+ Human Quality for <br className="hidden sm:block" />
+ <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+ AI-Generated Language
+ </span>
+ </h1>
+
+ <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
+ Helping AI companies, localization teams, and global businesses improve multilingual content through AI evaluation, localiz...
+ </p>
+
+ <div className="flex flex-wrap gap-4 w-full">
+ <Button asChild size="lg" className="w-full sm:w-auto group">
+ <a href="#services">
+ View Services
+ <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+ </a>
+ </Button>
+ <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+ <a href="#contact">Contact Me</a>
+ </Button>
+ <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+ <a href="#">
+ <FileText className="mr-2 w-4 h-4" /> Download CV
+ </a>
+ </Button>
+ <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border-green-500/20 hover:bg-green-500/10 text-gree...
+ <a href="https://wa.me/201103912522" target="_blank" rel="noopener noreferrer">
+ <MessageCircle className="mr-2 w-4 h-4" /> WhatsApp Consultation
+ </a>
+ </Button>
+ </div>
+ </motion.div>
+ {/* Right side Dashboard Mockup */}
+ <motion.div
+ initial={{ opacity: 0, scale: 0.95 }}
+ animate={{ opacity: 1, scale: 1 }}
+ transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+ className="relative lg:h-[600px] flex items-center justify-center lg:justify-end"
+ >
+ <div className="relative w-full max-w-md aspect-square lg:aspect-auto lg:h-[500px] bg-card border border-border rounded-2xl s...
+ {/* Dashboard Header */}
+ <div className="h-12 border-b border-border flex items-center px-4 justify-between bg-muted/30">
+ <div className="flex space-x-2">
+ <div className="w-3 h-3 rounded-full bg-red-400" />
+ <div className="w-3 h-3 rounded-full bg-amber-400" />
+ <div className="w-3 h-3 rounded-full bg-green-400" />
+ </div>
+ <div className="text-xs font-mono text-muted-foreground">lang-ops-dashboard.tsx</div>
+ </div>
+
+ {/* Dashboard Content */}
+ <div className="p-6 space-y-6 flex-1 bg-background/50 relative overflow-hidden">
+
+ {/* Floating Elements */}
+ <motion.div
+ animate={{ y: [0, -5, 0] }}
+ transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+ className="bg-card border border-border p-4 rounded-lg shadow-sm"
+ >
+ <div className="flex justify-between items-center mb-2">
+ <span className="text-sm font-semibold">AI Evaluation Score</span>
+ <span className="text-xs text-primary font-mono bg-primary/10 px-2 py-1 rounded">AR-EG</span>
+ </div>
+ <div className="flex items-end space-x-2">
+ <span className="text-3xl font-bold text-foreground">94</span>
+ <span className="text-sm text-muted-foreground mb-1">/ 100</span>
+ <span className="text-xs text-green-500 mb-1.5 ml-auto">+12% vs base</span>
+ </div>
+ <div className="h-1.5 w-full bg-muted rounded-full mt-3 overflow-hidden">
+ <motion.div
+ initial={{ width: 0 }}
+ animate={{ width: "94%" }}
+ transition={{ duration: 1.5, delay: 0.5 }}
+ className="h-full bg-primary"
+ />
+ </div>
+ </motion.div>
+ <motion.div
+ animate={{ y: [0, 5, 0] }}
+ transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+ className="bg-card border border-border p-4 rounded-lg shadow-sm"
+ >
+ <div className="text-sm font-semibold mb-3">QA Workflow Status</div>
+ <div className="space-y-3">
+ <div>
+ <div className="flex justify-between text-xs mb-1">
+ <span className="text-muted-foreground">EN -> AR Localization</span>
+ <span className="text-foreground">In Review</span>
+ </div>
+ <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+ <div className="h-full bg-amber-500 w-[60%]" />
+ </div>
+ </div>
+ <div>
+ <div className="flex justify-between text-xs mb-1">
+ <span className="text-muted-foreground">Tigrinya Data Annotation</span>
+ <span className="text-foreground">Complete</span>
+ </div>
+ <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+ <div className="h-full bg-green-500 w-full" />
+ </div>
+ </div>
+ </div>
+ </motion.div>
+ <motion.div
+ animate={{ y: [0, -3, 0] }}
+ transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+ className="bg-card border border-border p-4 rounded-lg shadow-sm"
+ >
+ <div className="text-sm font-semibold mb-2">Transcript Cleanup</div>
+ <div className="bg-muted p-2 rounded text-xs text-muted-foreground line-through decoration-red-500/50 mb-2">
+ Um, the, ah, model performance is, like, roughly 85% accurate.
+ </div>
+ <div className="bg-primary/5 border border-primary/20 p-2 rounded text-xs text-foreground">
+ The model performance is approximately 85% accurate.
+ </div>
+ </motion.div>
+ </div>
+ </div>
+ </motion.div>
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Navigation.tsx =====
+import { useState, useEffect } from "react";
+import { Link } from "wouter";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import { Button } from "@/components/ui/button";
+export default function Navigation() {
+ const [isOpen, setIsOpen] = useState(false);
+ const [scrolled, setScrolled] = useState(false);
+ const { theme, setTheme } = useTheme();
+ useEffect(() => {
+ const handleScroll = () => {
+ setScrolled(window.scrollY > 20);
+ };
+ window.addEventListener("scroll", handleScroll);
+ return () => window.removeEventListener("scroll", handleScroll);
+ }, []);
+ const navLinks = [
+ { name: "Services", href: "#services" },
+ { name: "About", href: "#about" },
+ { name: "Portfolio", href: "#portfolio" },
+ { name: "Experience", href: "#experience" },
+ { name: "Contact", href: "#contact" },
+ ];
+ return (
+ <nav
+ className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+ scrolled
+ ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+ : "bg-transparent"
+ }`}
+ >
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="flex justify-between items-center h-20">
+ {/* Logo / Name */}
+ <div className="flex-shrink-0 flex items-center">
+ <a href="#" className="text-xl font-bold tracking-tight text-foreground">
+ Jaefer Ibrahim<span className="text-primary">.</span>
+ </a>
+ </div>
+ {/* Desktop Nav */}
+ <div className="hidden md:flex items-center space-x-8">
+ <div className="flex space-x-6">
+ {navLinks.map((link) => (
+ <a
+ key={link.name}
+ href={link.href}
+ className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+ >
+ {link.name}
+ </a>
+ ))}
+ </div>
+ <div className="flex items-center space-x-4 ml-6 pl-6 border-l border-border">
+ <button
+ onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+ className="p-2 rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+ aria-label="Toggle theme"
+ >
+ {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+ </button>
+ <Button asChild size="sm">
+ <a href="#contact">Get in Touch</a>
+ </Button>
+ </div>
+ </div>
+ {/* Mobile menu button */}
+ <div className="md:hidden flex items-center">
+ <button
+ onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+ className="p-2 mr-2 rounded-full text-muted-foreground hover:bg-muted"
+ >
+ {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+ </button>
+ <button
+ onClick={() => setIsOpen(!isOpen)}
+ className="p-2 rounded-md text-foreground hover:bg-muted transition-colors"
+ >
+ {isOpen ? <X size={24} /> : <Menu size={24} />}
+ </button>
+ </div>
+ </div>
+ </div>
+ {/* Mobile Nav */}
+ {isOpen && (
+ <div className="md:hidden bg-background border-b border-border shadow-lg absolute w-full">
+ <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
+ {navLinks.map((link) => (
+ <a
+ key={link.name}
+ href={link.href}
+ className="block px-3 py-3 rounded-md text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted tr...
+ onClick={() => setIsOpen(false)}
+ >
+ {link.name}
+ </a>
+ ))}
+ <div className="pt-4 px-3">
+ <Button asChild className="w-full">
+ <a href="#contact" onClick={() => setIsOpen(false)}>Get in Touch</a>
+ </Button>
+ </div>
+ </div>
+ </div>
+ )}
+ </nav>
+ );
+}
+// ===== Stats.tsx =====
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+interface StatItemProps {
+ end: number;
+ suffix?: string;
+ label: string;
+}
+function StatCounter({ end, suffix = "", label }: StatItemProps) {
+ const ref = useRef<HTMLDivElement>(null);
+ const isInView = useInView(ref, { once: true, margin: "-50px" });
+ const [count, setCount] = useState(0);
+ useEffect(() => {
+ if (isInView) {
+ let start = 0;
+ const duration = 2000; // 2 seconds
+ const increment = end / (duration / 16); // 60fps
+
+ const timer = setInterval(() => {
+ start += increment;
+ if (start >= end) {
+ setCount(end);
+ clearInterval(timer);
+ } else {
+ setCount(Math.floor(start));
+ }
+ }, 16);
+ return () => clearInterval(timer);
+ }
+ }, [isInView, end]);
+ return (
+ <div ref={ref} className="flex flex-col items-center justify-center p-6 bg-card border border-border rounded-xl shadow-sm hover:shado...
+ <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+ {count}{suffix}
+ </div>
+ <div className="text-sm text-muted-foreground text-center font-medium">
+ {label}
+ </div>
+ </div>
+ );
+}
+export default function Stats() {
+ return (
+ <section className="py-12 bg-background border-y border-border" id="stats">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+ <StatCounter end={4} label="Languages Supported" />
+ <StatCounter end={6} suffix="+" label="Years AI Experience" />
+ <StatCounter end={1000} suffix="+" label="QA Reviews" />
+ <StatCounter end={500} suffix="+" label="MTPE Projects" />
+ <StatCounter end={200} suffix="+" label="NLP Annotations" />
+ <StatCounter end={300} suffix="+" label="Translation Reviews" />
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== About.tsx =====
+import { motion } from "framer-motion";
+import { CheckCircle2, ShieldCheck, Layers, GitMerge } from "lucide-react";
+export default function About() {
+ const principles = [
+ {
+ icon: <Layers className="w-6 h-6 text-primary" />,
+ title: "Multilingual AI Workflow Expertise",
+ description: "Deep understanding of how language models process Arabic, English, and Tigrinya, enabling targeted improvements in ge...
+ },
+ {
+ icon: <ShieldCheck className="w-6 h-6 text-primary" />,
+ title: "Language Quality Operations",
+ description: "Designing and executing structured review pipelines that ensure consistency, cultural accuracy, and linguistic precis...
+ },
+ {
+ icon: <GitMerge className="w-6 h-6 text-primary" />,
+ title: "AI-Generated Content Refinement",
+ description: "Bridging the gap between raw machine output and publication-ready human-quality text through systematic evaluation."
+ },
+ {
+ icon: <CheckCircle2 className="w-6 h-6 text-primary" />,
+ title: "Localization QA Methodology",
+ description: "Rigorous QA testing methodologies that catch what automated tools miss, ensuring software and digital content resonat...
+ }
+ ];
+ return (
+ <section className="py-20 md:py-32 bg-secondary/30" id="about">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true, margin: "-100px" }}
+ transition={{ duration: 0.6 }}
+ >
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+ Precision Language Operations
+ </h2>
+ <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+ <p>
+ In the era of generative AI and rapid global scaling, raw translation is no longer sufficient. Operational maturity in la...
+ </p>
+ <p>
+ I specialize in language quality operations, combining human expertise with AI tooling to refine, evaluate, and elevate m...
+ </p>
+ </div>
+ </motion.div>
+ <div className="grid sm:grid-cols-2 gap-6">
+ {principles.map((principle, index) => (
+ <motion.div
+ key={index}
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true, margin: "-100px" }}
+ transition={{ duration: 0.5, delay: index * 0.1 }}
+ className="bg-card p-6 rounded-2xl border border-border shadow-sm"
+ >
+ <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+ {principle.icon}
+ </div>
+ <h3 className="text-lg font-semibold text-foreground mb-2">
+ {principle.title}
+ </h3>
+ <p className="text-sm text-muted-foreground leading-relaxed">
+ {principle.description}
+ </p>
+ </motion.div>
+ ))}
+ </div>
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Services.tsx =====
+import { motion } from "framer-motion";
+import {
+ Bot,
+ Languages,
+ PenTool,
+ FileAudio,
+ Database,
+ MessageSquareText
+} from "lucide-react";
+export default function Services() {
+ const services = [
+ {
+ icon: <Bot className="w-6 h-6 text-primary" />,
+ title: "AI Linguistic Evaluation",
+ description: "Evaluating AI model outputs for linguistic quality, bias, coherence, and accuracy across Arabic, English, and Tigriny...
+ bullets: [
+ "Prompt & response evaluation",
+ "Hallucination & bias detection",
+ "RLHF data quality assurance"
+ ],
+ tools: ["Scale AI", "Toloka", "Custom Frameworks"]
+ },
+ {
+ icon: <Languages className="w-6 h-6 text-primary" />,
+ title: "Localization & MTPE",
+ description: "Machine Translation Post-Editing (MTPE) and full localization workflows for software, documents, and digital content.",
+ bullets: [
+ "Light & Full MTPE",
+ "UI string localization",
+ "Glossary & style guide adherence"
+ ],
+ tools: ["Trados", "memoQ", "Phrase"]
+ },
+ {
+ icon: <PenTool className="w-6 h-6 text-primary" />,
+ title: "Translation & Proofreading",
+ description: "Precise human translation with thorough proofreading for technical, legal, and marketing content.",
+ bullets: [
+ "Context-aware translation",
+ "Bilingual proofreading",
+ "Tone & brand voice matching"
+ ],
+ tools: ["Wordfast", "OmegaT", "Grammarly"]
+ },
+ {
+ icon: <FileAudio className="w-6 h-6 text-primary" />,
+ title: "Transcript Cleanup & QA",
+ description: "Transforming raw AI transcripts into clean, publication-ready text with QA verification workflows.",
+ bullets: [
+ "Filler word & stutter removal",
+ "Speaker identification formatting",
+ "Timestamp verification"
+ ],
+ tools: ["Descript", "Otter.ai", "Subtitle Edit"]
+ },
+ {
+ icon: <Database className="w-6 h-6 text-primary" />,
+ title: "NLP Annotation & AI Data",
+ description: "High-quality data annotation for NLP training datasets, conversational AI, and language model fine-tuning.",
+ bullets: [
+ "Named Entity Recognition (NER)",
+ "Sentiment & intent classification",
+ "Parallel corpus creation"
+ ],
+ tools: ["Appen", "Labelbox", "Doccano"]
+ },
+ {
+ icon: <MessageSquareText className="w-6 h-6 text-primary" />,
+ title: "Conversational AI Review",
+ description: "Review and quality assurance of chatbot dialogues, voice assistant scripts, and AI conversation flows.",
+ bullets: [
+ "Dialogue flow testing",
+ "Intent recognition QA",
+ "Persona consistency checks"
+ ],
+ tools: ["Dialogflow", "Voiceflow", "Botmock"]
+ }
+ ];
+ const containerVariants = {
+ hidden: { opacity: 0 },
+ visible: {
+ opacity: 1,
+ transition: {
+ staggerChildren: 0.1
+ }
+ }
+ };
+ const itemVariants = {
+ hidden: { opacity: 0, y: 20 },
+ visible: {
+ opacity: 1, y: 0,
+ transition: { duration: 0.5 }
+ }
+ };
+ return (
+ <section className="py-20 md:py-32 bg-background" id="services">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center max-w-3xl mx-auto mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Services & Expertise
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ Specialized language operations tailored for AI development, enterprise localization, and digital content workflows.
+ </p>
+ </div>
+ <motion.div
+ className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+ variants={containerVariants}
+ initial="hidden"
+ whileInView="visible"
+ viewport={{ once: true, margin: "-100px" }}
+ >
+ {services.map((service, index) => (
+ <motion.div
+ key={index}
+ variants={itemVariants}
+ className="bg-card border border-border hover:border-primary/50 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all gr...
+ >
+ <div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-tr...
+ {service.icon}
+ </div>
+
+ <h3 className="text-xl font-bold text-foreground mb-3">
+ {service.title}
+ </h3>
+
+ <p className="text-muted-foreground text-sm mb-6 line-clamp-3">
+ {service.description}
+ </p>
+
+ <ul className="space-y-2 mb-6">
+ {service.bullets.map((bullet, i) => (
+ <li key={i} className="flex items-start text-sm text-foreground">
+ <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 mr-2 shrink-0" />
+ {bullet}
+ </li>
+ ))}
+ </ul>
+
+ <div className="pt-6 border-t border-border mt-auto">
+ <div className="flex flex-wrap gap-2">
+ {service.tools.map((tool, i) => (
+ <span key={i} className="text-xs font-medium px-2 py-1 bg-muted text-muted-foreground rounded-md">
+ {tool}
+ </span>
+ ))}
+ </div>
+ </div>
+ </motion.div>
+ ))}
+ </motion.div>
+ </div>
+ </section>
+ );
+}
+// ===== Portfolio.tsx =====
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
+export default function Portfolio() {
+ return (
+ <section className="py-20 md:py-32 bg-secondary/30 border-y border-border" id="portfolio">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center max-w-3xl mx-auto mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Case Studies
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ Practical examples of language operations, QA workflows, and AI output refinement.
+ </p>
+ </div>
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+ {/* Case Study 1: AI Output Evaluation */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5 }}
+ className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm"
+ >
+ <div className="p-6 md:p-8">
+ <div className="flex items-center justify-between mb-2">
+ <div className="text-xs font-bold tracking-wider text-primary uppercase">Case Study 01</div>
+ <span className="text-xs font-medium px-2 py-0.5 bg-primary/10 text-primary rounded-full">Baseline Platform</span>
+ </div>
+ <h3 className="text-2xl font-bold text-foreground mb-2">AI Output Evaluation</h3>
+ <p className="text-xs text-muted-foreground mb-5">Evaluated using strict 8-point rating scale: Significantly Better, Better...
+ <div className="grid grid-cols-2 gap-4 mb-5">
+ <div className="bg-destructive/5 border border-destructive/20 rounded-lg p-4 relative">
+ <div className="absolute top-2 right-2 text-xs font-bold text-destructive">Score: 3/8</div>
+ <div className="text-xs font-semibold text-muted-foreground mb-2">Output A (Base)</div>
+ <p className="text-sm text-foreground mb-2 line-clamp-3">The system is working very good but sometimes there is some pr...
+ <div className="flex items-center text-xs text-destructive">
+ <XCircle className="w-3 h-3 mr-1" /> Fluency &amp; grammar issues
+ </div>
+ </div>
+ <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-4 relative">
+ <div className="absolute top-2 right-2 text-xs font-bold text-green-600 dark:text-green-500">Score: 7/8</div>
+ <div className="text-xs font-semibold text-muted-foreground mb-2">Output B (Refined)</div>
+ <p className="text-sm text-foreground mb-2 line-clamp-3">The system performs optimally; however, occasional issues aris...
+ <div className="flex items-center text-xs text-green-600 dark:text-green-500">
+ <CheckCircle2 className="w-3 h-3 mr-1" /> Significantly Better
+ </div>
+ </div>
+ </div>
+ {/* 8-point rating legend */}
+ <div className="bg-muted/50 rounded-lg p-3 mb-4">
+ <div className="text-xs font-semibold text-muted-foreground mb-2">Baseline 8-Point Rating Options</div>
+ <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
+ <span className="text-green-600 dark:text-green-400">&#8226; Significantly Better</span>
+ <span className="text-destructive">&#8226; Significantly Worse</span>
+ <span className="text-green-600/80 dark:text-green-400/80">&#8226; Better</span>
+ <span className="text-destructive/80">&#8226; Worse</span>
+ <span className="text-green-600/60 dark:text-green-400/60">&#8226; Slightly Better</span>
+ <span className="text-destructive/60">&#8226; Slightly Worse</span>
+ <span className="text-muted-foreground">&#8226; Negligibly Better (A)</span>
+ <span className="text-muted-foreground">&#8226; Negligibly Better (B)</span>
+ </div>
+ </div>
+
+ <div className="flex flex-wrap gap-2 text-xs">
+ <span className="px-2 py-1 bg-muted rounded">Fluency</span>
+ <span className="px-2 py-1 bg-muted rounded">Accuracy</span>
+ <span className="px-2 py-1 bg-muted rounded">Tone Consistency</span>
+ <span className="px-2 py-1 bg-muted rounded">Cultural Fit</span>
+ </div>
+ </div>
+ </motion.div>
+ {/* Case Study 2: MTPE */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: 0.1 }}
+ className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm"
+ >
+ <div className="p-6 md:p-8">
+ <div className="text-xs font-bold tracking-wider text-primary uppercase mb-2">Case Study 02</div>
+ <h3 className="text-2xl font-bold text-foreground mb-6">Machine Translation Post-Editing</h3>
+
+ <div className="space-y-4 mb-6">
+ <div className="bg-muted/50 rounded-lg p-4">
+ <div className="text-xs font-semibold text-muted-foreground mb-2">Raw MT Output</div>
+ <p className="text-sm">Please <span className="text-destructive font-medium line-through">hit</span> the button to <spa...
+ </div>
+
+ <div className="flex justify-center text-muted-foreground">
+ <ArrowRight className="w-5 h-5 rotate-90 lg:rotate-0" />
+ </div>
+
+ <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
+ <div className="text-xs font-semibold text-muted-foreground mb-2">Post-Edited Version</div>
+ <p className="text-sm">Please <span className="text-primary font-medium">click</span> the button to <span className="te...
+ </div>
+ </div>
+
+ <div className="flex justify-between items-center text-sm font-medium border-t border-border pt-4">
+ <span className="text-muted-foreground">Improvement Metrics:</span>
+ <div className="flex gap-4">
+ <span className="text-green-600 dark:text-green-500">Fluency +40%</span>
+ <span className="text-green-600 dark:text-green-500">Accuracy +35%</span>
+ </div>
+ </div>
+ </div>
+ </motion.div>
+ {/* Case Study 3: Transcript Cleanup */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: 0.2 }}
+ className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm"
+ >
+ <div className="p-6 md:p-8">
+ <div className="text-xs font-bold tracking-wider text-primary uppercase mb-2">Case Study 03</div>
+ <h3 className="text-2xl font-bold text-foreground mb-6">Transcript Cleanup</h3>
+
+ <div className="relative rounded-lg border border-border bg-muted/30 overflow-hidden mb-6">
+ <div className="grid grid-cols-2 divide-x divide-border border-b border-border text-xs font-semibold text-muted-foregroun...
+ <div className="p-3">Raw Transcript</div>
+ <div className="p-3">Cleaned Version</div>
+ </div>
+ <div className="grid grid-cols-2 divide-x divide-border text-sm">
+ <div className="p-4 text-muted-foreground line-through decoration-destructive/50">
+ Yeah, so, um, we decided to like, pivot the roadmap, you know, in Q3.
+ </div>
+ <div className="p-4 text-foreground">
+ We decided to pivot the roadmap in Q3.
+ </div>
+ </div>
+ <div className="grid grid-cols-2 divide-x divide-border border-t border-border text-sm bg-background/50">
+ <div className="p-4 text-muted-foreground line-through decoration-destructive/50">
+ And ah, the budget was... it was cut by 15%.
+ </div>
+ <div className="p-4 text-foreground">
+ The budget was cut by 15%.
+ </div>
+ </div>
+ </div>
+ </div>
+ </motion.div>
+ {/* Case Study 4: Localization QA */}
+ <motion.div
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: 0.3 }}
+ className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm"
+ >
+ <div className="p-6 md:p-8">
+ <div className="text-xs font-bold tracking-wider text-primary uppercase mb-2">Case Study 04</div>
+ <h3 className="text-2xl font-bold text-foreground mb-6">Localization QA</h3>
+
+ <div className="bg-muted/50 rounded-lg p-5 mb-6">
+ <div className="flex items-center justify-between mb-4">
+ <div className="text-sm font-semibold">UI String QA Checklist</div>
+ <span className="px-2 py-1 bg-green-500/10 text-green-600 dark:text-green-500 text-xs font-bold rounded">100% Pass</span>
+ </div>
+
+ <div className="space-y-3">
+ <div className="flex items-start">
+ <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 mr-3 shrink-0" />
+ <div>
+ <p className="text-sm font-medium">Terminology Consistency</p>
+ <p className="text-xs text-muted-foreground">Verified against project glossary</p>
+ </div>
+ </div>
+ <div className="flex items-start">
+ <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 mr-3 shrink-0" />
+ <div>
+ <p className="text-sm font-medium">Formatting & Tags</p>
+ <p className="text-xs text-muted-foreground">HTML tags preserved in target</p>
+ </div>
+ </div>
+ <div className="flex items-start">
+ <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 mr-3 shrink-0" />
+ <div>
+ <p className="text-sm font-medium">Cultural Appropriateness</p>
+ <p className="text-xs text-muted-foreground">Dates, currencies, idioms localized</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </motion.div>
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Experience.tsx =====
+import { motion } from "framer-motion";
+import { Building2, Calendar } from "lucide-react";
+export default function Experience() {
+ const experiences = [
+ {
+ period: "2024-Present",
+ role: "Freelance AI Localization & Evaluation Specialist",
+ company: "Independent",
+ description: "AI output evaluation and multilingual QA for AI companies. Specializing in Arabic, English, Tigrinya, and Amharic lan...
+ },
+ {
+ period: "2023-2024",
+ role: "AI Data Annotator & Evaluator",
+ company: "Turing",
+ description: "Evaluated and annotated AI-generated content for LLM training pipelines. Performed quality scoring, preference rankin...
+ },
+ {
+ period: "2022-2023",
+ role: "Localization & Linguistic QA Specialist",
+ company: "DataForce by TransPerfect",
+ description: "End-to-end localization QA workflows for software and digital content. Reviewed translated strings, validated glossar...
+ },
+ {
+ period: "2021-2022",
+ role: "Machine Translation Post-Editor",
+ company: "Freelance",
+ description: "MTPE for Arabic-English language pairs, improving MT output to full publication quality."
+ },
+ {
+ period: "2019-2021",
+ role: "Volunteer Language & Translation Projects",
+ company: "Community",
+ description: "Community translation and localization initiatives for Arabic, Tigrinya, and Amharic content."
+ }
+ ];
+ return (
+ <section className="py-20 md:py-32 bg-background" id="experience">
+ <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Professional Experience
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ A track record of delivering quality in fast-paced language operations.
+ </p>
+ </div>
+ <div className="relative border-l border-border ml-3 md:ml-0 md:pl-0">
+ {experiences.map((exp, index) => (
+ <motion.div
+ key={index}
+ initial={{ opacity: 0, x: -20 }}
+ whileInView={{ opacity: 1, x: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: index * 0.1 }}
+ className={`mb-10 relative pl-8 md:pl-0 ${
+ index % 2 === 0 ? "md:mr-[50%] md:pr-12 md:text-right" : "md:ml-[50%] md:pl-12 md:text-left"
+ }`}
+ >
+ {/* Timeline dot */}
+ <div className={`absolute top-0 left-[-8px] md:left-auto md:top-0 w-4 h-4 rounded-full bg-primary border-4 border-backgroun...
+ index % 2 === 0 ? "md:right-[-8px]" : "md:left-[-8px]"
+ }`} />
+
+ <div className="bg-card border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+ <div className={`flex items-center text-primary text-sm font-semibold mb-2 ${
+ index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+ }`}>
+ <Calendar className="w-4 h-4 mr-2" />
+ {exp.period}
+ </div>
+ <h3 className="text-xl font-bold text-foreground mb-1">{exp.role}</h3>
+ <div className={`flex items-center gap-1 text-xs font-medium text-muted-foreground mb-2 ${index % 2 === 0 ? "md:justify-e...
+ <Building2 className="w-3 h-3" />
+ {exp.company}
+ </div>
+ <p className="text-muted-foreground text-sm">{exp.description}</p>
+ </div>
+ </motion.div>
+ ))}
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Certifications.tsx =====
+import { motion } from "framer-motion";
+import { Award } from "lucide-react";
+export default function Certifications() {
+ const certifications = [
+ { title: "Google Machine Learning Crash Course", issuer: "Google" },
+ { title: "Natural Language Processing Specialization", issuer: "Coursera/DeepLearning.AI" },
+ { title: "TAUS Post-Editing Training", issuer: "TAUS" },
+ { title: "Localization QA Professional", issuer: "SDL/RWS" },
+ { title: "CAT Tools Certification", issuer: "memoQ" }
+ ];
+ return (
+ <section className="py-20 bg-secondary/30 border-y border-border" id="certifications">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Certifications
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ Continuous learning and verified expertise.
+ </p>
+ </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ {certifications.map((cert, index) => (
+ <motion.div
+ key={index}
+ initial={{ opacity: 0, y: 20 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: index * 0.1 }}
+ className="relative p-[1px] rounded-2xl bg-gradient-to-b from-border to-transparent overflow-hidden"
+ >
+ <div className="bg-card/80 backdrop-blur-md h-full rounded-[15px] p-6 flex flex-col items-center text-center">
+ <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+ <Award className="w-6 h-6 text-primary" />
+ </div>
+ <h3 className="text-lg font-bold text-foreground mb-2">{cert.title}</h3>
+ <p className="text-sm text-muted-foreground">{cert.issuer}</p>
+ </div>
+ </motion.div>
+ ))}
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Tools.tsx =====
+import { motion } from "framer-motion";
+export default function Tools() {
+ const categories = [
+ {
+ name: "CAT Tools",
+ tools: ["SDL Trados Studio", "memoQ", "Wordfast", "OmegaT"]
+ },
+ {
+ name: "QA Platforms",
+ tools: ["Xbench", "Verifika", "ErrorSpy", "Baseline"]
+ },
+ {
+ name: "Annotation Platforms",
+ tools: ["Appen", "Scale AI", "Toloka"]
+ },
+ {
+ name: "Productivity",
+ tools: ["Google Workspace", "Notion", "Slack"]
+ },
+ {
+ name: "AI Workflow",
+ tools: ["Baseline", "Python basics", "API testing tools", "Turing Platform"]
+ }
+ ];
+ return (
+ <section className="py-20 bg-background" id="tools">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Tools & Platforms
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ The technology stack powering efficient language operations.
+ </p>
+ </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+ {categories.map((category, index) => (
+ <motion.div
+ key={index}
+ initial={{ opacity: 0, scale: 0.95 }}
+ whileInView={{ opacity: 1, scale: 1 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5, delay: index * 0.1 }}
+ className="bg-card border border-border p-6 rounded-2xl text-center shadow-sm"
+ >
+ <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-4">
+ {category.name}
+ </h3>
+ <div className="space-y-3">
+ {category.tools.map((tool, i) => (
+ <div key={i} className="text-foreground font-medium text-sm">
+ {tool}
+ </div>
+ ))}
+ </div>
+ </motion.div>
+ ))}
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Resources.tsx =====
+import { motion } from "framer-motion";
+import { Download, FileText, CheckSquare, BarChart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+export default function Resources() {
+ const resources = [
+ { title: "CV / Resume (PDF)", icon: <FileText className="w-5 h-5" /> },
+ { title: "AI Evaluation Report Sample", icon: <BarChart className="w-5 h-5" /> },
+ { title: "Localization QA Checklist", icon: <CheckSquare className="w-5 h-5" /> },
+ { title: "Transcript Cleanup Sample", icon: <FileText className="w-5 h-5" /> },
+ { title: "MTPE Case Study PDF", icon: <FileText className="w-5 h-5" /> }
+ ];
+ return (
+ <section className="py-20 bg-secondary/30 border-y border-border" id="resources">
+ <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Downloadable Resources
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ Sample reports, checklists, and my professional resume.
+ </p>
+ </div>
+ <div className="flex flex-col gap-4">
+ {resources.map((res, index) => (
+ <motion.div
+ key={index}
+ initial={{ opacity: 0, x: -20 }}
+ whileInView={{ opacity: 1, x: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.4, delay: index * 0.1 }}
+ className="bg-card border border-border p-4 rounded-xl flex items-center justify-between shadow-sm hover:shadow-md transiti...
+ >
+ <div className="flex items-center text-foreground font-medium">
+ <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-4">
+ {res.icon}
+ </div>
+ {res.title}
+ </div>
+ <Button variant="ghost" size="icon" asChild className="group-hover:bg-primary group-hover:text-primary-foreground transitio...
+ <a href="#" download aria-label={`Download ${res.title}`}>
+ <Download className="w-5 h-5" />
+ </a>
+ </Button>
+ </motion.div>
+ ))}
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Testimonials.tsx =====
+import { motion } from "framer-motion";
+import { Quote } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useEffect, useState } from "react";
+export default function Testimonials() {
+ const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+ const [selectedIndex, setSelectedIndex] = useState(0);
+ useEffect(() => {
+ if (!emblaApi) return;
+
+ const onSelect = () => {
+ setSelectedIndex(emblaApi.selectedScrollSnap());
+ };
+
+ emblaApi.on("select", onSelect);
+ return () => {
+ emblaApi.off("select", onSelect);
+ };
+ }, [emblaApi]);
+ const testimonials = [
+ {
+ quote: "Jaefer's AI evaluation work transformed the quality of our Arabic NLP datasets. His attention to linguistic nuance is excep...
+ author: "Senior AI Engineer",
+ company: "Tech Company"
+ },
+ {
+ quote: "The MTPE quality Jaefer delivers consistently meets our enterprise localization standards. Fast, precise, and deeply profes...
+ author: "Localization Project Manager",
+ company: "Agency"
+ },
+ {
+ quote: "Working with Jaefer on transcript cleanup saved our team hours of post-production work. He understood our quality standards...
+ author: "Content Operations Lead",
+ company: "Media Company"
+ }
+ ];
+ return (
+ <section className="py-20 md:py-32 bg-background overflow-hidden" id="testimonials">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-16">
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+ Client Feedback
+ </h2>
+ <p className="text-lg text-muted-foreground">
+ Trusted by industry leaders in AI and localization.
+ </p>
+ </div>
+ <div className="relative max-w-4xl mx-auto">
+ <div className="overflow-hidden" ref={emblaRef}>
+ <div className="flex">
+ {testimonials.map((testimonial, index) => (
+ <div key={index} className="flex-[0_0_100%] min-w-0 px-4">
+ <motion.div
+ initial={{ opacity: 0, scale: 0.95 }}
+ whileInView={{ opacity: 1, scale: 1 }}
+ viewport={{ once: true }}
+ className="bg-card border border-border p-8 md:p-12 rounded-2xl text-center shadow-sm relative"
+ >
+ <Quote className="w-12 h-12 text-primary/20 mx-auto mb-6" />
+ <p className="text-lg md:text-xl text-foreground font-medium italic mb-8 leading-relaxed">
+ "{testimonial.quote}"
+ </p>
+ <div>
+ <div className="font-bold text-foreground">{testimonial.author}</div>
+ <div className="text-sm text-muted-foreground">{testimonial.company}</div>
+ </div>
+ </motion.div>
+ </div>
+ ))}
+ </div>
+ </div>
+
+ <div className="flex justify-center gap-2 mt-8">
+ {testimonials.map((_, index) => (
+ <button
+ key={index}
+ onClick={() => emblaApi?.scrollTo(index)}
+ className={`w-2.5 h-2.5 rounded-full transition-colors ${
+ index === selectedIndex ? "bg-primary" : "bg-muted-foreground/30"
+ }`}
+ aria-label={`Go to slide ${index + 1}`}
+ />
+ ))}
+ </div>
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== Contact.tsx =====
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import emailjs from "@emailjs/browser";
+import { Mail, MessageCircle, MapPin, Github, Linkedin, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/hooks/use-toast";
+const formSchema = z.object({
+ user_name: z.string().min(2, "Name is required"),
+ user_email: z.string().email("Valid email is required"),
+ subject: z.string().min(2, "Subject is required"),
+ service_type: z.string().min(1, "Please select a service type"),
+ message: z.string().min(10, "Message must be at least 10 characters")
+});
+export default function Contact() {
+ const [isSubmitting, setIsSubmitting] = useState(false);
+ const { toast } = useToast();
+ const form = useForm<z.infer<typeof formSchema>>({
+ resolver: zodResolver(formSchema),
+ defaultValues: {
+ user_name: "",
+ user_email: "",
+ subject: "",
+ service_type: "",
+ message: ""
+ }
+ });
+ const onSubmit = async (values: z.infer<typeof formSchema>) => {
+ setIsSubmitting(true);
+ try {
+ await emailjs.send(
+ "service_xdp150l",
+ "template_s01uaxn",
+ {
+ from_name: values.user_name,
+ reply_to: values.user_email,
+ subject: values.subject,
+ service_type: values.service_type,
+ message: values.message,
+ },
+ "iQ58QxcBqvIi-bTRA"
+ );
+ toast({
+ title: "Message sent!",
+ description: "Thank you for reaching out. I'll get back to you shortly.",
+ });
+ form.reset();
+ } catch (error) {
+ toast({
+ variant: "destructive",
+ title: "Something went wrong.",
+ description: "Failed to send message. Please try again or use direct email.",
+ });
+ } finally {
+ setIsSubmitting(false);
+ }
+ };
+ const socialLinks = [
+ { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/jaefer-ibrahim-b1977b378", label: "LinkedIn" },
+ { icon: <MessageCircle className="w-5 h-5" />, href: "https://wa.me/201103912522", label: "WhatsApp" },
+ { icon: <Mail className="w-5 h-5" />, href: "mailto:contact.jaefer@gmail.com", label: "Email" },
+ { icon: <Github className="w-5 h-5" />, href: "https://github.com", label: "GitHub" },
+ ];
+ return (
+ <section className="py-20 md:py-32 bg-secondary/30" id="contact">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+ <motion.div
+ initial={{ opacity: 0, x: -20 }}
+ whileInView={{ opacity: 1, x: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5 }}
+ >
+ <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Let's Work Together</h2>
+ <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
+ Available for freelance opportunities, consulting, and long-term partnerships. Fill out the form or reach out directly via ...
+ </p>
+ <div className="space-y-6 mb-10">
+ <div className="flex items-center">
+ <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+ <Mail className="w-5 h-5" />
+ </div>
+ <div>
+ <div className="text-sm font-semibold text-muted-foreground">Email</div>
+ <a href="mailto:contact.jaefer@gmail.com" className="text-foreground font-medium hover:text-primary transition-colors">
+ contact.jaefer@gmail.com
+ </a>
+ </div>
+ </div>
+ <div className="flex items-center">
+ <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+ <MessageCircle className="w-5 h-5" />
+ </div>
+ <div>
+ <div className="text-sm font-semibold text-muted-foreground">WhatsApp</div>
+ <a href="https://wa.me/201103912522" className="text-foreground font-medium hover:text-primary transition-colors">
+ +20 110 391 2522
+ </a>
+ </div>
+ </div>
+ <div className="flex items-center">
+ <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+ <MapPin className="w-5 h-5" />
+ </div>
+ <div>
+ <div className="text-sm font-semibold text-muted-foreground">Location</div>
+ <div className="text-foreground font-medium">Remote / Global</div>
+ </div>
+ </div>
+ </div>
+ <div className="flex gap-4">
+ {socialLinks.map((social, index) => (
+ <a
+ key={index}
+ href={social.href}
+ target="_blank"
+ rel="noopener noreferrer"
+ className="w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center text-muted-foreground h...
+ aria-label={social.label}
+ >
+ {social.icon}
+ </a>
+ ))}
+ </div>
+ </motion.div>
+ <motion.div
+ initial={{ opacity: 0, x: 20 }}
+ whileInView={{ opacity: 1, x: 0 }}
+ viewport={{ once: true }}
+ transition={{ duration: 0.5 }}
+ className="bg-card border border-border p-8 rounded-2xl shadow-lg"
+ >
+ <Form {...form}>
+ <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <FormField
+ control={form.control}
+ name="user_name"
+ render={({ field }) => (
+ <FormItem>
+ <FormLabel>Full Name</FormLabel>
+ <FormControl>
+ <Input placeholder="John Doe" {...field} />
+ </FormControl>
+ <FormMessage />
+ </FormItem>
+ )}
+ />
+ <FormField
+ control={form.control}
+ name="user_email"
+ render={({ field }) => (
+ <FormItem>
+ <FormLabel>Email Address</FormLabel>
+ <FormControl>
+ <Input type="email" placeholder="john@example.com" {...field} />
+ </FormControl>
+ <FormMessage />
+ </FormItem>
+ )}
+ />
+ </div>
+
+ <FormField
+ control={form.control}
+ name="service_type"
+ render={({ field }) => (
+ <FormItem>
+ <FormLabel>Service Type</FormLabel>
+ <Select onValueChange={field.onChange} defaultValue={field.value}>
+ <FormControl>
+ <SelectTrigger>
+ <SelectValue placeholder="Select a service..." />
+ </SelectTrigger>
+ </FormControl>
+ <SelectContent>
+ <SelectItem value="ai-evaluation">AI Linguistic Evaluation</SelectItem>
+ <SelectItem value="localization">Localization & MTPE</SelectItem>
+ <SelectItem value="translation">Translation & Proofreading</SelectItem>
+ <SelectItem value="transcript">Transcript Cleanup & QA</SelectItem>
+ <SelectItem value="nlp-annotation">NLP Annotation & AI Data</SelectItem>
+ <SelectItem value="conversational-ai">Conversational AI Review</SelectItem>
+ <SelectItem value="other">Other Inquiry</SelectItem>
+ </SelectContent>
+ </Select>
+ <FormMessage />
+ </FormItem>
+ )}
+ />
+ <FormField
+ control={form.control}
+ name="subject"
+ render={({ field }) => (
+ <FormItem>
+ <FormLabel>Subject</FormLabel>
+ <FormControl>
+ <Input placeholder="Project Discussion" {...field} />
+ </FormControl>
+ <FormMessage />
+ </FormItem>
+ )}
+ />
+ <FormField
+ control={form.control}
+ name="message"
+ render={({ field }) => (
+ <FormItem>
+ <FormLabel>Message</FormLabel>
+ <FormControl>
+ <Textarea placeholder="Tell me about your project..." className="min-h-[120px]" {...field} />
+ </FormControl>
+ <FormMessage />
+ </FormItem>
+ )}
+ />
+ <Button type="submit" className="w-full" disabled={isSubmitting}>
+ {isSubmitting ? (
+ <>
+ <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+ Sending...
+ </>
+ ) : (
+ "Send Message"
+ )}
+ </Button>
+ </form>
+ </Form>
+ </motion.div>
+ </div>
+ </div>
+ </section>
+ );
+}
+// ===== FloatingWhatsApp.tsx =====
+import { MessageCircle } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+export default function FloatingWhatsApp() {
+ return (
+ <div className="fixed bottom-6 right-6 z-50">
+ <Tooltip>
+ <TooltipTrigger asChild>
+ <a
+ href="https://wa.me/201103912522"
+ target="_blank"
+ rel="noopener noreferrer"
+ className="flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 trans...
+ aria-label="Contact on WhatsApp"
+ >
+ <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-30 animate-ping"></span>
+ <MessageCircle className="w-7 h-7 relative z-10" />
+ </a>
+ </TooltipTrigger>
+ <TooltipContent side="left" className="mr-2 bg-foreground text-background border-none shadow-xl">
+ <p className="font-medium">WhatsApp Consultation</p>
+ </TooltipContent>
+ </Tooltip>
+ </div>
+ );
+}
+// ===== Footer.tsx =====
+import { Linkedin, Github, MessageCircle, Mail } from "lucide-react";
+export default function Footer() {
+ const currentYear = new Date().getFullYear();
+ return (
+ <footer className="bg-background border-t border-border py-12">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+
+ <div className="mb-6 md:mb-0 text-center md:text-left">
+ <a href="#" className="text-xl font-bold tracking-tight text-foreground block mb-2">
+ Jaefer Ibrahim<span className="text-primary">.</span>
+ </a>
+ <p className="text-sm text-muted-foreground">
+ Multilingual AI & Language Services
+ </p>
+ </div>
+ <div className="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+ <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Services</a>
+ <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About</a>
+ <a href="#portfolio" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
+ <a href="#experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Experience</a>
+ <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+ </div>
+ <div className="flex gap-4">
+ <a href="https://www.linkedin.com/in/jaefer-ibrahim-b1977b378" target="_blank" rel="noopener noreferrer" className="text-mute...
+ <Linkedin className="w-5 h-5" />
+ </a>
+ <a href="https://wa.me/201103912522" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-pr...
+ <MessageCircle className="w-5 h-5" />
+ </a>
+ <a href="mailto:contact.jaefer@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+ <Mail className="w-5 h-5" />
+ </a>
+ <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary tr...
+ <Github className="w-5 h-5" />
+ </a>
+ </div>
+ </div>
+
+ <div className="text-center text-xs text-muted-foreground pt-8 border-t border-border">
+ &copy; {currentYear} Jaefer Ibrahim. All rights reserved.
+ </div>
+ </div>
+ </footer>
+ );
+}
