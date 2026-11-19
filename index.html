@@ -1,375 +1,591 @@
-import { useState } from 'react';
-import type { LucideIcon } from 'lucide-react';
-import {
-  ArrowUpRight,
-  AudioLines,
-  Braces,
-  Check,
-  ChevronDown,
-  CircleDot,
-  Code2,
-  ExternalLink,
-  GitBranch,
-  Github,
-  Globe2,
-  Linkedin,
-  Menu,
-  MessageSquareQuote,
-  Network,
-  Radar,
-  ShieldCheck,
-  SlidersHorizontal,
-  Sparkles,
-  SquareArrowOutUpRight,
-  X,
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jaefer Ibrahim — AI Data Trainer & LLM Evaluation Engineer</title>
+<meta name="description" content="Multilingual AI Data Trainer & LLM Evaluation Engineer. Auditing cross-domain LLM datasets spanning advanced STEM, legal frameworks, and medical information routing." />
 
-type Capability = {
-  index: string;
-  title: string;
-  description: string;
-  tags: string[];
-  icon: LucideIcon;
-  accent: string;
-};
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
 
-type Role = {
-  company: string;
-  title: string;
-  dates: string;
-  location: string;
-  summary: string;
-  highlights: string[];
-  metric?: string;
-  metricLabel?: string;
-};
+<!-- Lucide Icons via CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
 
-type Pillar = {
-  index: string;
-  title: string;
-  description: string;
-  points: string[];
-  icon: LucideIcon;
-};
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-type Project = {
-  number: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  tags: string[];
-  outcomes: string[];
-  accent: string;
-};
-
-const capabilities: Capability[] = [
-  {
-    index: '01',
-    title: 'Data annotation',
-    description: 'High-context labeling that keeps linguistic nuance, intent, and edge cases intact across Arabic-first datasets.',
-    tags: ['Arabic / English', 'QA rubrics', 'Speaker labels'],
-    icon: Braces,
-    accent: 'mint',
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        ink: '#09090b',
+        panel: '#0c0c0f',
+        neon: '#22e6a8',
+        neon2: '#22d3ee',
+      },
+      animation: {
+        'fade-up': 'fadeUp .8s cubic-bezier(.16,1,.3,1) both',
+        'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+        'scan': 'scan 6s linear infinite',
+      },
+      keyframes: {
+        fadeUp: {
+          '0%': { opacity: 0, transform: 'translateY(24px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        pulseSlow: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: .45 },
+        },
+        scan: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(400%)' },
+        },
+      },
+    },
   },
-  {
-    index: '02',
-    title: 'Prompt engineering',
-    description: 'Test suites that make instruction following, factuality, tone, and user intent measurable — not subjective.',
-    tags: ['Adversarial prompts', 'Eval design', 'Preference data'],
-    icon: MessageSquareQuote,
-    accent: 'blue',
-  },
-  {
-    index: '03',
-    title: 'Model safety / red teaming',
-    description: 'Structured probing for hallucinations, unsafe completions, bias, and cultural mismatch in production scenarios.',
-    tags: ['Risk taxonomy', 'Failure modes', 'Evidence review'],
-    icon: ShieldCheck,
-    accent: 'orange',
-  },
-  {
-    index: '04',
-    title: 'ASR audio alignment',
-    description: 'Transcript-to-audio QA across dialects, code-switching, cut-off speech, and timing-sensitive training data.',
-    tags: ['Speech segmentation', 'Timestamping', 'WER review'],
-    icon: AudioLines,
-    accent: 'yellow',
-  },
-];
-
-const pillars: Pillar[] = [
-  {
-    index: 'M / 01',
-    title: 'Universal SFT & RLHF Calibration',
-    description: 'One calibrated standard for supervised-fine-tuning and preference data — applied consistently across STEM, legal, and medical domains in English and Arabic.',
-    points: ['Rubric normalization across domains', 'Preference-pair scoring & ranking', 'Cross-lingual consistency checks'],
-    icon: SlidersHorizontal,
-  },
-  {
-    index: 'M / 02',
-    title: 'Red Teaming & Adversarial Evaluation',
-    description: 'Structured adversarial probing that surfaces hallucination, bias, unsafe completions, and cultural mismatch before they reach production.',
-    points: ['Adversarial prompt suites (EN / AR)', 'Failure-mode & risk taxonomies', 'Evidence-backed severity reporting'],
-    icon: ShieldCheck,
-  },
-  {
-    index: 'M / 03',
-    title: 'Chain-of-Thought Logical Reasoning',
-    description: 'Step-level audit of reasoning traces — verifying each inference, spotting unjustified leaps, and scoring logical rigor, not just final answers.',
-    points: ['Stepwise inference verification', 'Distractor & trap-resistance testing', 'Mathematical and legal reasoning QA'],
-    icon: GitBranch,
-  },
-];
-
-const roles: Role[] = [
-  {
-    company: 'Agents Only Inc',
-    title: 'AI Training & Research Contributor',
-    dates: 'Jun 2026 — Nov 2026',
-    location: 'Remote · Contract',
-    summary: 'Audited diverse AI-training datasets — STEM, legal, and medical content — in both English and Arabic, scoring complex tasks against instruction-following and domain rubrics.',
-    highlights: [
-      'Reviewed and calibrated evaluation rubrics, translating criteria into consistent annotations across STEM, legal, and medical subject matter.',
-      'Prepared and audited English- and Arabic-language responses for AI-training tasks, adapting to revised instructions without loss of rigor.',
-    ],
-    metric: '24h',
-    metricLabel: 'feedback turnaround',
-  },
-  {
-    company: 'TrustScale AI',
-    title: 'AI Response Evaluator & Fact-Verification Annotator',
-    dates: 'Jul 2026 — Oct 2026',
-    location: 'Remote · Contract',
-    summary: 'Evaluated English and Arabic prompts and AI responses against guidelines covering clarity, information-seeking intent, sensitivity, and factuality — with STEM, legal, and medical claims in scope.',
-    highlights: [
-      'Decomposed responses into factual claims and researched reliable sources for verification across technical, legal, and medical content.',
-      'Identified hallucinations, unsupported statements, misleading information, and contextual inaccuracies.',
-    ],
-    metric: '10D',
-    metricLabel: 'quality dimensions',
-  },
-  {
-    company: 'Acolad',
-    title: 'Speech Data Annotation & Transcription QA Specialist',
-    dates: 'Jul 2026 — Sep 2026',
-    location: 'Remote · Contract',
-    summary: 'Annotated Arabic speech data and aligned verbatim transcripts to audio within an approximately 300-millisecond tolerance.',
-    highlights: [
-      'Identified missing or mismatched words, timestamp drift, speaker-attribution errors, and transcript-audio inconsistencies.',
-      'Applied a five-point quality scale to support accept/reject decisions across speech segments.',
-    ],
-    metric: '<300ms',
-    metricLabel: 'timestamp tolerance',
-  },
-  {
-    company: 'Frontier Design',
-    title: 'Data Annotator & Linguist',
-    dates: 'Sep 2025 — Dec 2025',
-    location: 'Remote · Independent contract',
-    summary: 'Annotated and evaluated more than 3,000 Arabic, Tigrinya, and English AI-training data segments, spanning STEM, legal, and medical source material.',
-    highlights: [
-      'Assessed generated content for factual accuracy, linguistic quality, contextual relevance, translation quality, bias, and safety.',
-      'Escalated findings with supporting explanations and coordinated on data-quality issues.',
-    ],
-    metric: '3,000+',
-    metricLabel: 'segments audited',
-  },
-];
-
-const projects: Project[] = [
-  {
-    number: 'CASE / 01',
-    title: 'Canva Arabic AI Quality Evaluation',
-    subtitle: 'Arabic AI-generated design quality · 2026',
-    description: 'A structured review of Egyptian Arabic prompts and AI-generated design outputs, scored across language, visual, and cultural dimensions.',
-    tags: ['Egyptian Arabic', '10 quality dimensions', 'UX evaluation'],
-    outcomes: [
-      'Benchmarked image and copy accuracy, coherence, formatting, fluency, and generation quality.',
-      'Compared outputs with cultural relevance, dialect/register fit, and entity recognition in view.',
-      'Produced a targeted QA recommendation with product-risk and mitigation notes.',
-    ],
-    accent: 'mint',
-  },
-  {
-    number: 'CASE / 02',
-    title: 'Speech Dataset QA',
-    subtitle: 'Arabic ASR alignment pipeline · 2026',
-    description: 'A quality-control workflow for speech data where every word, speaker switch, and timestamp needs to survive contact with the audio.',
-    tags: ['ASR QA', 'Code-switching', '<300ms alignment'],
-    outcomes: [
-      'Aligned verbatim Arabic transcripts to audio while preserving natural disfluencies and cut-off speech.',
-      'Flagged transcript drift, speaker-attribution errors, and unintelligible segments for review.',
-      'Converted edge cases into consistent accept/reject decisions with a five-point quality scale.',
-    ],
-    accent: 'blue',
-  },
-];
-
-const navItems = [
-  { label: 'Capabilities', href: '#capabilities' },
-  { label: 'Methodology', href: '#methodology' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Case studies', href: '#projects' },
-];
-
-function App() {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [openProject, setOpenProject] = useState<string | null>(null);
-
-  const toggleProject = (title: string): void => {
-    setOpenProject((current) => (current === title ? null : title));
-  };
-
-  return (
-    <div className="site-shell">
-      <div className="ambient ambient-one" />
-      <div className="ambient ambient-two" />
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Jaefer Ibrahim home">
-          <span className="brand-mark"><CircleDot size={16} strokeWidth={2.5} /></span>
-          <span>JAEFER<span className="brand-muted">/</span>IBRAHIM</span>
-        </a>
-        <nav className={`site-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>
-          ))}
-          <a className="nav-contact" href="mailto:contact.jaefer@gmail.com">Start a conversation <ArrowUpRight size={15} /></a>
-        </nav>
-        <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} onClick={() => setMenuOpen((open) => !open)}>
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </header>
-
-      <main id="top">
-        <section className="hero section-wrap">
-          <div className="hero-copy">
-            <div className="eyebrow"><span className="status-dot" /> Arabic AI evaluation / available for select contracts</div>
-            <h1>AI Data Trainer <span>&amp;</span> LLM Evaluation Engineer<span className="hero-title-sub"> | Multilingual Specialist</span></h1>
-            <p className="hero-description">I audit and calibrate the datasets behind frontier models — STEM, legal, and medical content in English and Arabic — turning ambiguous model behavior into clear, defensible quality signals.</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="mailto:contact.jaefer@gmail.com">Work with me <ArrowUpRight size={16} /></a>
-              <a className="text-link" href="#projects">View case studies <span>↓</span></a>
-            </div>
-            <div className="social-row">
-              <a href="https://github.com" target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ExternalLink size={12} /></a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn <ExternalLink size={12} /></a>
-            </div>
-          </div>
-
-          <div className="signal-panel" aria-label="Professional snapshot">
-            <div className="panel-topline"><span>LIVE PROFILE / 2026</span><span className="panel-live"><span className="status-dot" /> open</span></div>
-            <div className="signal-visual">
-              <div className="signal-grid" />
-              <div className="signal-orbit orbit-one" />
-              <div className="signal-orbit orbit-two" />
-              <div className="signal-core"><Radar size={30} strokeWidth={1.2} /><span>QUALITY<br />SIGNAL</span></div>
-              <span className="signal-label label-one">LANG / AR</span>
-              <span className="signal-label label-two">RLHF / 04</span>
-              <span className="signal-label label-three">QA / 99.2</span>
-              <span className="signal-cross cross-one">+</span>
-              <span className="signal-cross cross-two">+</span>
-            </div>
-            <div className="panel-readout">
-              <div><span className="readout-label">Primary lens</span><strong>Multi-domain quality</strong></div>
-              <div><span className="readout-label">Working mode</span><strong>Human-in-the-loop</strong></div>
-            </div>
-            <div className="panel-footer"><Code2 size={14} /> <span>evidence // context // judgment</span><span>v.01</span></div>
-          </div>
-        </section>
-
-        <section className="marquee-strip" aria-label="Areas of focus">
-          <div className="marquee-track"><span>SFT / RLHF CALIBRATION</span><span>RED TEAMING</span><span>CHAIN-OF-THOUGHT QA</span><span>STEM / LEGAL / MEDICAL</span><span>ENGLISH · ARABIC</span><span>ASR ALIGNMENT</span><span>SFT / RLHF CALIBRATION</span><span>RED TEAMING</span></div>
-        </section>
-
-        <section id="capabilities" className="content-section section-wrap">
-          <div className="section-heading"><div><p className="section-kicker">01 / The toolkit</p><h2>AI lifecycle, viewed through a language lens.</h2></div><p className="section-intro">From raw data to release decisions, I build the human judgment layer that makes model quality legible.</p></div>
-          <div className="capability-grid">
-            {capabilities.map((capability) => {
-              const Icon = capability.icon;
-              return <article key={capability.index} className={`capability-card accent-${capability.accent}`}>
-                <div className="card-topline"><span>{capability.index}</span><Icon size={22} strokeWidth={1.5} /></div>
-                <h3>{capability.title}</h3>
-                <p>{capability.description}</p>
-                <div className="tag-row">{capability.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              </article>;
-            })}
-          </div>
-        </section>
-
-        <section id="methodology" className="content-section section-wrap methodology-section">
-          <div className="section-heading"><div><p className="section-kicker">02 / Core methodology</p><h2>Core Methodology &amp; Rubric Expertise.</h2></div><p className="section-intro">Three disciplines, one standard: every judgment traceable to a rubric, every rubric tested against real failure modes.</p></div>
-          <div className="methodology-grid">
-            {pillars.map((pillar) => {
-              const Icon = pillar.icon;
-              return <article key={pillar.index} className="methodology-card">
-                <div className="card-topline"><span>{pillar.index}</span><Icon size={22} strokeWidth={1.5} /></div>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-                <ul className="pillar-points">{pillar.points.map((point) => <li key={point}><span className="detail-bullet" />{point}</li>)}</ul>
-              </article>;
-            })}
-          </div>
-        </section>
-
-        <section id="experience" className="content-section section-wrap experience-section">
-          <div className="section-heading"><div><p className="section-kicker">03 / Field notes</p><h2>Selected contract history.</h2></div><p className="section-intro">A record of the review rooms, annotation queues, and edge cases behind the signal.</p></div>
-          <div className="experience-layout">
-            <div className="timeline">
-              {roles.map((role, index) => <article className="timeline-item" key={role.company}>
-                <div className="timeline-marker"><span>{String(index + 1).padStart(2, '0')}</span></div>
-                <div className="timeline-content">
-                  <div className="role-meta"><span>{role.dates}</span><span>{role.location}</span></div>
-                  <h3>{role.company}</h3>
-                  <p className="role-title">{role.title}</p>
-                  <p className="role-summary">{role.summary}</p>
-                  <ul>{role.highlights.map((highlight) => <li key={highlight}><Check size={14} /> {highlight}</li>)}</ul>
-                </div>
-                {role.metric && <div className="role-metric"><strong>{role.metric}</strong><span>{role.metricLabel}</span></div>}
-              </article>)}
-            </div>
-            <aside className="impact-card">
-              <div className="impact-icon"><Sparkles size={18} /></div>
-              <p className="section-kicker">Impact, in numbers</p>
-              <div className="big-stat">3K<span>+</span></div>
-              <p>data segments audited across STEM, legal, and medical content — in English, Arabic, and Tigrinya.</p>
-              <div className="mini-bars"><span style={{ height: '44%' }} /><span style={{ height: '66%' }} /><span style={{ height: '57%' }} /><span style={{ height: '82%' }} /><span style={{ height: '72%' }} /><span style={{ height: '96%' }} /></div>
-              <div className="impact-footer"><span>2025</span><span>2026</span><span className="impact-key"><i /> review volume</span></div>
-            </aside>
-          </div>
-        </section>
-
-        <section id="projects" className="content-section section-wrap projects-section">
-          <div className="section-heading"><div><p className="section-kicker">04 / Proof of work</p><h2>Case studies, not claims.</h2></div><p className="section-intro">Open a project to see the evaluation logic, the edge cases, and what a useful decision looked like at the end.</p></div>
-          <div className="projects-list">
-            {projects.map((project) => {
-              const isOpen = openProject === project.title;
-              return <article key={project.title} className={`project-card accent-${project.accent} ${isOpen ? 'is-open' : ''}`}>
-                <button type="button" className="project-trigger" onClick={() => toggleProject(project.title)} aria-expanded={isOpen}>
-                  <span className="project-number">{project.number}</span>
-                  <span className="project-title-wrap"><span className="project-title">{project.title}</span><span className="project-subtitle">{project.subtitle}</span></span>
-                  <span className="project-toggle">{isOpen ? <X size={18} /> : <ChevronDown size={19} />}</span>
-                </button>
-                <div className="project-preview"><p>{project.description}</p><span className="case-link">{isOpen ? 'Close case study' : 'Open case study'} <SquareArrowOutUpRight size={15} /></span></div>
-                <div className={`project-details ${isOpen ? 'details-visible' : ''}`}>
-                  <div className="detail-label"><Network size={16} /> evaluation output</div>
-                  <ul>{project.outcomes.map((outcome) => <li key={outcome}><span className="detail-bullet" />{outcome}</li>)}</ul>
-                  <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                </div>
-              </article>;
-            })}
-          </div>
-        </section>
-
-        <section className="closing-cta section-wrap">
-          <div className="cta-grid" />
-          <div className="cta-content"><p className="section-kicker">Have a hard-to-evaluate problem?</p><h2>Let’s make the signal clear.</h2><p>For Arabic LLM evaluation, dataset QA, and rapid review work, send the brief and I’ll bring the rubric.</p><a className="button button-primary" href="mailto:contact.jaefer@gmail.com">contact.jaefer@gmail.com <ArrowUpRight size={16} /></a></div>
-          <div className="cta-stamp"><Globe2 size={24} /><span>GIZA<br />EGYPT</span></div>
-        </section>
-      </main>
-
-      <footer className="site-footer section-wrap"><span>© 2026 Jaefer Ibrahim</span><span>Arabic AI quality / human judgment</span><a href="#top">Back to top ↑</a></footer>
-    </div>
-  );
 }
+</script>
 
-export default App;
+<style>
+  :root {
+    --neon: #22e6a8;
+    --neon2: #22d3ee;
+  }
+  html { background: #09090b; }
+  body { font-family: 'Inter', sans-serif; background: #09090b; }
+  ::selection { background: rgba(34, 230, 168, .25); color: #e4e4e7; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #09090b; }
+  ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+  /* Subtle blueprint grid overlay */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* Neon hairline card */
+  .neon-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0) 40%), #0c0c0f;
+    border: 1px solid rgba(255,255,255,.08);
+    transition: border-color .35s ease, transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+  }
+  .neon-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(34,230,168,.7), transparent);
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  .neon-card:hover {
+    border-color: rgba(34,230,168,.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px -12px rgba(34,230,168,.15);
+  }
+  .neon-card:hover::before { opacity: 1; }
+
+  /* Corner tick marks on cards */
+  .corner::after {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 14px; height: 14px;
+    border-top: 1px solid rgba(34,230,168,.6);
+    border-right: 1px solid rgba(34,230,168,.6);
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+  .neon-card:hover.corner::after { opacity: 1; }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: .08em;
+    padding: .35rem .75rem;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 9999px;
+    color: #a1a1aa;
+    background: rgba(255,255,255,.02);
+    transition: all .25s ease;
+  }
+  .tag:hover {
+    border-color: rgba(34,230,168,.45);
+    color: var(--neon);
+    background: rgba(34,230,168,.06);
+  }
+
+  /* Timeline spine */
+  .timeline-line {
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(34,230,168,.5), rgba(34,211,238,.25) 60%, transparent);
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 15px; height: 15px;
+    border-radius: 9999px;
+    border: 1px solid rgba(34,230,168,.6);
+    background: #09090b;
+  }
+  .timeline-dot::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 9999px;
+    background: var(--neon);
+    box-shadow: 0 0 12px rgba(34,230,168,.8);
+  }
+
+  .metric-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    color: var(--neon);
+    border: 1px solid rgba(34,230,168,.3);
+    background: rgba(34,230,168,.05);
+    padding: .2rem .6rem;
+    border-radius: 4px;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Hero glow */
+  .hero-glow {
+    position: absolute;
+    width: 640px; height: 640px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(34,230,168,.10) 0%, transparent 65%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  .headline-stroke {
+    background: linear-gradient(120deg, #fafafa 30%, var(--neon) 70%, var(--neon2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lang-bar { height: 4px; border-radius: 2px; background: #1f1f23; overflow: hidden; }
+  .lang-bar > span {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, var(--neon), var(--neon2));
+    border-radius: 2px;
+  }
+
+  nav a.nav-link { position: relative; transition: color .25s ease; }
+  nav a.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: var(--neon);
+    transition: width .3s cubic-bezier(.16,1,.3,1);
+  }
+  nav a.nav-link:hover { color: #fafafa; }
+  nav a.nav-link:hover::after { width: 100%; }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 9999px;
+    background: var(--neon);
+    box-shadow: 0 0 10px rgba(34,230,168,.9);
+  }
+</style>
+</head>
+
+<body class="bg-zinc-950 text-zinc-400 antialiased overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 bg-zinc-950/80 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-mono text-sm tracking-widest text-zinc-200">
+      <span class="text-neon">&gt;</span> jaefer.ibrahim<span class="text-neon animate-pulse-slow">_</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs tracking-wider text-zinc-500">
+      <a href="#methodology" class="nav-link">01_METHOD</a>
+      <a href="#timeline" class="nav-link">02_TIMELINE</a>
+      <a href="#projects" class="nav-link">03_PROJECTS</a>
+      <a href="#skills" class="nav-link">04_MATRIX</a>
+    </nav>
+    <a href="mailto:contact.jaefer@gmail.com" class="hidden md:inline-flex items-center gap-2 font-mono text-xs tracking-wider text-neon border border-neon/30 rounded px-4 py-2 hover:bg-neon/10 transition-colors">
+      <i data-lucide="mail" class="w-3.5 h-3.5"></i> HIRE
+    </a>
+  </div>
+</header>
+
+<!-- ============ 1. HERO ============ -->
+<section id="top" class="relative min-h-screen flex items-center pt-16">
+  <div class="absolute inset-0 bg-grid"></div>
+  <div class="hero-glow top-[-160px] left-1/2 -translate-x-1/2"></div>
+
+  <div class="relative max-w-6xl mx-auto px-6 w-full">
+    <!-- Status line -->
+    <div class="flex items-center gap-3 mb-8 animate-fade-up" style="animation-delay:.05s">
+      <span class="status-dot"></span>
+      <span class="font-mono text-xs tracking-widest text-neon">AVAILABLE FOR LLM DATA PROJECTS · GIZA, EGYPT</span>
+    </div>
+
+    <h1 class="font-display font-bold headline-stroke leading-[1.05] text-4xl sm:text-6xl lg:text-7xl max-w-4xl animate-fade-up" style="animation-delay:.15s">
+      AI Data Trainer &amp;<br />LLM Evaluation Engineer
+    </h1>
+
+    <p class="mt-8 max-w-2xl text-base sm:text-lg text-zinc-400 font-light leading-relaxed animate-fade-up" style="animation-delay:.3s">
+      <span class="text-zinc-100 font-medium">Multilingual Specialist (Arabic, English, Tigrinya).</span>
+      Auditing cross-domain LLM datasets spanning advanced STEM, legal frameworks, and medical information routing.
+    </p>
+
+    <!-- Quick actions -->
+    <div class="mt-10 flex flex-wrap items-center gap-4 animate-fade-up" style="animation-delay:.45s">
+      <a href="https://github.com/" target="_blank" rel="noopener"
+         class="group inline-flex items-center gap-2.5 bg-neon text-zinc-950 font-semibold text-sm px-7 py-3.5 rounded hover:bg-neon2 transition-colors">
+        <i data-lucide="github" class="w-4 h-4"></i>
+        GitHub
+        <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+         class="group inline-flex items-center gap-2.5 border border-white/15 text-zinc-100 text-sm font-medium px-7 py-3.5 rounded hover:border-neon/50 hover:text-neon transition-colors">
+        <i data-lucide="linkedin" class="w-4 h-4"></i>
+        LinkedIn
+        <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+      </a>
+      <span class="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-zinc-600 ml-2">
+        <i data-lucide="shield-check" class="w-4 h-4 text-neon/60"></i>
+        RLHF · SFT · FACTUALITY
+      </span>
+    </div>
+
+    <!-- T-shaped strip -->
+    <div class="mt-16 border border-white/8 rounded-lg overflow-hidden animate-fade-up" style="animation-delay:.6s">
+      <div class="relative flex items-center gap-3 px-5 py-3 bg-white/[.02] border-b border-white/8 overflow-hidden">
+        <i data-lucide="git-branch" class="w-4 h-4 text-neon"></i>
+        <span class="font-mono text-xs tracking-widest text-zinc-400">EVALUATION SURFACE — T-SHAPED OPERATING MODEL</span>
+        <span class="absolute top-0 bottom-0 w-1/4 bg-gradient-to-r from-transparent via-neon/10 to-transparent animate-scan"></span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-white/8">
+        <div class="px-5 py-4 md:col-span-4 flex items-center justify-between gap-4">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-zinc-600 mb-1">HORIZONTAL — GENERALIST</p>
+            <p class="text-sm text-zinc-300">Universal evaluation rubrics · cross-domain QA · safety &amp; factuality auditing</p>
+          </div>
+          <i data-lucide="move-horizontal" class="w-5 h-5 text-zinc-600 shrink-0"></i>
+        </div>
+        <div class="px-5 py-4 flex items-center justify-between gap-4 bg-neon/[.04]">
+          <div>
+            <p class="font-mono text-[10px] tracking-widest text-neon mb-1">VERTICAL — DEEP</p>
+            <p class="text-sm text-zinc-200">Arabic NLP data curation</p>
+          </div>
+          <i data-lucide="move-vertical" class="w-5 h-5 text-neon shrink-0"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600">
+    <span class="font-mono text-[10px] tracking-widest">SCROLL</span>
+    <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+  </div>
+</section>
+
+<!-- ============ 2. CORE METHODOLOGY ============ -->
+<section id="methodology" class="relative py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-12 reveal">
+      <div>
+        <p class="font-mono text-xs tracking-widest text-neon mb-3">01 / CORE METHODOLOGY &amp; RUBRIC EXPERTISE</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-zinc-100">Evaluation Surface</h2>
+      </div>
+      <p class="hidden md:block max-w-xs text-sm text-zinc-500 font-light">The horizontal bar of the T — universal generalist capabilities applied across every dataset and domain.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal">
+      <!-- Card 1 -->
+      <div class="neon-card corner rounded-lg p-8">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="font-mono text-xs text-zinc-700">MOD_01</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Instruction-Following Calibration</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed">Reviewing and testing high-density evaluation rubrics under strict project SLAs to ensure multi-turn data consistency.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="neon-card corner rounded-lg p-8">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="font-mono text-xs text-zinc-700">MOD_02</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Adversarial Red Teaming &amp; Safety</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed">Designing complex, adversarial edge-case prompts to stress-test model guardrails against toxicity, bias, and jailbreaks.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="neon-card corner rounded-lg p-8">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="search-check" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="font-mono text-xs text-zinc-700">MOD_03</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Factuality &amp; Truthfulness Auditing</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed">Conducting independent research, breaking down model statements, identifying hallucinations, and documenting URL source evidence.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="neon-card corner rounded-lg p-8">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="list-checks" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="font-mono text-xs text-zinc-700">MOD_04</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Chain-of-Thought (CoT) Verification</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed">Auditing step-by-step logical reasoning models for structural consistency, mathematical accuracy, and instruction adherence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. TIMELINE ============ -->
+<section id="timeline" class="relative py-28 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-14 reveal">
+      <div>
+        <p class="font-mono text-xs tracking-widest text-neon mb-3">02 / PROFESSIONAL TIMELINE</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-zinc-100">2025 — 2026</h2>
+      </div>
+      <p class="hidden md:block max-w-xs text-sm text-zinc-500 font-light">Production evaluation work across four platforms, every engagement remote and SLA-driven.</p>
+    </div>
+
+    <div class="relative pl-10 md:pl-14 reveal">
+      <div class="timeline-line"></div>
+
+      <!-- Entry 1 -->
+      <div class="relative pb-12">
+        <span class="timeline-dot" style="left:-40px; top:2px;"></span>
+        <div class="neon-card rounded-lg p-7">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="metric-badge">2026</span>
+            <span class="metric-badge">SLA &lt; 24H</span>
+          </div>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">Agents Only Inc <span class="text-zinc-600 font-normal">|</span> <span class="text-zinc-400 font-normal text-base">AI Training &amp; Research Contributor</span></h3>
+          <p class="mt-3 text-sm text-zinc-400 font-light leading-relaxed">Evaluated cross-domain model responses against shifting evaluation guidelines under strict 24-hour calibration deadlines. Prepared structured Arabic-language training responses with verified references.</p>
+        </div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="relative pb-12">
+        <span class="timeline-dot" style="left:-40px; top:2px;"></span>
+        <div class="neon-card rounded-lg p-7">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="metric-badge">2026</span>
+            <span class="metric-badge">FACT-VERIFICATION</span>
+          </div>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">TrustScale AI <span class="text-zinc-600 font-normal">|</span> <span class="text-zinc-400 font-normal text-base">AI Response Evaluator &amp; Fact-Verification Annotator</span></h3>
+          <p class="mt-3 text-sm text-zinc-400 font-light leading-relaxed">Evaluated prompts against intelligibility, ambiguity, and time-relevance criteria. Audited statements for contextual inaccuracies and hallucinations.</p>
+        </div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="relative pb-12">
+        <span class="timeline-dot" style="left:-40px; top:2px;"></span>
+        <div class="neon-card rounded-lg p-7">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="metric-badge">2026</span>
+            <span class="metric-badge">TOLERANCE &lt; 300MS</span>
+          </div>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">Acolad <span class="text-zinc-600 font-normal">|</span> <span class="text-zinc-400 font-normal text-base">Speech Data Annotation &amp; Transcription QA Specialist</span></h3>
+          <p class="mt-3 text-sm text-zinc-400 font-light leading-relaxed">Managed Arabic acoustic data segmentation and transcription alignment inside SuperAnnotate operating under strict &lt;300ms timestamp tolerances.</p>
+        </div>
+      </div>
+
+      <!-- Entry 4 -->
+      <div class="relative">
+        <span class="timeline-dot" style="left:-40px; top:2px;"></span>
+        <div class="neon-card rounded-lg p-7">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="metric-badge">2025</span>
+            <span class="metric-badge">2,700+ SEGMENTS</span>
+          </div>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">Frontier Design <span class="text-zinc-600 font-normal">|</span> <span class="text-zinc-400 font-normal text-base">Expert Data Annotator &amp; Linguist</span></h3>
+          <p class="mt-3 text-sm text-zinc-400 font-light leading-relaxed">Independently re-audited and corrected more than 2,700 data segments across Arabic, Tigrinya, and English, resolving structural formatting and script rendering errors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PROJECTS ============ -->
+<section id="projects" class="relative py-28 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-12 reveal">
+      <div>
+        <p class="font-mono text-xs tracking-widest text-neon mb-3">03 / TARGET TRACKS &amp; DATA PROJECTS</p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-zinc-100">The Arabic Vertical</h2>
+      </div>
+      <p class="hidden md:block max-w-xs text-sm text-zinc-500 font-light">Deep specialization where multilingual data quality actually breaks — and gets fixed.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal">
+      <!-- Project 1 -->
+      <div class="neon-card corner rounded-lg p-8 flex flex-col">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="palette" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="metric-badge">2026</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Canva AI Quality Evaluation</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed flex-1">Evaluated Egyptian Arabic localization and multimodal design content quality. Classified 10 recurring Arabic AI-generation failures across script typography, connected character shaping, and right-to-left layout constraints.</p>
+        <div class="mt-6 pt-5 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="tag">RTL LAYOUT</span>
+          <span class="tag">TYPOGRAPHY</span>
+          <span class="tag">LOCALIZATION QA</span>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="neon-card corner rounded-lg p-8 flex flex-col">
+        <div class="flex items-start justify-between mb-6">
+          <div class="w-12 h-12 rounded border border-neon/30 bg-neon/5 flex items-center justify-center">
+            <i data-lucide="audio-lines" class="w-5 h-5 text-neon"></i>
+          </div>
+          <span class="metric-badge">2026</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-zinc-100 mb-3">Speech Dataset Quality Assurance</h3>
+        <p class="text-sm text-zinc-400 font-light leading-relaxed flex-1">Handled audio segmentation, transcript-audio inconsistency logging, and dialectal alignment (MSA vs. Egyptian Colloquial Arabic) using a five-point quality rating scale.</p>
+        <div class="mt-6 pt-5 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="tag">MSA</span>
+          <span class="tag">EGYPTIAN COLLOQUIAL</span>
+          <span class="tag">5-PT SCALE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. SKILLS MATRIX ============ -->
+<section id="skills" class="relative py-28 border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-12 reveal">
+      <p class="font-mono text-xs tracking-widest text-neon mb-3">04 / TECHNICAL SKILLS &amp; LANGUAGES DATA MATRIX</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-zinc-100">Capabilities Index</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 reveal">
+      <!-- Tech stack -->
+      <div class="neon-card rounded-lg p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <i data-lucide="cpu" class="w-5 h-5 text-neon"></i>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">Core Tech Stack</h3>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+          <span class="tag">Python Data Scripting</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">RLHF (Reinforcement Learning)</span>
+          <span class="tag">SFT (Supervised Fine-Tuning)</span>
+          <span class="tag">NLP Data Curation</span>
+          <span class="tag">Dataset Auditing</span>
+          <span class="tag">SuperAnnotate</span>
+          <span class="tag">Tokenization</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="neon-card rounded-lg p-8">
+        <div class="flex items-center gap-3 mb-6">
+          <i data-lucide="languages" class="w-5 h-5 text-neon"></i>
+          <h3 class="font-display text-lg font-semibold text-zinc-100">Languages</h3>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-zinc-200 font-medium">Arabic</span>
+              <span class="font-mono text-[10px] tracking-widest text-neon">NATIVE MASTERY — MSA &amp; EGYPTIAN COLLOQUIAL</span>
+            </div>
+            <div class="lang-bar"><span style="width:100%"></span></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-zinc-200 font-medium">English</span>
+              <span class="font-mono text-[10px] tracking-widest text-zinc-500">PROFESSIONAL WORKING PROFICIENCY</span>
+            </div>
+            <div class="lang-bar"><span style="width:85%"></span></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm text-zinc-200 font-medium">Tigrinya</span>
+              <span class="font-mono text-[10px] tracking-widest text-zinc-500">PROFESSIONAL LINGUISTIC QA</span>
+            </div>
+            <div class="lang-bar"><span style="width:75%"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact strip -->
+    <div class="mt-16 neon-card rounded-lg p-10 text-center reveal">
+      <p class="font-mono text-xs tracking-widest text-neon mb-4">READY TO DEPLOY</p>
+      <h3 class="font-display text-2xl sm:text-3xl font-bold text-zinc-100 mb-3">Need precision-grade Arabic LLM data?</h3>
+      <p class="text-sm text-zinc-400 font-light max-w-xl mx-auto mb-8">Available for LLM evaluation, red teaming, factuality auditing, and multilingual data curation engagements.</p>
+      <a href="mailto:contact.jaefer@gmail.com" class="group inline-flex items-center gap-2.5 bg-neon text-zinc-950 font-semibold text-sm px-8 py-3.5 rounded hover:bg-neon2 transition-colors">
+        <i data-lucide="send" class="w-4 h-4"></i>
+        contact.jaefer@gmail.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-white/5 py-8">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-mono text-xs text-zinc-600">© 2026 Jaefer Ibrahim · Built as a single-file static site</p>
+    <div class="flex items-center gap-5">
+      <a href="https://github.com/" target="_blank" rel="noopener" class="text-zinc-600 hover:text-neon transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="text-zinc-600 hover:text-neon transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+      <a href="mailto:contact.jaefer@gmail.com" class="text-zinc-600 hover:text-neon transition-colors"><i data-lucide="mail" class="w-4 h-4"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Render Lucide icons
+  lucide.createIcons();
+
+  // Scroll-reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
